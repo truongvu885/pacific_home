@@ -1,0 +1,3 @@
+docker exec pacific-home-db /usr/bin/mysqldump -u root -p12345678 espocrm > init_backup.sql
+Get-Content .\init_backup.sql | Set-Content -Encoding UTF8 .\init.sql
+Remove-Item -Path ./pacific_home -Recurse -Force | docker cp pacific-home:/var/www/html/ ./pacific_home/

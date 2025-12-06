@@ -1,0 +1,4 @@
+espocrm_custom/data/config-internal.php
+espocrm_custom/data/cache/*
+espocrm_custom/data/tmp/*
+# espocrm_custom/data/config.php

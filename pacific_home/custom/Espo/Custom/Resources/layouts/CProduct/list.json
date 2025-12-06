@@ -1,0 +1,14 @@
+[
+    {
+        "name": "name",
+        "link": true
+    },
+    {
+        "name": "phoneNumber",
+        "width": 18
+    },
+    {
+        "name": "price",
+        "width": 16
+    }
+]

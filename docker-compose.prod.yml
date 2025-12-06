@@ -1,0 +1,83 @@
+services:
+
+  pacific-home-db:
+    image: mysql:9.1.0
+    container_name: pacific-home-db
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: espocrm
+      MYSQL_USER: espocrm
+      MYSQL_PASSWORD: 12345678
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - pacific-home-db:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"
+    restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p12345678"]
+      interval: 20s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  pacific-home:
+    build: .
+    image: pacific-home:1.0
+    container_name: pacific-home
+    environment:
+      ESPOCRM_DATABASE_PLATFORM: Mysql
+      ESPOCRM_DATABASE_HOST: pacific-home-db
+      ESPOCRM_DATABASE_USER: espocrm
+      ESPOCRM_DATABASE_PASSWORD: 12345678
+      ESPOCRM_DATABASE_NAME: espocrm
+      ESPOCRM_ADMIN_USERNAME: admin
+      ESPOCRM_ADMIN_PASSWORD: 12345678
+      ESPOCRM_SITE_URL: "http://localhost:8080"
+    volumes:
+      # Mount only data and custom directories to preserve code from image
+      - pacific-home:/var/www/html/
+    depends_on:
+      pacific-home-db:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  pacific-home-daemon:
+    image: pacific-home:1.0
+    container_name: pacific-home-daemon
+    volumes:
+      - pacific-home:/var/www/html/
+    entrypoint: docker-daemon.sh
+    restart: always
+    depends_on:
+      - pacific-home-db
+      - pacific-home
+
+  pacific-home-websocket:
+    image: pacific-home:1.0
+    container_name: pacific-home-websocket
+    volumes:
+      - pacific-home:/var/www/html/
+    environment:
+      ESPOCRM_CONFIG_USE_WEB_SOCKET: "true"
+      ESPOCRM_CONFIG_WEB_SOCKET_URL: "ws://localhost:8081"
+    entrypoint: docker-websocket.sh
+    ports:
+      - "8081:8080"
+    restart: always
+    depends_on:
+      - pacific-home-db
+      - pacific-home
+
+volumes:
+  pacific-home-db:
+  pacific-home:

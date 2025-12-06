@@ -1,0 +1,4 @@
+{
+  "controllerClassName": "Espo\\Custom\\Controllers\\CallioCall",
+  "useContainer": true
+}

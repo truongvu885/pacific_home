@@ -1,0 +1,13 @@
+{
+    "fields": {
+        "name": "Code",
+        "price": "Price",
+        "priceCurrency": "Price (Currency)",
+        "priceConverted": "Price (Converted)",
+        "phoneNumber": "Phone"
+    },
+    "links": [],
+    "labels": {
+        "Create CProduct": "Create Product"
+    }
+}

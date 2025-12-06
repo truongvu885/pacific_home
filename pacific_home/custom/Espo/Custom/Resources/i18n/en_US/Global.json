@@ -1,0 +1,10 @@
+{
+    "scopeNames": {
+        "CProduct": "Product",
+        "CCusomer": "Cusomer"
+    },
+    "scopeNamesPlural": {
+        "CProduct": "Products",
+        "CCusomer": "Cusomers"
+    }
+}
