@@ -1,3 +1,15 @@
 docker exec pacific-home-db /usr/bin/mysqldump -u root -p12345678 espocrm > init_backup.sql
 Get-Content .\init_backup.sql | Set-Content -Encoding UTF8 .\init.sql
 Remove-Item -Path ./pacific_home -Recurse -Force | docker cp pacific-home:/var/www/html/ ./pacific_home/
+
+
+Tên server:	ubuntu-1vcpu-2gb-1-03o81
+Tên đăng nhập:	root
+Mật khẩu:	fbBhthqCbkoPQXVmSCqebG5
+SSH key:	ssh-11-51-35-6-3-2023
+LAN Address:	192.168.0.158
+WAN Address:	14.225.1.111
+
+
+user: pacifichome
+pass: pacifichome@123
