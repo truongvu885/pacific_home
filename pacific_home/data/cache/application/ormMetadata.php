@@ -32015,1527 +32015,6 @@ return [
       'order' => 'DESC'
     ]
   ],
-  'CCusomer' => [
-    'attributes' => [
-      'id' => [
-        'len' => 17,
-        'dbType' => 'string',
-        'type' => 'id'
-      ],
-      'name' => [
-        'type' => 'varchar',
-        'fieldType' => 'personName',
-        'notStorable' => true,
-        'select' => [
-          'select' => 'NULLIF:(TRIM:(CONCAT:(IFNULL:(firstName, \'\'), \' \', IFNULL:(lastName, \'\'))), \'\')'
-        ],
-        'selectForeign' => [
-          'select' => 'NULLIF:(TRIM:(CONCAT:(IFNULL:({alias}.firstName, \'\'), \' \', IFNULL:({alias}.lastName, \'\'))), \'\')'
-        ],
-        'where' => [
-          'LIKE' => [
-            'whereClause' => [
-              'OR' => [
-                'firstName*' => '{value}',
-                'lastName*' => '{value}',
-                'CONCAT:(firstName, \' \', lastName)*' => '{value}',
-                'CONCAT:(lastName, \' \', firstName)*' => '{value}'
-              ]
-            ]
-          ],
-          'NOT LIKE' => [
-            'whereClause' => [
-              'AND' => [
-                'firstName!*' => '{value}',
-                'lastName!*' => '{value}',
-                'CONCAT:(firstName, \' \', lastName)!*' => '{value}',
-                'CONCAT:(lastName, \' \', firstName)!*' => '{value}'
-              ]
-            ]
-          ],
-          '=' => [
-            'whereClause' => [
-              'OR' => [
-                'firstName' => '{value}',
-                'lastName' => '{value}',
-                'CONCAT:(firstName, \' \', lastName)' => '{value}',
-                'CONCAT:(lastName, \' \', firstName)' => '{value}'
-              ]
-            ]
-          ]
-        ],
-        'order' => [
-          'order' => [
-            0 => [
-              0 => 'firstName',
-              1 => '{direction}'
-            ],
-            1 => [
-              0 => 'lastName',
-              1 => '{direction}'
-            ]
-          ]
-        ]
-      ],
-      'deleted' => [
-        'type' => 'bool',
-        'default' => false
-      ],
-      'salutationName' => [
-        'type' => 'varchar',
-        'fieldType' => 'varchar',
-        'len' => 255
-      ],
-      'firstName' => [
-        'type' => 'varchar',
-        'len' => 100,
-        'fieldType' => 'varchar'
-      ],
-      'lastName' => [
-        'type' => 'varchar',
-        'len' => 100,
-        'fieldType' => 'varchar'
-      ],
-      'description' => [
-        'type' => 'text',
-        'fieldType' => 'text'
-      ],
-      'emailAddress' => [
-        'type' => 'varchar',
-        'notStorable' => true,
-        'fieldType' => 'email',
-        'select' => [
-          'select' => 'emailAddresses.name',
-          'leftJoins' => [
-            0 => [
-              0 => 'emailAddresses',
-              1 => 'emailAddresses',
-              2 => [
-                'primary' => true
-              ]
-            ]
-          ]
-        ],
-        'selectForeign' => [
-          'select' => 'emailAddressCCusomer{alias}Foreign.name',
-          'leftJoins' => [
-            0 => [
-              0 => 'EntityEmailAddress',
-              1 => 'emailAddressCCusomer{alias}ForeignMiddle',
-              2 => [
-                'emailAddressCCusomer{alias}ForeignMiddle.entityId:' => '{alias}.id',
-                'emailAddressCCusomer{alias}ForeignMiddle.primary' => true,
-                'emailAddressCCusomer{alias}ForeignMiddle.deleted' => false
-              ]
-            ],
-            1 => [
-              0 => 'EmailAddress',
-              1 => 'emailAddressCCusomer{alias}Foreign',
-              2 => [
-                'emailAddressCCusomer{alias}Foreign.id:' => 'emailAddressCCusomer{alias}ForeignMiddle.emailAddressId',
-                'emailAddressCCusomer{alias}Foreign.deleted' => false
-              ]
-            ]
-          ]
-        ],
-        'where' => [
-          'LIKE' => [
-            'whereClause' => [
-              'id=s' => [
-                'from' => 'EntityEmailAddress',
-                'select' => [
-                  0 => 'entityId'
-                ],
-                'joins' => [
-                  0 => [
-                    0 => 'emailAddress',
-                    1 => 'emailAddress',
-                    2 => [
-                      'emailAddress.id:' => 'emailAddressId',
-                      'emailAddress.deleted' => false
-                    ]
-                  ]
-                ],
-                'whereClause' => [
-                  'deleted' => false,
-                  'entityType' => 'CCusomer',
-                  'LIKE:(emailAddress.lower, LOWER:({value})):' => NULL
-                ]
-              ]
-            ]
-          ],
-          'NOT LIKE' => [
-            'whereClause' => [
-              'id!=s' => [
-                'from' => 'EntityEmailAddress',
-                'select' => [
-                  0 => 'entityId'
-                ],
-                'joins' => [
-                  0 => [
-                    0 => 'emailAddress',
-                    1 => 'emailAddress',
-                    2 => [
-                      'emailAddress.id:' => 'emailAddressId',
-                      'emailAddress.deleted' => false
-                    ]
-                  ]
-                ],
-                'whereClause' => [
-                  'deleted' => false,
-                  'entityType' => 'CCusomer',
-                  'LIKE:(emailAddress.lower, LOWER:({value})):' => NULL
-                ]
-              ]
-            ]
-          ],
-          '=' => [
-            'leftJoins' => [
-              0 => [
-                0 => 'emailAddresses',
-                1 => 'emailAddressesMultiple'
-              ]
-            ],
-            'whereClause' => [
-              'EQUAL:(emailAddressesMultiple.lower, LOWER:({value})):' => NULL
-            ]
-          ],
-          '<>' => [
-            'whereClause' => [
-              'id!=s' => [
-                'from' => 'EntityEmailAddress',
-                'select' => [
-                  0 => 'entityId'
-                ],
-                'joins' => [
-                  0 => [
-                    0 => 'emailAddress',
-                    1 => 'emailAddress',
-                    2 => [
-                      'emailAddress.id:' => 'emailAddressId',
-                      'emailAddress.deleted' => false
-                    ]
-                  ]
-                ],
-                'whereClause' => [
-                  'deleted' => false,
-                  'entityType' => 'CCusomer',
-                  'EQUAL:(emailAddress.lower, LOWER:({value})):' => NULL
-                ]
-              ]
-            ]
-          ],
-          'IN' => [
-            'whereClause' => [
-              'id=s' => [
-                'from' => 'EntityEmailAddress',
-                'select' => [
-                  0 => 'entityId'
-                ],
-                'joins' => [
-                  0 => [
-                    0 => 'emailAddress',
-                    1 => 'emailAddress',
-                    2 => [
-                      'emailAddress.id:' => 'emailAddressId',
-                      'emailAddress.deleted' => false
-                    ]
-                  ]
-                ],
-                'whereClause' => [
-                  'deleted' => false,
-                  'entityType' => 'CCusomer',
-                  'emailAddress.lower' => '{value}'
-                ]
-              ]
-            ]
-          ],
-          'NOT IN' => [
-            'whereClause' => [
-              'id!=s' => [
-                'from' => 'EntityEmailAddress',
-                'select' => [
-                  0 => 'entityId'
-                ],
-                'joins' => [
-                  0 => [
-                    0 => 'emailAddress',
-                    1 => 'emailAddress',
-                    2 => [
-                      'emailAddress.id:' => 'emailAddressId',
-                      'emailAddress.deleted' => false
-                    ]
-                  ]
-                ],
-                'whereClause' => [
-                  'deleted' => false,
-                  'entityType' => 'CCusomer',
-                  'emailAddress.lower' => '{value}'
-                ]
-              ]
-            ]
-          ],
-          'IS NULL' => [
-            'leftJoins' => [
-              0 => [
-                0 => 'emailAddresses',
-                1 => 'emailAddressesMultiple'
-              ]
-            ],
-            'whereClause' => [
-              'emailAddressesMultiple.lower=' => NULL
-            ]
-          ],
-          'IS NOT NULL' => [
-            'whereClause' => [
-              'id=s' => [
-                'from' => 'EntityEmailAddress',
-                'select' => [
-                  0 => 'entityId'
-                ],
-                'whereClause' => [
-                  'deleted' => false,
-                  'entityType' => 'CCusomer'
-                ]
-              ]
-            ]
-          ]
-        ],
-        'order' => [
-          'order' => [
-            0 => [
-              0 => 'emailAddresses.lower',
-              1 => '{direction}'
-            ]
-          ],
-          'leftJoins' => [
-            0 => [
-              0 => 'emailAddresses',
-              1 => 'emailAddresses',
-              2 => [
-                'primary' => true
-              ]
-            ]
-          ],
-          'additionalSelect' => [
-            0 => 'emailAddresses.lower'
-          ]
-        ]
-      ],
-      'phoneNumber' => [
-        'type' => 'varchar',
-        'notStorable' => true,
-        'fieldType' => 'phone',
-        'select' => [
-          'select' => 'phoneNumbers.name',
-          'leftJoins' => [
-            0 => [
-              0 => 'phoneNumbers',
-              1 => 'phoneNumbers',
-              2 => [
-                'primary' => true
-              ]
-            ]
-          ]
-        ],
-        'selectForeign' => [
-          'select' => 'phoneNumberCCusomer{alias}Foreign.name',
-          'leftJoins' => [
-            0 => [
-              0 => 'EntityPhoneNumber',
-              1 => 'phoneNumberCCusomer{alias}ForeignMiddle',
-              2 => [
-                'phoneNumberCCusomer{alias}ForeignMiddle.entityId:' => '{alias}.id',
-                'phoneNumberCCusomer{alias}ForeignMiddle.primary' => true,
-                'phoneNumberCCusomer{alias}ForeignMiddle.deleted' => false
-              ]
-            ],
-            1 => [
-              0 => 'PhoneNumber',
-              1 => 'phoneNumberCCusomer{alias}Foreign',
-              2 => [
-                'phoneNumberCCusomer{alias}Foreign.id:' => 'phoneNumberCCusomer{alias}ForeignMiddle.phoneNumberId',
-                'phoneNumberCCusomer{alias}Foreign.deleted' => false
-              ]
-            ]
-          ]
-        ],
-        'where' => [
-          'LIKE' => [
-            'whereClause' => [
-              'id=s' => [
-                'from' => 'EntityPhoneNumber',
-                'select' => [
-                  0 => 'entityId'
-                ],
-                'joins' => [
-                  0 => [
-                    0 => 'phoneNumber',
-                    1 => 'phoneNumber',
-                    2 => [
-                      'phoneNumber.id:' => 'phoneNumberId',
-                      'phoneNumber.deleted' => false
-                    ]
-                  ]
-                ],
-                'whereClause' => [
-                  'deleted' => false,
-                  'entityType' => 'CCusomer',
-                  'phoneNumber.name*' => '{value}'
-                ]
-              ]
-            ]
-          ],
-          'NOT LIKE' => [
-            'whereClause' => [
-              'id!=s' => [
-                'from' => 'EntityPhoneNumber',
-                'select' => [
-                  0 => 'entityId'
-                ],
-                'joins' => [
-                  0 => [
-                    0 => 'phoneNumber',
-                    1 => 'phoneNumber',
-                    2 => [
-                      'phoneNumber.id:' => 'phoneNumberId',
-                      'phoneNumber.deleted' => false
-                    ]
-                  ]
-                ],
-                'whereClause' => [
-                  'deleted' => false,
-                  'entityType' => 'CCusomer',
-                  'phoneNumber.name*' => '{value}'
-                ]
-              ]
-            ]
-          ],
-          '=' => [
-            'leftJoins' => [
-              0 => [
-                0 => 'phoneNumbers',
-                1 => 'phoneNumbersMultiple'
-              ]
-            ],
-            'whereClause' => [
-              'phoneNumbersMultiple.name=' => '{value}'
-            ]
-          ],
-          '<>' => [
-            'whereClause' => [
-              'id!=s' => [
-                'from' => 'EntityPhoneNumber',
-                'select' => [
-                  0 => 'entityId'
-                ],
-                'joins' => [
-                  0 => [
-                    0 => 'phoneNumber',
-                    1 => 'phoneNumber',
-                    2 => [
-                      'phoneNumber.id:' => 'phoneNumberId',
-                      'phoneNumber.deleted' => false
-                    ]
-                  ]
-                ],
-                'whereClause' => [
-                  'deleted' => false,
-                  'entityType' => 'CCusomer',
-                  'phoneNumber.name' => '{value}'
-                ]
-              ]
-            ]
-          ],
-          'IN' => [
-            'whereClause' => [
-              'id=s' => [
-                'from' => 'EntityPhoneNumber',
-                'select' => [
-                  0 => 'entityId'
-                ],
-                'joins' => [
-                  0 => [
-                    0 => 'phoneNumber',
-                    1 => 'phoneNumber',
-                    2 => [
-                      'phoneNumber.id:' => 'phoneNumberId',
-                      'phoneNumber.deleted' => false
-                    ]
-                  ]
-                ],
-                'whereClause' => [
-                  'deleted' => false,
-                  'entityType' => 'CCusomer',
-                  'phoneNumber.name' => '{value}'
-                ]
-              ]
-            ]
-          ],
-          'NOT IN' => [
-            'whereClause' => [
-              'id=s' => [
-                'from' => 'EntityPhoneNumber',
-                'select' => [
-                  0 => 'entityId'
-                ],
-                'joins' => [
-                  0 => [
-                    0 => 'phoneNumber',
-                    1 => 'phoneNumber',
-                    2 => [
-                      'phoneNumber.id:' => 'phoneNumberId',
-                      'phoneNumber.deleted' => false
-                    ]
-                  ]
-                ],
-                'whereClause' => [
-                  'deleted' => false,
-                  'entityType' => 'CCusomer',
-                  'phoneNumber.name!=' => '{value}'
-                ]
-              ]
-            ]
-          ],
-          'IS NULL' => [
-            'leftJoins' => [
-              0 => [
-                0 => 'phoneNumbers',
-                1 => 'phoneNumbersMultiple'
-              ]
-            ],
-            'whereClause' => [
-              'phoneNumbersMultiple.name=' => NULL
-            ]
-          ],
-          'IS NOT NULL' => [
-            'whereClause' => [
-              'id=s' => [
-                'from' => 'EntityPhoneNumber',
-                'select' => [
-                  0 => 'entityId'
-                ],
-                'whereClause' => [
-                  'deleted' => false,
-                  'entityType' => 'CCusomer'
-                ]
-              ]
-            ]
-          ]
-        ],
-        'order' => [
-          'order' => [
-            0 => [
-              0 => 'phoneNumbers.name',
-              1 => '{direction}'
-            ]
-          ],
-          'leftJoins' => [
-            0 => [
-              0 => 'phoneNumbers',
-              1 => 'phoneNumbers',
-              2 => [
-                'primary' => true
-              ]
-            ]
-          ],
-          'additionalSelect' => [
-            0 => 'phoneNumbers.name'
-          ]
-        ]
-      ],
-      'addressStreet' => [
-        'type' => 'text',
-        'dbType' => 'varchar',
-        'len' => 255,
-        'fieldType' => 'text'
-      ],
-      'addressCity' => [
-        'type' => 'varchar',
-        'len' => 100,
-        'fieldType' => 'varchar'
-      ],
-      'addressState' => [
-        'type' => 'varchar',
-        'len' => 100,
-        'fieldType' => 'varchar'
-      ],
-      'addressCountry' => [
-        'type' => 'varchar',
-        'len' => 100,
-        'fieldType' => 'varchar'
-      ],
-      'addressPostalCode' => [
-        'type' => 'varchar',
-        'len' => 40,
-        'fieldType' => 'varchar'
-      ],
-      'createdAt' => [
-        'type' => 'datetime',
-        'notNull' => false,
-        'fieldType' => 'datetime'
-      ],
-      'modifiedAt' => [
-        'type' => 'datetime',
-        'notNull' => false,
-        'fieldType' => 'datetime'
-      ],
-      'middleName' => [
-        'type' => 'varchar',
-        'len' => 100,
-        'fieldType' => 'varchar'
-      ],
-      'emailAddressIsOptedOut' => [
-        'type' => 'bool',
-        'notNull' => true,
-        'notStorable' => true,
-        'fieldType' => 'bool',
-        'select' => [
-          'select' => 'emailAddresses.optOut',
-          'leftJoins' => [
-            0 => [
-              0 => 'emailAddresses',
-              1 => 'emailAddresses',
-              2 => [
-                'primary' => true
-              ]
-            ]
-          ]
-        ],
-        'selectForeign' => [
-          'select' => 'emailAddressCCusomer{alias}Foreign.optOut',
-          'leftJoins' => [
-            0 => [
-              0 => 'EntityEmailAddress',
-              1 => 'emailAddressCCusomer{alias}ForeignMiddle',
-              2 => [
-                'emailAddressCCusomer{alias}ForeignMiddle.entityId:' => '{alias}.id',
-                'emailAddressCCusomer{alias}ForeignMiddle.primary' => true,
-                'emailAddressCCusomer{alias}ForeignMiddle.deleted' => false
-              ]
-            ],
-            1 => [
-              0 => 'EmailAddress',
-              1 => 'emailAddressCCusomer{alias}Foreign',
-              2 => [
-                'emailAddressCCusomer{alias}Foreign.id:' => 'emailAddressCCusomer{alias}ForeignMiddle.emailAddressId',
-                'emailAddressCCusomer{alias}Foreign.deleted' => false
-              ]
-            ]
-          ]
-        ],
-        'where' => [
-          '= TRUE' => [
-            'whereClause' => [
-              0 => [
-                'emailAddresses.optOut=' => true
-              ],
-              1 => [
-                'emailAddresses.optOut!=' => NULL
-              ]
-            ],
-            'leftJoins' => [
-              0 => [
-                0 => 'emailAddresses',
-                1 => 'emailAddresses',
-                2 => [
-                  'primary' => true
-                ]
-              ]
-            ]
-          ],
-          '= FALSE' => [
-            'whereClause' => [
-              'OR' => [
-                0 => [
-                  'emailAddresses.optOut=' => false
-                ],
-                1 => [
-                  'emailAddresses.optOut=' => NULL
-                ]
-              ]
-            ],
-            'leftJoins' => [
-              0 => [
-                0 => 'emailAddresses',
-                1 => 'emailAddresses',
-                2 => [
-                  'primary' => true
-                ]
-              ]
-            ]
-          ]
-        ],
-        'order' => [
-          'order' => [
-            0 => [
-              0 => 'emailAddresses.optOut',
-              1 => '{direction}'
-            ]
-          ],
-          'leftJoins' => [
-            0 => [
-              0 => 'emailAddresses',
-              1 => 'emailAddresses',
-              2 => [
-                'primary' => true
-              ]
-            ]
-          ],
-          'additionalSelect' => [
-            0 => 'emailAddresses.optOut'
-          ]
-        ],
-        'default' => false
-      ],
-      'emailAddressIsInvalid' => [
-        'type' => 'bool',
-        'notNull' => true,
-        'notStorable' => true,
-        'fieldType' => 'bool',
-        'select' => [
-          'select' => 'emailAddresses.invalid',
-          'leftJoins' => [
-            0 => [
-              0 => 'emailAddresses',
-              1 => 'emailAddresses',
-              2 => [
-                'primary' => true
-              ]
-            ]
-          ]
-        ],
-        'selectForeign' => [
-          'select' => 'emailAddressCCusomer{alias}Foreign.invalid',
-          'leftJoins' => [
-            0 => [
-              0 => 'EntityEmailAddress',
-              1 => 'emailAddressCCusomer{alias}ForeignMiddle',
-              2 => [
-                'emailAddressCCusomer{alias}ForeignMiddle.entityId:' => '{alias}.id',
-                'emailAddressCCusomer{alias}ForeignMiddle.primary' => true,
-                'emailAddressCCusomer{alias}ForeignMiddle.deleted' => false
-              ]
-            ],
-            1 => [
-              0 => 'EmailAddress',
-              1 => 'emailAddressCCusomer{alias}Foreign',
-              2 => [
-                'emailAddressCCusomer{alias}Foreign.id:' => 'emailAddressCCusomer{alias}ForeignMiddle.emailAddressId',
-                'emailAddressCCusomer{alias}Foreign.deleted' => false
-              ]
-            ]
-          ]
-        ],
-        'where' => [
-          '= TRUE' => [
-            'whereClause' => [
-              0 => [
-                'emailAddresses.invalid=' => true
-              ],
-              1 => [
-                'emailAddresses.invalid!=' => NULL
-              ]
-            ],
-            'leftJoins' => [
-              0 => [
-                0 => 'emailAddresses',
-                1 => 'emailAddresses',
-                2 => [
-                  'primary' => true
-                ]
-              ]
-            ]
-          ],
-          '= FALSE' => [
-            'whereClause' => [
-              'OR' => [
-                0 => [
-                  'emailAddresses.invalid=' => false
-                ],
-                1 => [
-                  'emailAddresses.invalid=' => NULL
-                ]
-              ]
-            ],
-            'leftJoins' => [
-              0 => [
-                0 => 'emailAddresses',
-                1 => 'emailAddresses',
-                2 => [
-                  'primary' => true
-                ]
-              ]
-            ]
-          ]
-        ],
-        'order' => [
-          'order' => [
-            0 => [
-              0 => 'emailAddresses.invalid',
-              1 => '{direction}'
-            ]
-          ],
-          'leftJoins' => [
-            0 => [
-              0 => 'emailAddresses',
-              1 => 'emailAddresses',
-              2 => [
-                'primary' => true
-              ]
-            ]
-          ],
-          'additionalSelect' => [
-            0 => 'emailAddresses.invalid'
-          ]
-        ],
-        'default' => false
-      ],
-      'phoneNumberIsOptedOut' => [
-        'type' => 'bool',
-        'notNull' => true,
-        'notStorable' => true,
-        'fieldType' => 'bool',
-        'select' => [
-          'select' => 'phoneNumbers.optOut',
-          'leftJoins' => [
-            0 => [
-              0 => 'phoneNumbers',
-              1 => 'phoneNumbers',
-              2 => [
-                'primary' => true
-              ]
-            ]
-          ]
-        ],
-        'selectForeign' => [
-          'select' => 'phoneNumberCCusomer{alias}Foreign.optOut',
-          'leftJoins' => [
-            0 => [
-              0 => 'EntityPhoneNumber',
-              1 => 'phoneNumberCCusomer{alias}ForeignMiddle',
-              2 => [
-                'phoneNumberCCusomer{alias}ForeignMiddle.entityId:' => '{alias}.id',
-                'phoneNumberCCusomer{alias}ForeignMiddle.primary' => true,
-                'phoneNumberCCusomer{alias}ForeignMiddle.deleted' => false
-              ]
-            ],
-            1 => [
-              0 => 'PhoneNumber',
-              1 => 'phoneNumberCCusomer{alias}Foreign',
-              2 => [
-                'phoneNumberCCusomer{alias}Foreign.id:' => 'phoneNumberCCusomer{alias}ForeignMiddle.phoneNumberId',
-                'phoneNumberCCusomer{alias}Foreign.deleted' => false
-              ]
-            ]
-          ]
-        ],
-        'where' => [
-          '= TRUE' => [
-            'whereClause' => [
-              0 => [
-                'phoneNumbers.optOut=' => true
-              ],
-              1 => [
-                'phoneNumbers.optOut!=' => NULL
-              ]
-            ],
-            'leftJoins' => [
-              0 => [
-                0 => 'phoneNumbers',
-                1 => 'phoneNumbers',
-                2 => [
-                  'primary' => true
-                ]
-              ]
-            ]
-          ],
-          '= FALSE' => [
-            'whereClause' => [
-              'OR' => [
-                0 => [
-                  'phoneNumbers.optOut=' => false
-                ],
-                1 => [
-                  'phoneNumbers.optOut=' => NULL
-                ]
-              ]
-            ],
-            'leftJoins' => [
-              0 => [
-                0 => 'phoneNumbers',
-                1 => 'phoneNumbers',
-                2 => [
-                  'primary' => true
-                ]
-              ]
-            ]
-          ]
-        ],
-        'order' => [
-          'order' => [
-            0 => [
-              0 => 'phoneNumbers.optOut',
-              1 => '{direction}'
-            ]
-          ],
-          'leftJoins' => [
-            0 => [
-              0 => 'phoneNumbers',
-              1 => 'phoneNumbers',
-              2 => [
-                'primary' => true
-              ]
-            ]
-          ],
-          'additionalSelect' => [
-            0 => 'phoneNumbers.optOut'
-          ]
-        ],
-        'default' => false
-      ],
-      'phoneNumberIsInvalid' => [
-        'type' => 'bool',
-        'notNull' => true,
-        'notStorable' => true,
-        'fieldType' => 'bool',
-        'select' => [
-          'select' => 'phoneNumbers.invalid',
-          'leftJoins' => [
-            0 => [
-              0 => 'phoneNumbers',
-              1 => 'phoneNumbers',
-              2 => [
-                'primary' => true
-              ]
-            ]
-          ]
-        ],
-        'selectForeign' => [
-          'select' => 'phoneNumberCCusomer{alias}Foreign.invalid',
-          'leftJoins' => [
-            0 => [
-              0 => 'EntityPhoneNumber',
-              1 => 'phoneNumberCCusomer{alias}ForeignMiddle',
-              2 => [
-                'phoneNumberCCusomer{alias}ForeignMiddle.entityId:' => '{alias}.id',
-                'phoneNumberCCusomer{alias}ForeignMiddle.primary' => true,
-                'phoneNumberCCusomer{alias}ForeignMiddle.deleted' => false
-              ]
-            ],
-            1 => [
-              0 => 'PhoneNumber',
-              1 => 'phoneNumberCCusomer{alias}Foreign',
-              2 => [
-                'phoneNumberCCusomer{alias}Foreign.id:' => 'phoneNumberCCusomer{alias}ForeignMiddle.phoneNumberId',
-                'phoneNumberCCusomer{alias}Foreign.deleted' => false
-              ]
-            ]
-          ]
-        ],
-        'where' => [
-          '= TRUE' => [
-            'whereClause' => [
-              0 => [
-                'phoneNumbers.invalid=' => true
-              ],
-              1 => [
-                'phoneNumbers.invalid!=' => NULL
-              ]
-            ],
-            'leftJoins' => [
-              0 => [
-                0 => 'phoneNumbers',
-                1 => 'phoneNumbers',
-                2 => [
-                  'primary' => true
-                ]
-              ]
-            ]
-          ],
-          '= FALSE' => [
-            'whereClause' => [
-              'OR' => [
-                0 => [
-                  'phoneNumbers.invalid=' => false
-                ],
-                1 => [
-                  'phoneNumbers.invalid=' => NULL
-                ]
-              ]
-            ],
-            'leftJoins' => [
-              0 => [
-                0 => 'phoneNumbers',
-                1 => 'phoneNumbers',
-                2 => [
-                  'primary' => true
-                ]
-              ]
-            ]
-          ]
-        ],
-        'order' => [
-          'order' => [
-            0 => [
-              0 => 'phoneNumbers.invalid',
-              1 => '{direction}'
-            ]
-          ],
-          'leftJoins' => [
-            0 => [
-              0 => 'phoneNumbers',
-              1 => 'phoneNumbers',
-              2 => [
-                'primary' => true
-              ]
-            ]
-          ],
-          'additionalSelect' => [
-            0 => 'phoneNumbers.invalid'
-          ]
-        ],
-        'default' => false
-      ],
-      'addressMap' => [
-        'type' => 'varchar',
-        'notExportable' => true,
-        'notStorable' => true,
-        'fieldType' => 'map'
-      ],
-      'emailAddressData' => [
-        'type' => 'jsonArray',
-        'notStorable' => true,
-        'notExportable' => true,
-        'isEmailAddressData' => true,
-        'field' => 'emailAddress'
-      ],
-      'phoneNumberData' => [
-        'type' => 'jsonArray',
-        'notStorable' => true,
-        'notExportable' => true,
-        'isPhoneNumberData' => true,
-        'field' => 'phoneNumber'
-      ],
-      'phoneNumberNumeric' => [
-        'type' => 'varchar',
-        'notStorable' => true,
-        'notExportable' => true,
-        'where' => [
-          'LIKE' => [
-            'whereClause' => [
-              'id=s' => [
-                'from' => 'EntityPhoneNumber',
-                'select' => [
-                  0 => 'entityId'
-                ],
-                'joins' => [
-                  0 => [
-                    0 => 'phoneNumber',
-                    1 => 'phoneNumber',
-                    2 => [
-                      'phoneNumber.id:' => 'phoneNumberId',
-                      'phoneNumber.deleted' => false
-                    ]
-                  ]
-                ],
-                'whereClause' => [
-                  'deleted' => false,
-                  'entityType' => 'CCusomer',
-                  'phoneNumber.numeric*' => '{value}'
-                ]
-              ]
-            ]
-          ],
-          'NOT LIKE' => [
-            'whereClause' => [
-              'id!=s' => [
-                'from' => 'EntityPhoneNumber',
-                'select' => [
-                  0 => 'entityId'
-                ],
-                'joins' => [
-                  0 => [
-                    0 => 'phoneNumber',
-                    1 => 'phoneNumber',
-                    2 => [
-                      'phoneNumber.id:' => 'phoneNumberId',
-                      'phoneNumber.deleted' => false
-                    ]
-                  ]
-                ],
-                'whereClause' => [
-                  'deleted' => false,
-                  'entityType' => 'CCusomer',
-                  'phoneNumber.numeric*' => '{value}'
-                ]
-              ]
-            ]
-          ],
-          '=' => [
-            'whereClause' => [
-              'id=s' => [
-                'from' => 'EntityPhoneNumber',
-                'select' => [
-                  0 => 'entityId'
-                ],
-                'joins' => [
-                  0 => [
-                    0 => 'phoneNumber',
-                    1 => 'phoneNumber',
-                    2 => [
-                      'phoneNumber.id:' => 'phoneNumberId',
-                      'phoneNumber.deleted' => false
-                    ]
-                  ]
-                ],
-                'whereClause' => [
-                  'deleted' => false,
-                  'entityType' => 'CCusomer',
-                  'phoneNumber.numeric' => '{value}'
-                ]
-              ]
-            ]
-          ],
-          '<>' => [
-            'whereClause' => [
-              'id!=s' => [
-                'from' => 'EntityPhoneNumber',
-                'select' => [
-                  0 => 'entityId'
-                ],
-                'joins' => [
-                  0 => [
-                    0 => 'phoneNumber',
-                    1 => 'phoneNumber',
-                    2 => [
-                      'phoneNumber.id:' => 'phoneNumberId',
-                      'phoneNumber.deleted' => false
-                    ]
-                  ]
-                ],
-                'whereClause' => [
-                  'deleted' => false,
-                  'entityType' => 'CCusomer',
-                  'phoneNumber.numeric' => '{value}'
-                ]
-              ]
-            ]
-          ],
-          'IN' => [
-            'whereClause' => [
-              'id=s' => [
-                'from' => 'EntityPhoneNumber',
-                'select' => [
-                  0 => 'entityId'
-                ],
-                'joins' => [
-                  0 => [
-                    0 => 'phoneNumber',
-                    1 => 'phoneNumber',
-                    2 => [
-                      'phoneNumber.id:' => 'phoneNumberId',
-                      'phoneNumber.deleted' => false
-                    ]
-                  ]
-                ],
-                'whereClause' => [
-                  'deleted' => false,
-                  'entityType' => 'CCusomer',
-                  'phoneNumber.numeric' => '{value}'
-                ]
-              ]
-            ]
-          ],
-          'NOT IN' => [
-            'whereClause' => [
-              'id!=s' => [
-                'from' => 'EntityPhoneNumber',
-                'select' => [
-                  0 => 'entityId'
-                ],
-                'joins' => [
-                  0 => [
-                    0 => 'phoneNumber',
-                    1 => 'phoneNumber',
-                    2 => [
-                      'phoneNumber.id:' => 'phoneNumberId',
-                      'phoneNumber.deleted' => false
-                    ]
-                  ]
-                ],
-                'whereClause' => [
-                  'deleted' => false,
-                  'entityType' => 'CCusomer',
-                  'phoneNumber.numeric' => '{value}'
-                ]
-              ]
-            ]
-          ],
-          'IS NULL' => [
-            'leftJoins' => [
-              0 => [
-                0 => 'phoneNumbers',
-                1 => 'phoneNumbersMultiple'
-              ]
-            ],
-            'whereClause' => [
-              'phoneNumbersMultiple.numeric=' => NULL
-            ]
-          ],
-          'IS NOT NULL' => [
-            'whereClause' => [
-              'id=s' => [
-                'from' => 'EntityPhoneNumber',
-                'select' => [
-                  0 => 'entityId'
-                ],
-                'whereClause' => [
-                  'deleted' => false,
-                  'entityType' => 'CCusomer'
-                ]
-              ]
-            ]
-          ]
-        ]
-      ],
-      'createdById' => [
-        'len' => 17,
-        'dbType' => 'string',
-        'type' => 'foreignId',
-        'index' => true,
-        'attributeRole' => 'id',
-        'fieldType' => 'link',
-        'notNull' => false
-      ],
-      'createdByName' => [
-        'type' => 'foreign',
-        'notStorable' => true,
-        'attributeRole' => 'name',
-        'fieldType' => 'link',
-        'relation' => 'createdBy',
-        'foreign' => 'name',
-        'foreignType' => 'varchar'
-      ],
-      'modifiedById' => [
-        'len' => 17,
-        'dbType' => 'string',
-        'type' => 'foreignId',
-        'index' => true,
-        'attributeRole' => 'id',
-        'fieldType' => 'link',
-        'notNull' => false
-      ],
-      'modifiedByName' => [
-        'type' => 'foreign',
-        'notStorable' => true,
-        'attributeRole' => 'name',
-        'fieldType' => 'link',
-        'relation' => 'modifiedBy',
-        'foreign' => 'name',
-        'foreignType' => 'varchar'
-      ],
-      'assignedUserId' => [
-        'len' => 17,
-        'dbType' => 'string',
-        'type' => 'foreignId',
-        'index' => true,
-        'attributeRole' => 'id',
-        'fieldType' => 'link',
-        'notNull' => false
-      ],
-      'assignedUserName' => [
-        'type' => 'foreign',
-        'notStorable' => true,
-        'attributeRole' => 'name',
-        'fieldType' => 'link',
-        'relation' => 'assignedUser',
-        'foreign' => 'name',
-        'foreignType' => 'varchar'
-      ],
-      'teamsIds' => [
-        'type' => 'jsonArray',
-        'notStorable' => true,
-        'isLinkMultipleIdList' => true,
-        'relation' => 'teams',
-        'isUnordered' => true,
-        'attributeRole' => 'idList',
-        'fieldType' => 'linkMultiple'
-      ],
-      'teamsNames' => [
-        'type' => 'jsonObject',
-        'notStorable' => true,
-        'isLinkMultipleNameMap' => true,
-        'attributeRole' => 'nameMap',
-        'fieldType' => 'linkMultiple'
-      ],
-      'tasksIds' => [
-        'type' => 'jsonArray',
-        'notStorable' => true,
-        'isLinkStub' => true
-      ],
-      'tasksNames' => [
-        'type' => 'jsonObject',
-        'notStorable' => true,
-        'isLinkStub' => true
-      ],
-      'callsIds' => [
-        'type' => 'jsonArray',
-        'notStorable' => true,
-        'isLinkStub' => true
-      ],
-      'callsNames' => [
-        'type' => 'jsonObject',
-        'notStorable' => true,
-        'isLinkStub' => true
-      ],
-      'meetingsIds' => [
-        'type' => 'jsonArray',
-        'notStorable' => true,
-        'isLinkStub' => true
-      ],
-      'meetingsNames' => [
-        'type' => 'jsonObject',
-        'notStorable' => true,
-        'isLinkStub' => true
-      ]
-    ],
-    'relations' => [
-      'emailAddresses' => [
-        'type' => 'manyMany',
-        'entity' => 'EmailAddress',
-        'relationName' => 'entityEmailAddress',
-        'midKeys' => [
-          0 => 'entityId',
-          1 => 'emailAddressId'
-        ],
-        'conditions' => [
-          'entityType' => 'CCusomer'
-        ],
-        'additionalColumns' => [
-          'entityType' => [
-            'type' => 'varchar',
-            'len' => 100
-          ],
-          'primary' => [
-            'type' => 'bool',
-            'default' => false
-          ]
-        ],
-        'indexes' => [
-          'entityId' => [
-            'columns' => [
-              0 => 'entityId'
-            ],
-            'key' => 'IDX_ENTITY_ID'
-          ],
-          'emailAddressId' => [
-            'columns' => [
-              0 => 'emailAddressId'
-            ],
-            'key' => 'IDX_EMAIL_ADDRESS_ID'
-          ],
-          'entityId_emailAddressId_entityType' => [
-            'type' => 'unique',
-            'columns' => [
-              0 => 'entityId',
-              1 => 'emailAddressId',
-              2 => 'entityType'
-            ],
-            'key' => 'UNIQ_ENTITY_ID_EMAIL_ADDRESS_ID_ENTITY_TYPE'
-          ]
-        ]
-      ],
-      'phoneNumbers' => [
-        'type' => 'manyMany',
-        'entity' => 'PhoneNumber',
-        'relationName' => 'entityPhoneNumber',
-        'midKeys' => [
-          0 => 'entityId',
-          1 => 'phoneNumberId'
-        ],
-        'conditions' => [
-          'entityType' => 'CCusomer'
-        ],
-        'additionalColumns' => [
-          'entityType' => [
-            'type' => 'varchar',
-            'len' => 100
-          ],
-          'primary' => [
-            'type' => 'bool',
-            'default' => false
-          ]
-        ],
-        'indexes' => [
-          'entityId' => [
-            'columns' => [
-              0 => 'entityId'
-            ],
-            'key' => 'IDX_ENTITY_ID'
-          ],
-          'phoneNumberId' => [
-            'columns' => [
-              0 => 'phoneNumberId'
-            ],
-            'key' => 'IDX_PHONE_NUMBER_ID'
-          ],
-          'entityId_phoneNumberId_entityType' => [
-            'type' => 'unique',
-            'columns' => [
-              0 => 'entityId',
-              1 => 'phoneNumberId',
-              2 => 'entityType'
-            ],
-            'key' => 'UNIQ_ENTITY_ID_PHONE_NUMBER_ID_ENTITY_TYPE'
-          ]
-        ]
-      ],
-      'tasks' => [
-        'type' => 'hasChildren',
-        'entity' => 'Task',
-        'foreignKey' => 'parentId',
-        'foreignType' => 'parentType',
-        'foreign' => 'parent'
-      ],
-      'calls' => [
-        'type' => 'hasMany',
-        'entity' => 'Call',
-        'foreignKey' => 'parentId',
-        'foreign' => 'parent'
-      ],
-      'meetings' => [
-        'type' => 'hasMany',
-        'entity' => 'Meeting',
-        'foreignKey' => 'parentId',
-        'foreign' => 'parent'
-      ],
-      'teams' => [
-        'type' => 'manyMany',
-        'entity' => 'Team',
-        'relationName' => 'entityTeam',
-        'midKeys' => [
-          0 => 'entityId',
-          1 => 'teamId'
-        ],
-        'conditions' => [
-          'entityType' => 'CCusomer'
-        ],
-        'additionalColumns' => [
-          'entityType' => [
-            'type' => 'varchar',
-            'len' => 100
-          ]
-        ],
-        'indexes' => [
-          'entityId' => [
-            'columns' => [
-              0 => 'entityId'
-            ],
-            'key' => 'IDX_ENTITY_ID'
-          ],
-          'teamId' => [
-            'columns' => [
-              0 => 'teamId'
-            ],
-            'key' => 'IDX_TEAM_ID'
-          ],
-          'entityId_teamId_entityType' => [
-            'type' => 'unique',
-            'columns' => [
-              0 => 'entityId',
-              1 => 'teamId',
-              2 => 'entityType'
-            ],
-            'key' => 'UNIQ_ENTITY_ID_TEAM_ID_ENTITY_TYPE'
-          ]
-        ]
-      ],
-      'assignedUser' => [
-        'type' => 'belongsTo',
-        'entity' => 'User',
-        'key' => 'assignedUserId',
-        'foreignKey' => 'id',
-        'foreign' => NULL
-      ],
-      'modifiedBy' => [
-        'type' => 'belongsTo',
-        'entity' => 'User',
-        'key' => 'modifiedById',
-        'foreignKey' => 'id',
-        'foreign' => NULL
-      ],
-      'createdBy' => [
-        'type' => 'belongsTo',
-        'entity' => 'User',
-        'key' => 'createdById',
-        'foreignKey' => 'id',
-        'foreign' => NULL
-      ]
-    ],
-    'indexes' => [
-      'firstName' => [
-        'columns' => [
-          0 => 'firstName',
-          1 => 'deleted'
-        ],
-        'key' => 'IDX_FIRST_NAME'
-      ],
-      'name' => [
-        'columns' => [
-          0 => 'firstName',
-          1 => 'lastName'
-        ],
-        'key' => 'IDX_NAME'
-      ],
-      'assignedUser' => [
-        'columns' => [
-          0 => 'assignedUserId',
-          1 => 'deleted'
-        ],
-        'key' => 'IDX_ASSIGNED_USER'
-      ],
-      'createdAt' => [
-        'columns' => [
-          0 => 'createdAt'
-        ],
-        'key' => 'IDX_CREATED_AT'
-      ],
-      'createdAtId' => [
-        'unique' => true,
-        'columns' => [
-          0 => 'createdAt',
-          1 => 'id'
-        ],
-        'key' => 'UNIQ_CREATED_AT_ID'
-      ],
-      'createdById' => [
-        'type' => 'index',
-        'columns' => [
-          0 => 'createdById'
-        ],
-        'key' => 'IDX_CREATED_BY_ID'
-      ],
-      'modifiedById' => [
-        'type' => 'index',
-        'columns' => [
-          0 => 'modifiedById'
-        ],
-        'key' => 'IDX_MODIFIED_BY_ID'
-      ],
-      'assignedUserId' => [
-        'type' => 'index',
-        'columns' => [
-          0 => 'assignedUserId'
-        ],
-        'key' => 'IDX_ASSIGNED_USER_ID'
-      ]
-    ],
-    'collection' => [
-      'orderBy' => 'createdAt',
-      'order' => 'DESC'
-    ]
-  ],
   'CProduct' => [
     'attributes' => [
       'id' => [
@@ -33545,8 +32024,8 @@ return [
       ],
       'name' => [
         'type' => 'varchar',
-        'fieldType' => 'varchar',
-        'len' => 255
+        'len' => 50,
+        'fieldType' => 'varchar'
       ],
       'deleted' => [
         'type' => 'bool',
@@ -33816,6 +32295,195 @@ return [
           ]
         ]
       ],
+      'areaName' => [
+        'type' => 'varchar',
+        'len' => 100,
+        'fieldType' => 'varchar'
+      ],
+      'houseType' => [
+        'type' => 'varchar',
+        'len' => 50,
+        'fieldType' => 'varchar'
+      ],
+      'handover' => [
+        'type' => 'varchar',
+        'len' => 50,
+        'fieldType' => 'varchar'
+      ],
+      'direction' => [
+        'type' => 'varchar',
+        'len' => 50,
+        'fieldType' => 'varchar'
+      ],
+      'landArea' => [
+        'type' => 'float',
+        'dbType' => 'decimal',
+        'notNull' => false,
+        'precision' => 18,
+        'scale' => 2,
+        'fieldType' => 'float'
+      ],
+      'constructionArea' => [
+        'type' => 'float',
+        'dbType' => 'decimal',
+        'notNull' => false,
+        'precision' => 18,
+        'scale' => 2,
+        'fieldType' => 'float'
+      ],
+      'borrow' => [
+        'type' => 'float',
+        'dbType' => 'decimal',
+        'precision' => 18,
+        'scale' => 2,
+        'fieldType' => 'currency',
+        'attributeRole' => 'value',
+        'order' => [
+          'order' => [
+            0 => [
+              0 => 'MUL:(borrow, borrowCurrencyRate.rate)',
+              1 => '{direction}'
+            ]
+          ],
+          'leftJoins' => [
+            0 => [
+              0 => 'Currency',
+              1 => 'borrowCurrencyRate',
+              2 => [
+                'borrowCurrencyRate.id:' => 'borrowCurrency'
+              ]
+            ]
+          ],
+          'additionalSelect' => [
+            0 => 'borrowCurrencyRate.rate'
+          ]
+        ]
+      ],
+      'gifts' => [
+        'type' => 'varchar',
+        'len' => 200,
+        'fieldType' => 'varchar'
+      ],
+      'deposit' => [
+        'type' => 'varchar',
+        'len' => 200,
+        'fieldType' => 'varchar'
+      ],
+      'bonus' => [
+        'type' => 'varchar',
+        'len' => 200,
+        'fieldType' => 'varchar'
+      ],
+      'contractType' => [
+        'type' => 'varchar',
+        'len' => 50,
+        'fieldType' => 'varchar'
+      ],
+      'bank' => [
+        'type' => 'varchar',
+        'len' => 200,
+        'fieldType' => 'varchar'
+      ],
+      'f1' => [
+        'type' => 'varchar',
+        'len' => 200,
+        'fieldType' => 'varchar'
+      ],
+      'landFund' => [
+        'type' => 'varchar',
+        'len' => 50,
+        'fieldType' => 'varchar'
+      ],
+      'dateOfPrice' => [
+        'type' => 'datetime',
+        'notNull' => false,
+        'fieldType' => 'datetime'
+      ],
+      'note' => [
+        'type' => 'varchar',
+        'len' => 200,
+        'fieldType' => 'varchar'
+      ],
+      'status' => [
+        'type' => 'varchar',
+        'len' => 50,
+        'fieldType' => 'varchar'
+      ],
+      'providerCode' => [
+        'type' => 'varchar',
+        'len' => 50,
+        'fieldType' => 'varchar'
+      ],
+      'providerName' => [
+        'type' => 'varchar',
+        'len' => 50,
+        'fieldType' => 'varchar'
+      ],
+      'providerLink' => [
+        'type' => 'varchar',
+        'len' => 300,
+        'fieldType' => 'varchar'
+      ],
+      'tts' => [
+        'type' => 'float',
+        'fieldType' => 'currency',
+        'attributeRole' => 'value',
+        'order' => [
+          'order' => [
+            0 => [
+              0 => 'MUL:(tts, ttsCurrencyRate.rate)',
+              1 => '{direction}'
+            ]
+          ],
+          'leftJoins' => [
+            0 => [
+              0 => 'Currency',
+              1 => 'ttsCurrencyRate',
+              2 => [
+                'ttsCurrencyRate.id:' => 'ttsCurrency'
+              ]
+            ]
+          ],
+          'additionalSelect' => [
+            0 => 'ttsCurrencyRate.rate'
+          ]
+        ]
+      ],
+      'tttd' => [
+        'type' => 'float',
+        'fieldType' => 'currency',
+        'attributeRole' => 'value',
+        'order' => [
+          'order' => [
+            0 => [
+              0 => 'MUL:(tttd, tttdCurrencyRate.rate)',
+              1 => '{direction}'
+            ]
+          ],
+          'leftJoins' => [
+            0 => [
+              0 => 'Currency',
+              1 => 'tttdCurrencyRate',
+              2 => [
+                'tttdCurrencyRate.id:' => 'tttdCurrency'
+              ]
+            ]
+          ],
+          'additionalSelect' => [
+            0 => 'tttdCurrencyRate.rate'
+          ]
+        ]
+      ],
+      'csbh' => [
+        'type' => 'varchar',
+        'len' => 100,
+        'fieldType' => 'varchar'
+      ],
+      'ptg' => [
+        'type' => 'varchar',
+        'len' => 100,
+        'fieldType' => 'varchar'
+      ],
       'priceCurrency' => [
         'type' => 'varchar',
         'len' => 3,
@@ -34027,6 +32695,24 @@ return [
           ]
         ],
         'default' => false
+      ],
+      'borrowCurrency' => [
+        'type' => 'varchar',
+        'len' => 3,
+        'fieldType' => 'currency',
+        'attributeRole' => 'currency'
+      ],
+      'ttsCurrency' => [
+        'type' => 'varchar',
+        'len' => 3,
+        'fieldType' => 'currency',
+        'attributeRole' => 'currency'
+      ],
+      'tttdCurrency' => [
+        'type' => 'varchar',
+        'len' => 3,
+        'fieldType' => 'currency',
+        'attributeRole' => 'currency'
       ],
       'createdById' => [
         'len' => 17,
@@ -34432,6 +33118,444 @@ return [
             ]
           ]
         ]
+      ],
+      'borrowConverted' => [
+        'type' => 'float',
+        'select' => [
+          'select' => 'MUL:(borrow, borrowCurrencyRate.rate)',
+          'leftJoins' => [
+            0 => [
+              0 => 'Currency',
+              1 => 'borrowCurrencyRate',
+              2 => [
+                'borrowCurrencyRate.id:' => 'borrowCurrency'
+              ]
+            ]
+          ]
+        ],
+        'selectForeign' => [
+          'select' => 'MUL:({alias}.borrow, borrowCurrencyRateCProduct{alias}Foreign.rate)',
+          'leftJoins' => [
+            0 => [
+              0 => 'Currency',
+              1 => 'borrowCurrencyRateCProduct{alias}Foreign',
+              2 => [
+                'borrowCurrencyRateCProduct{alias}Foreign.id:' => '{alias}.borrowCurrency'
+              ]
+            ]
+          ]
+        ],
+        'where' => [
+          '=' => [
+            'whereClause' => [
+              'MUL:(borrow, borrowCurrencyRate.rate)=' => '{value}'
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'Currency',
+                1 => 'borrowCurrencyRate',
+                2 => [
+                  'borrowCurrencyRate.id:' => 'borrowCurrency'
+                ]
+              ]
+            ]
+          ],
+          '>' => [
+            'whereClause' => [
+              'MUL:(borrow, borrowCurrencyRate.rate)>' => '{value}'
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'Currency',
+                1 => 'borrowCurrencyRate',
+                2 => [
+                  'borrowCurrencyRate.id:' => 'borrowCurrency'
+                ]
+              ]
+            ]
+          ],
+          '<' => [
+            'whereClause' => [
+              'MUL:(borrow, borrowCurrencyRate.rate)<' => '{value}'
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'Currency',
+                1 => 'borrowCurrencyRate',
+                2 => [
+                  'borrowCurrencyRate.id:' => 'borrowCurrency'
+                ]
+              ]
+            ]
+          ],
+          '>=' => [
+            'whereClause' => [
+              'MUL:(borrow, borrowCurrencyRate.rate)>=' => '{value}'
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'Currency',
+                1 => 'borrowCurrencyRate',
+                2 => [
+                  'borrowCurrencyRate.id:' => 'borrowCurrency'
+                ]
+              ]
+            ]
+          ],
+          '<=' => [
+            'whereClause' => [
+              'MUL:(borrow, borrowCurrencyRate.rate)<=' => '{value}'
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'Currency',
+                1 => 'borrowCurrencyRate',
+                2 => [
+                  'borrowCurrencyRate.id:' => 'borrowCurrency'
+                ]
+              ]
+            ]
+          ],
+          '<>' => [
+            'whereClause' => [
+              'MUL:(borrow, borrowCurrencyRate.rate)!=' => '{value}'
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'Currency',
+                1 => 'borrowCurrencyRate',
+                2 => [
+                  'borrowCurrencyRate.id:' => 'borrowCurrency'
+                ]
+              ]
+            ]
+          ],
+          'IS NULL' => [
+            'whereClause' => [
+              'borrow=' => NULL
+            ]
+          ],
+          'IS NOT NULL' => [
+            'whereClause' => [
+              'borrow!=' => NULL
+            ]
+          ]
+        ],
+        'notStorable' => true,
+        'order' => [
+          'order' => [
+            0 => [
+              0 => 'MUL:(borrow, borrowCurrencyRate.rate)',
+              1 => '{direction}'
+            ]
+          ],
+          'leftJoins' => [
+            0 => [
+              0 => 'Currency',
+              1 => 'borrowCurrencyRate',
+              2 => [
+                'borrowCurrencyRate.id:' => 'borrowCurrency'
+              ]
+            ]
+          ],
+          'additionalSelect' => [
+            0 => 'borrowCurrencyRate.rate'
+          ]
+        ],
+        'attributeRole' => 'valueConverted',
+        'fieldType' => 'currency'
+      ],
+      'ttsConverted' => [
+        'type' => 'float',
+        'select' => [
+          'select' => 'MUL:(tts, ttsCurrencyRate.rate)',
+          'leftJoins' => [
+            0 => [
+              0 => 'Currency',
+              1 => 'ttsCurrencyRate',
+              2 => [
+                'ttsCurrencyRate.id:' => 'ttsCurrency'
+              ]
+            ]
+          ]
+        ],
+        'selectForeign' => [
+          'select' => 'MUL:({alias}.tts, ttsCurrencyRateCProduct{alias}Foreign.rate)',
+          'leftJoins' => [
+            0 => [
+              0 => 'Currency',
+              1 => 'ttsCurrencyRateCProduct{alias}Foreign',
+              2 => [
+                'ttsCurrencyRateCProduct{alias}Foreign.id:' => '{alias}.ttsCurrency'
+              ]
+            ]
+          ]
+        ],
+        'where' => [
+          '=' => [
+            'whereClause' => [
+              'MUL:(tts, ttsCurrencyRate.rate)=' => '{value}'
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'Currency',
+                1 => 'ttsCurrencyRate',
+                2 => [
+                  'ttsCurrencyRate.id:' => 'ttsCurrency'
+                ]
+              ]
+            ]
+          ],
+          '>' => [
+            'whereClause' => [
+              'MUL:(tts, ttsCurrencyRate.rate)>' => '{value}'
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'Currency',
+                1 => 'ttsCurrencyRate',
+                2 => [
+                  'ttsCurrencyRate.id:' => 'ttsCurrency'
+                ]
+              ]
+            ]
+          ],
+          '<' => [
+            'whereClause' => [
+              'MUL:(tts, ttsCurrencyRate.rate)<' => '{value}'
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'Currency',
+                1 => 'ttsCurrencyRate',
+                2 => [
+                  'ttsCurrencyRate.id:' => 'ttsCurrency'
+                ]
+              ]
+            ]
+          ],
+          '>=' => [
+            'whereClause' => [
+              'MUL:(tts, ttsCurrencyRate.rate)>=' => '{value}'
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'Currency',
+                1 => 'ttsCurrencyRate',
+                2 => [
+                  'ttsCurrencyRate.id:' => 'ttsCurrency'
+                ]
+              ]
+            ]
+          ],
+          '<=' => [
+            'whereClause' => [
+              'MUL:(tts, ttsCurrencyRate.rate)<=' => '{value}'
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'Currency',
+                1 => 'ttsCurrencyRate',
+                2 => [
+                  'ttsCurrencyRate.id:' => 'ttsCurrency'
+                ]
+              ]
+            ]
+          ],
+          '<>' => [
+            'whereClause' => [
+              'MUL:(tts, ttsCurrencyRate.rate)!=' => '{value}'
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'Currency',
+                1 => 'ttsCurrencyRate',
+                2 => [
+                  'ttsCurrencyRate.id:' => 'ttsCurrency'
+                ]
+              ]
+            ]
+          ],
+          'IS NULL' => [
+            'whereClause' => [
+              'tts=' => NULL
+            ]
+          ],
+          'IS NOT NULL' => [
+            'whereClause' => [
+              'tts!=' => NULL
+            ]
+          ]
+        ],
+        'notStorable' => true,
+        'order' => [
+          'order' => [
+            0 => [
+              0 => 'MUL:(tts, ttsCurrencyRate.rate)',
+              1 => '{direction}'
+            ]
+          ],
+          'leftJoins' => [
+            0 => [
+              0 => 'Currency',
+              1 => 'ttsCurrencyRate',
+              2 => [
+                'ttsCurrencyRate.id:' => 'ttsCurrency'
+              ]
+            ]
+          ],
+          'additionalSelect' => [
+            0 => 'ttsCurrencyRate.rate'
+          ]
+        ],
+        'attributeRole' => 'valueConverted',
+        'fieldType' => 'currency'
+      ],
+      'tttdConverted' => [
+        'type' => 'float',
+        'select' => [
+          'select' => 'MUL:(tttd, tttdCurrencyRate.rate)',
+          'leftJoins' => [
+            0 => [
+              0 => 'Currency',
+              1 => 'tttdCurrencyRate',
+              2 => [
+                'tttdCurrencyRate.id:' => 'tttdCurrency'
+              ]
+            ]
+          ]
+        ],
+        'selectForeign' => [
+          'select' => 'MUL:({alias}.tttd, tttdCurrencyRateCProduct{alias}Foreign.rate)',
+          'leftJoins' => [
+            0 => [
+              0 => 'Currency',
+              1 => 'tttdCurrencyRateCProduct{alias}Foreign',
+              2 => [
+                'tttdCurrencyRateCProduct{alias}Foreign.id:' => '{alias}.tttdCurrency'
+              ]
+            ]
+          ]
+        ],
+        'where' => [
+          '=' => [
+            'whereClause' => [
+              'MUL:(tttd, tttdCurrencyRate.rate)=' => '{value}'
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'Currency',
+                1 => 'tttdCurrencyRate',
+                2 => [
+                  'tttdCurrencyRate.id:' => 'tttdCurrency'
+                ]
+              ]
+            ]
+          ],
+          '>' => [
+            'whereClause' => [
+              'MUL:(tttd, tttdCurrencyRate.rate)>' => '{value}'
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'Currency',
+                1 => 'tttdCurrencyRate',
+                2 => [
+                  'tttdCurrencyRate.id:' => 'tttdCurrency'
+                ]
+              ]
+            ]
+          ],
+          '<' => [
+            'whereClause' => [
+              'MUL:(tttd, tttdCurrencyRate.rate)<' => '{value}'
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'Currency',
+                1 => 'tttdCurrencyRate',
+                2 => [
+                  'tttdCurrencyRate.id:' => 'tttdCurrency'
+                ]
+              ]
+            ]
+          ],
+          '>=' => [
+            'whereClause' => [
+              'MUL:(tttd, tttdCurrencyRate.rate)>=' => '{value}'
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'Currency',
+                1 => 'tttdCurrencyRate',
+                2 => [
+                  'tttdCurrencyRate.id:' => 'tttdCurrency'
+                ]
+              ]
+            ]
+          ],
+          '<=' => [
+            'whereClause' => [
+              'MUL:(tttd, tttdCurrencyRate.rate)<=' => '{value}'
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'Currency',
+                1 => 'tttdCurrencyRate',
+                2 => [
+                  'tttdCurrencyRate.id:' => 'tttdCurrency'
+                ]
+              ]
+            ]
+          ],
+          '<>' => [
+            'whereClause' => [
+              'MUL:(tttd, tttdCurrencyRate.rate)!=' => '{value}'
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'Currency',
+                1 => 'tttdCurrencyRate',
+                2 => [
+                  'tttdCurrencyRate.id:' => 'tttdCurrency'
+                ]
+              ]
+            ]
+          ],
+          'IS NULL' => [
+            'whereClause' => [
+              'tttd=' => NULL
+            ]
+          ],
+          'IS NOT NULL' => [
+            'whereClause' => [
+              'tttd!=' => NULL
+            ]
+          ]
+        ],
+        'notStorable' => true,
+        'order' => [
+          'order' => [
+            0 => [
+              0 => 'MUL:(tttd, tttdCurrencyRate.rate)',
+              1 => '{direction}'
+            ]
+          ],
+          'leftJoins' => [
+            0 => [
+              0 => 'Currency',
+              1 => 'tttdCurrencyRate',
+              2 => [
+                'tttdCurrencyRate.id:' => 'tttdCurrency'
+              ]
+            ]
+          ],
+          'additionalSelect' => [
+            0 => 'tttdCurrencyRate.rate'
+          ]
+        ],
+        'attributeRole' => 'valueConverted',
+        'fieldType' => 'currency'
       ]
     ],
     'relations' => [

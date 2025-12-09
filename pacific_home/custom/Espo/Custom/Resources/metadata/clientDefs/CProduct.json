@@ -3,12 +3,13 @@
     "boolFilterList": [
         "onlyMy"
     ],
-    "color": "#0ae64b",
-    "iconClass": "fas fa-house-chimney",
+    "color": null,
+    "iconClass": "fas fa-house",
     "views": {
         "list": "custom:views/CProduct/list"
     },
     "recordViews": {
         "list": "custom:views/CProduct/record/list"
-    }
+    },
+    "kanbanViewMode": false
 }

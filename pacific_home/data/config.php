@@ -14,18 +14,18 @@ return [
   'recordsPerPageKanban' => 5,
   'applicationName' => 'Pacific Management',
   'version' => '9.2.5',
-  'timeZone' => 'UTC',
+  'timeZone' => 'Asia/Ho_Chi_Minh',
   'dateFormat' => 'DD.MM.YYYY',
   'timeFormat' => 'HH:mm',
-  'weekStart' => 0,
+  'weekStart' => 1,
   'thousandSeparator' => ',',
   'decimalMark' => '.',
   'exportDelimiter' => ',',
   'currencyList' => [
-    0 => 'USD'
+    0 => 'VND'
   ],
-  'defaultCurrency' => 'USD',
-  'baseCurrency' => 'USD',
+  'defaultCurrency' => 'VND',
+  'baseCurrency' => 'VND',
   'currencyRates' => [],
   'currencyNoJoinMode' => false,
   'outboundEmailIsShared' => false,
@@ -36,7 +36,7 @@ return [
   'smtpAuth' => true,
   'smtpSecurity' => 'TLS',
   'smtpUsername' => NULL,
-  'language' => 'en_US',
+  'language' => 'vi_VN',
   'authenticationMethod' => 'Espo',
   'tabQuickSearch' => true,
   'globalSearchEntityList' => [
@@ -66,8 +66,7 @@ return [
     9 => 'Task',
     10 => 'Calendar',
     11 => 'Import',
-    12 => 'CProduct',
-    13 => 'CCusomer'
+    12 => 'CProduct'
   ],
   'quickCreateList' => [],
   'exportDisabled' => false,
@@ -190,7 +189,7 @@ return [
   'cleanupAudit' => true,
   'cleanupAuditPeriod' => '3 months',
   'appLogAdminAllowed' => false,
-  'currencyFormat' => 2,
+  'currencyFormat' => 1,
   'currencyDecimalPlaces' => 2,
   'aclAllowDeleteCreated' => false,
   'aclAllowDeleteCreatedThresholdPeriod' => '24 hours',
@@ -256,8 +255,7 @@ return [
   'phoneNumberInternational' => true,
   'phoneNumberExtensions' => false,
   'phoneNumberPreferredCountryList' => [
-    0 => 'us',
-    1 => 'de'
+    0 => 'vn'
   ],
   'wysiwygCodeEditorDisabled' => false,
   'customPrefixDisabled' => false,
@@ -279,8 +277,8 @@ return [
     0 => 'youtube.com',
     1 => 'google.com'
   ],
-  'cacheTimestamp' => 1765033631,
-  'microtime' => 1765033631.750544,
+  'cacheTimestamp' => 1765272448,
+  'microtime' => 1765272448.805091,
   'siteUrl' => 'http://localhost:8080',
   'fullTextSearchMinLength' => 4,
   'appTimestamp' => 1764829381,
@@ -299,5 +297,15 @@ return [
   'callioAutoCreateCall' => true,
   'callioShowCallHistory' => true,
   'callioShowInListView' => true,
-  'latestVersion' => '9.2.5'
+  'latestVersion' => '9.2.5',
+  'maintenanceMode' => false,
+  'cronDisabled' => false,
+  'fiscalYearShift' => 0,
+  'addressCityList' => [],
+  'addressStateList' => [],
+  'emailAddressIsOptedOutByDefault' => false,
+  'workingTimeCalendarName' => NULL,
+  'workingTimeCalendarId' => NULL,
+  'baselineRoleName' => NULL,
+  'baselineRoleId' => NULL
 ];

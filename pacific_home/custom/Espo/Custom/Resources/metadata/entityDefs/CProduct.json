@@ -4,7 +4,8 @@
             "type": "varchar",
             "required": true,
             "pattern": "$noBadCharacters",
-            "options": []
+            "options": [],
+            "maxLength": 50
         },
         "description": {
             "type": "text"
@@ -53,8 +54,152 @@
                 "Other"
             ],
             "defaultType": "Mobile",
-            "isPersonalData": true,
-            "view": "custom:views/fields/product-phone-number"
+            "isPersonalData": true
+        },
+        "areaName": {
+            "type": "varchar",
+            "maxLength": 100,
+            "options": [],
+            "isCustom": true
+        },
+        "houseType": {
+            "type": "varchar",
+            "maxLength": 50,
+            "options": [],
+            "isCustom": true
+        },
+        "handover": {
+            "type": "varchar",
+            "maxLength": 50,
+            "options": [],
+            "isCustom": true
+        },
+        "direction": {
+            "type": "varchar",
+            "maxLength": 50,
+            "options": [],
+            "isCustom": true
+        },
+        "landArea": {
+            "notNull": false,
+            "type": "float",
+            "dbType": "decimal",
+            "precision": 18,
+            "scale": 2,
+            "isCustom": true
+        },
+        "constructionArea": {
+            "notNull": false,
+            "type": "float",
+            "dbType": "decimal",
+            "precision": 18,
+            "scale": 2,
+            "isCustom": true
+        },
+        "borrow": {
+            "type": "currency",
+            "dbType": "decimal",
+            "precision": 18,
+            "scale": 2,
+            "isCustom": true
+        },
+        "gifts": {
+            "type": "varchar",
+            "maxLength": 200,
+            "options": [],
+            "isCustom": true
+        },
+        "deposit": {
+            "type": "varchar",
+            "maxLength": 200,
+            "options": [],
+            "isCustom": true
+        },
+        "bonus": {
+            "type": "varchar",
+            "maxLength": 200,
+            "options": [],
+            "isCustom": true
+        },
+        "contractType": {
+            "type": "varchar",
+            "maxLength": 50,
+            "options": [],
+            "isCustom": true
+        },
+        "bank": {
+            "type": "varchar",
+            "maxLength": 200,
+            "options": [],
+            "isCustom": true
+        },
+        "f1": {
+            "type": "varchar",
+            "maxLength": 200,
+            "options": [],
+            "isCustom": true
+        },
+        "landFund": {
+            "type": "varchar",
+            "maxLength": 50,
+            "options": [],
+            "isCustom": true
+        },
+        "dateOfPrice": {
+            "notNull": false,
+            "type": "datetime",
+            "minuteStep": 30,
+            "isCustom": true
+        },
+        "note": {
+            "type": "varchar",
+            "maxLength": 200,
+            "options": [],
+            "isCustom": true
+        },
+        "status": {
+            "type": "varchar",
+            "maxLength": 50,
+            "options": [],
+            "isCustom": true
+        },
+        "providerCode": {
+            "type": "varchar",
+            "maxLength": 50,
+            "options": [],
+            "isCustom": true
+        },
+        "providerName": {
+            "type": "varchar",
+            "maxLength": 50,
+            "options": [],
+            "isCustom": true
+        },
+        "providerLink": {
+            "type": "varchar",
+            "maxLength": 300,
+            "options": [],
+            "isCustom": true
+        },
+        "tts": {
+            "type": "currency",
+            "isCustom": true
+        },
+        "tttd": {
+            "type": "currency",
+            "isCustom": true
+        },
+        "csbh": {
+            "type": "varchar",
+            "maxLength": 100,
+            "options": [],
+            "isCustom": true
+        },
+        "ptg": {
+            "type": "varchar",
+            "maxLength": 100,
+            "options": [],
+            "isCustom": true
         }
     },
     "links": {
@@ -79,7 +224,12 @@
     },
     "collection": {
         "orderBy": "createdAt",
-        "order": "desc"
+        "order": "desc",
+        "textFilterFields": [
+            "name"
+        ],
+        "fullTextSearch": false,
+        "countDisabled": false
     },
     "indexes": {
         "name": {
@@ -106,5 +256,6 @@
                 "id"
             ]
         }
-    }
+    },
+    "optimisticConcurrencyControl": false
 }

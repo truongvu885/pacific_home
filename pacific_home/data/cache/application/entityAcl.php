@@ -2794,43 +2794,6 @@ return (object) [
       'nonAdminReadOnly' => []
     ]
   ],
-  'CCusomer' => (object) [
-    'fields' => (object) [
-      'forbidden' => [],
-      'internal' => [],
-      'onlyAdmin' => [],
-      'readOnly' => [
-        0 => 'createdAt',
-        1 => 'modifiedAt',
-        2 => 'createdBy',
-        3 => 'modifiedBy',
-        4 => 'addressMap'
-      ],
-      'nonAdminReadOnly' => []
-    ],
-    'attributes' => (object) [
-      'forbidden' => [],
-      'internal' => [],
-      'onlyAdmin' => [],
-      'readOnly' => [
-        0 => 'createdAt',
-        1 => 'modifiedAt',
-        2 => 'createdById',
-        3 => 'createdByName',
-        4 => 'modifiedById',
-        5 => 'modifiedByName',
-        6 => 'addressMap'
-      ],
-      'nonAdminReadOnly' => []
-    ],
-    'links' => (object) [
-      'forbidden' => [],
-      'internal' => [],
-      'onlyAdmin' => [],
-      'readOnly' => [],
-      'nonAdminReadOnly' => []
-    ]
-  ],
   'CProduct' => (object) [
     'fields' => (object) [
       'forbidden' => [],
@@ -2841,7 +2804,10 @@ return (object) [
         1 => 'modifiedAt',
         2 => 'createdBy',
         3 => 'modifiedBy',
-        4 => 'priceConverted'
+        4 => 'priceConverted',
+        5 => 'borrowConverted',
+        6 => 'ttsConverted',
+        7 => 'tttdConverted'
       ],
       'nonAdminReadOnly' => []
     ],
@@ -2856,7 +2822,10 @@ return (object) [
         3 => 'createdByName',
         4 => 'modifiedById',
         5 => 'modifiedByName',
-        6 => 'priceConverted'
+        6 => 'priceConverted',
+        7 => 'borrowConverted',
+        8 => 'ttsConverted',
+        9 => 'tttdConverted'
       ],
       'nonAdminReadOnly' => []
     ],

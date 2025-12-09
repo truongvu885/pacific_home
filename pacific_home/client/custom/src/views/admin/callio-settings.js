@@ -57,7 +57,7 @@ define('custom:views/admin/callio-settings', ['views/admin/index'], function (De
             } catch (e) {
                 console.warn('Focus error ignored:', e);
             }
-            
+
             // Bind form values
             this.$el.find('[name="callioEnabled"]').prop('checked', this.settings.callioEnabled);
             this.$el.find('[name="callioApiUrl"]').val(this.settings.callioApiUrl);
@@ -93,8 +93,8 @@ define('custom:views/admin/callio-settings', ['views/admin/index'], function (De
             }
 
             if (!data.callioMasterPassword || data.callioMasterPassword === '********') {
-                    Espo.Ui.error(this.translate('Master Password is required', 'messages', 'Callio'));
-                    return;
+                Espo.Ui.error(this.translate('Master Password is required', 'messages', 'Callio'));
+                return;
             }
 
             Espo.Ui.notify(this.translate('Saving...'));
@@ -136,6 +136,5 @@ define('custom:views/admin/callio-settings', ['views/admin/index'], function (De
                     );
                 });
         }
-
     });
 });

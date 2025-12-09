@@ -14,8 +14,8 @@ class CallioCall extends \Espo\Core\Controllers\Base
         $body = $request->getParsedBody();
 
         $phoneNumber = $body->phoneNumber ?? null;
-        $entityType  = $body->entityType ?? 'CProduct';
-        $recordId    = $body->recordId ?? null;
+        // $entityType  = $body->entityType ?? 'CProduct';
+        // $recordId    = $body->recordId ?? null;
 
         if (!$phoneNumber) {
             $response->setStatus(400);
@@ -23,12 +23,14 @@ class CallioCall extends \Espo\Core\Controllers\Base
         }
 
         $callio = $this->getCallioIntegration();
-
+        
+        $userId = $this->getUser()->getId();
+        $GLOBALS['log']->error("Callio: Initiating call for user ID $userId to phone number $phoneNumber");
         $result = $callio->makeCall([
             'phoneNumber' => $phoneNumber,
-            'userId'      => $this->getContainer()->get('user')->id,
-            'entityType'  => $entityType,
-            'recordId'    => $recordId,
+            'userId'      => $userId = $this->getUser()->getId(),
+            // 'entityType'  => $entityType,
+            // 'recordId'    => $recordId,
         ]);
 
         $response->setStatus($result['success'] ? 200 : 400);

@@ -47,6 +47,7 @@ class CallioIntegration
      */
     public function getUserToken(array $params): array
     {
+        $GLOBALS['log']->error("Callio: get user token $params");
         if (!$this->enabled) {
             throw new Error('Callio integration is not enabled');
         }
@@ -97,7 +98,9 @@ class CallioIntegration
         ]);
         
         if ($response['success'] && !empty($response['data']['token'])) {
+            
             $token = $response['data']['token'];
+            $GLOBALS['log']->error("Callio: this is token  $token");
             
             // Cache token in memory for current request
             $this->tokenCache[$userId] = [
@@ -135,6 +138,7 @@ class CallioIntegration
      */
     public function makeCall(array $params): array
     {
+        $GLOBALS['log']->error("Callio: makeCall called", $params);
         if (!$this->enabled) {
             throw new Error('Callio integration is not enabled');
         }
@@ -163,6 +167,7 @@ class CallioIntegration
         ];
         
         // Gọi API Callio để make call
+        $GLOBALS['log']->error("Callio: call api started");
         $response = $this->callCallioApi('/calls/make', 'POST', $callData, $token);
         
         if ($response['success']) {
@@ -464,6 +469,7 @@ class CallioIntegration
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $error = curl_error($ch);
         
+        $GLOBALS['log']->error("Callio: api response", ['url' => $url, 'httpCode' => $httpCode, 'response' => $response, 'error' => $error]);
         curl_close($ch);
         
         if ($error) {

@@ -515,13 +515,6 @@ return (object) [
       'delete' => 'all',
       'create' => 'yes'
     ],
-    'CCusomer' => (object) [
-      'read' => 'all',
-      'stream' => 'all',
-      'edit' => 'all',
-      'delete' => 'all',
-      'create' => 'yes'
-    ],
     'CProduct' => (object) [
       'read' => 'all',
       'stream' => 'all',
@@ -606,7 +599,6 @@ return (object) [
     'TargetList' => (object) [],
     'TargetListCategory' => (object) [],
     'Task' => (object) [],
-    'CCusomer' => (object) [],
     'CProduct' => (object) []
   ],
   'assignmentPermission' => 'all',
@@ -2251,28 +2243,6 @@ return (object) [
       ]
     ],
     'Task' => (object) [
-      'attributes' => (object) [
-        'read' => (object) [
-          'yes' => [],
-          'no' => []
-        ],
-        'edit' => (object) [
-          'yes' => [],
-          'no' => []
-        ]
-      ],
-      'fields' => (object) [
-        'read' => (object) [
-          'yes' => [],
-          'no' => []
-        ],
-        'edit' => (object) [
-          'yes' => [],
-          'no' => []
-        ]
-      ]
-    ],
-    'CCusomer' => (object) [
       'attributes' => (object) [
         'read' => (object) [
           'yes' => [],

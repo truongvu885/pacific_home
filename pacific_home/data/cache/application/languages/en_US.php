@@ -1736,8 +1736,7 @@ Field removal does not remove data from the database. Data from the database wil
       'KnowledgeBaseCategory' => 'Knowledge Base Category',
       'CampaignLogRecord' => 'Campaign Log Record',
       'TargetListCategory' => 'Target List Category',
-      'CProduct' => 'Product',
-      'CCusomer' => 'Cusomer'
+      'CProduct' => 'Product'
     ],
     'scopeNamesPlural' => [
       'Note' => 'Notes',
@@ -1818,8 +1817,7 @@ Field removal does not remove data from the database. Data from the database wil
       'KnowledgeBaseCategory' => 'Knowledge Base Categories',
       'CampaignLogRecord' => 'Campaign Log Records',
       'TargetListCategory' => 'Target List Categories',
-      'CProduct' => 'Products',
-      'CCusomer' => 'Cusomers'
+      'CProduct' => 'Products'
     ],
     'labels' => [
       'Previous Page' => 'Previous Page',
@@ -5401,26 +5399,43 @@ Leave the field empty if you need to apply the exception only for specific users
       'replyToEmail' => 'Reply to email'
     ]
   ],
-  'CCusomer' => [
-    'fields' => [
-      'address' => 'Address'
-    ],
-    'links' => [
-      'meetings' => 'Meetings',
-      'calls' => 'Calls',
-      'tasks' => 'Tasks'
-    ],
-    'labels' => [
-      'Create CCusomer' => 'Create Cusomer'
-    ]
-  ],
   'CProduct' => [
     'fields' => [
       'name' => 'Code',
       'price' => 'Price',
       'priceCurrency' => 'Price (Currency)',
       'priceConverted' => 'Price (Converted)',
-      'phoneNumber' => 'Phone'
+      'phoneNumber' => 'Phone',
+      'areaName' => 'AreaName',
+      'houseType' => 'HouseType',
+      'handover' => 'Handover',
+      'direction' => 'Direction',
+      'landArea' => 'LandArea',
+      'constructionArea' => 'ConstructionArea',
+      'borrow' => 'Borrow',
+      'borrowCurrency' => 'Borrow (Currency)',
+      'borrowConverted' => 'Borrow (Converted)',
+      'gifts' => 'Gifts',
+      'deposit' => 'Deposit',
+      'bonus' => 'Bonus',
+      'contractType' => 'ContractType',
+      'bank' => 'Bank',
+      'f1' => 'F1',
+      'landFund' => 'LandFund',
+      'dateOfPrice' => 'DateOfPrice',
+      'note' => 'Note',
+      'status' => 'Status',
+      'providerCode' => 'ProviderCode',
+      'providerName' => 'ProviderName',
+      'providerLink' => 'ProviderLink',
+      'tts' => 'TTS',
+      'ttsCurrency' => 'TTS (Currency)',
+      'ttsConverted' => 'TTS (Converted)',
+      'tttd' => 'TTTD',
+      'tttdCurrency' => 'TTTD (Currency)',
+      'tttdConverted' => 'TTTD (Converted)',
+      'csbh' => 'CSBH',
+      'ptg' => 'PTG'
     ],
     'links' => [],
     'labels' => [

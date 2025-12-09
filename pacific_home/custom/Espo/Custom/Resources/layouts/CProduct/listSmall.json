@@ -2,13 +2,5 @@
     {
         "name": "name",
         "link": true
-    },
-    {
-        "name": "price",
-        "width": 20
-    },
-    {
-        "name": "phoneNumber",
-        "width": 20
     }
 ]

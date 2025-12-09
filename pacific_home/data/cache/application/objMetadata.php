@@ -132,6 +132,10 @@ return (object) [
       ],
       'contactLink' => 'contacts',
       'accountLink' => 'account'
+    ],
+    'CProduct' => (object) [
+      'contactLink' => NULL,
+      'accountLink' => NULL
     ]
   ],
   'app' => (object) [
@@ -8749,55 +8753,20 @@ return (object) [
       'iconClass' => 'fas fa-tasks',
       'kanbanViewMode' => true
     ],
-    'CCusomer' => (object) [
-      'controller' => 'controllers/record',
-      'boolFilterList' => [
-        0 => 'onlyMy'
-      ],
-      'sidePanels' => (object) [
-        'detail' => [
-          0 => (object) [
-            'name' => 'activities',
-            'reference' => 'activities'
-          ],
-          1 => (object) [
-            'name' => 'history',
-            'reference' => 'history'
-          ],
-          2 => (object) [
-            'name' => 'tasks',
-            'reference' => 'tasks'
-          ]
-        ]
-      ],
-      'bottomPanels' => (object) [
-        'detail' => [
-          0 => (object) [
-            'name' => 'activities',
-            'reference' => 'activities',
-            'disabled' => true
-          ],
-          1 => (object) [
-            'name' => 'history',
-            'reference' => 'history',
-            'disabled' => true
-          ]
-        ]
-      ]
-    ],
     'CProduct' => (object) [
       'controller' => 'controllers/record',
       'boolFilterList' => [
         0 => 'onlyMy'
       ],
-      'color' => '#0ae64b',
-      'iconClass' => 'fas fa-house-chimney',
+      'color' => NULL,
+      'iconClass' => 'fas fa-house',
       'views' => (object) [
         'list' => 'custom:views/CProduct/list'
       ],
       'recordViews' => (object) [
         'list' => 'custom:views/CProduct/record/list'
-      ]
+      ],
+      'kanbanViewMode' => false
     ]
   ],
   'dashlets' => (object) [
@@ -12099,8 +12068,7 @@ return (object) [
             1 => 'Lead',
             2 => 'Contact',
             3 => 'Opportunity',
-            4 => 'Case',
-            5 => 'CCusomer'
+            4 => 'Case'
           ]
         ],
         'dateSent' => (object) [
@@ -20094,8 +20062,7 @@ return (object) [
             1 => 'Lead',
             2 => 'Contact',
             3 => 'Opportunity',
-            4 => 'Case',
-            5 => 'CCusomer'
+            4 => 'Case'
           ]
         ],
         'account' => (object) [
@@ -23850,8 +23817,7 @@ return (object) [
             1 => 'Lead',
             2 => 'Contact',
             3 => 'Opportunity',
-            4 => 'Case',
-            5 => 'CCusomer'
+            4 => 'Case'
           ]
         ],
         'account' => (object) [
@@ -25581,8 +25547,7 @@ return (object) [
             1 => 'Contact',
             2 => 'Lead',
             3 => 'Opportunity',
-            4 => 'Case',
-            5 => 'CCusomer'
+            4 => 'Case'
           ]
         ],
         'account' => (object) [
@@ -25736,296 +25701,14 @@ return (object) [
       'repositoryClassName' => 'Espo\\Core\\Repositories\\Event',
       'optimisticConcurrencyControl' => true
     ],
-    'CCusomer' => (object) [
-      'fields' => (object) [
-        'name' => (object) [
-          'type' => 'personName',
-          'isPersonalData' => true
-        ],
-        'salutationName' => (object) [
-          'type' => 'enum',
-          'customizationOptionsReferenceDisabled' => true,
-          'detailLayoutIncompatibleFieldList' => [
-            0 => 'name'
-          ],
-          'options' => [
-            0 => '',
-            1 => 'Mr.',
-            2 => 'Ms.',
-            3 => 'Mrs.',
-            4 => 'Dr.'
-          ]
-        ],
-        'firstName' => (object) [
-          'type' => 'varchar',
-          'pattern' => '$noBadCharacters',
-          'detailLayoutIncompatibleFieldList' => [
-            0 => 'name'
-          ],
-          'maxLength' => 100
-        ],
-        'lastName' => (object) [
-          'type' => 'varchar',
-          'pattern' => '$noBadCharacters',
-          'detailLayoutIncompatibleFieldList' => [
-            0 => 'name'
-          ],
-          'maxLength' => 100,
-          'required' => true
-        ],
-        'description' => (object) [
-          'type' => 'text'
-        ],
-        'emailAddress' => (object) [
-          'type' => 'email',
-          'isPersonalData' => true
-        ],
-        'phoneNumber' => (object) [
-          'type' => 'phone',
-          'typeList' => [
-            0 => 'Mobile',
-            1 => 'Office',
-            2 => 'Home',
-            3 => 'Fax',
-            4 => 'Other'
-          ],
-          'defaultType' => 'Mobile',
-          'isPersonalData' => true
-        ],
-        'address' => (object) [
-          'type' => 'address',
-          'isPersonalData' => true
-        ],
-        'addressStreet' => (object) [
-          'type' => 'text',
-          'maxLength' => 255,
-          'dbType' => 'varchar',
-          'detailLayoutIncompatibleFieldList' => [
-            0 => 'address'
-          ]
-        ],
-        'addressCity' => (object) [
-          'type' => 'varchar',
-          'maxLength' => 100,
-          'view' => 'views/fields/address-city',
-          'customizationOptionsDisabled' => true,
-          'customizationOptionsReferenceDisabled' => true,
-          'pattern' => '$noBadCharacters',
-          'detailLayoutIncompatibleFieldList' => [
-            0 => 'address'
-          ]
-        ],
-        'addressState' => (object) [
-          'type' => 'varchar',
-          'maxLength' => 100,
-          'view' => 'views/fields/address-state',
-          'customizationOptionsDisabled' => true,
-          'customizationOptionsReferenceDisabled' => true,
-          'pattern' => '$noBadCharacters',
-          'detailLayoutIncompatibleFieldList' => [
-            0 => 'address'
-          ]
-        ],
-        'addressCountry' => (object) [
-          'type' => 'varchar',
-          'maxLength' => 100,
-          'view' => 'views/fields/address-country',
-          'customizationOptionsDisabled' => true,
-          'customizationOptionsReferenceDisabled' => true,
-          'pattern' => '$noBadCharacters',
-          'detailLayoutIncompatibleFieldList' => [
-            0 => 'address'
-          ]
-        ],
-        'addressPostalCode' => (object) [
-          'type' => 'varchar',
-          'maxLength' => 40,
-          'pattern' => '$noBadCharacters',
-          'detailLayoutIncompatibleFieldList' => [
-            0 => 'address'
-          ]
-        ],
-        'createdAt' => (object) [
-          'type' => 'datetime',
-          'readOnly' => true
-        ],
-        'modifiedAt' => (object) [
-          'type' => 'datetime',
-          'readOnly' => true
-        ],
-        'createdBy' => (object) [
-          'type' => 'link',
-          'readOnly' => true,
-          'view' => 'views/fields/user'
-        ],
-        'modifiedBy' => (object) [
-          'type' => 'link',
-          'readOnly' => true,
-          'view' => 'views/fields/user'
-        ],
-        'assignedUser' => (object) [
-          'type' => 'link',
-          'required' => false,
-          'view' => 'views/fields/assigned-user'
-        ],
-        'teams' => (object) [
-          'type' => 'linkMultiple',
-          'view' => 'views/fields/teams'
-        ],
-        'middleName' => (object) [
-          'type' => 'varchar',
-          'maxLength' => 100,
-          'pattern' => '$noBadCharacters',
-          'detailLayoutIncompatibleFieldList' => [
-            0 => 'name'
-          ]
-        ],
-        'emailAddressIsOptedOut' => (object) [
-          'type' => 'bool',
-          'notStorable' => true,
-          'layoutDetailDisabled' => true,
-          'layoutDefaultSidePanelDisabled' => true,
-          'mergeDisabled' => true,
-          'customizationDefaultDisabled' => true,
-          'customizationReadOnlyDisabled' => true,
-          'customizationInlineEditDisabledDisabled' => true,
-          'detailLayoutIncompatibleFieldList' => [
-            0 => 'emailAddress'
-          ]
-        ],
-        'emailAddressIsInvalid' => (object) [
-          'type' => 'bool',
-          'notStorable' => true,
-          'layoutDetailDisabled' => true,
-          'layoutDefaultSidePanelDisabled' => true,
-          'mergeDisabled' => true,
-          'customizationDefaultDisabled' => true,
-          'customizationReadOnlyDisabled' => true,
-          'customizationInlineEditDisabledDisabled' => true,
-          'detailLayoutIncompatibleFieldList' => [
-            0 => 'emailAddress'
-          ]
-        ],
-        'phoneNumberIsOptedOut' => (object) [
-          'type' => 'bool',
-          'notStorable' => true,
-          'layoutDetailDisabled' => true,
-          'layoutDefaultSidePanelDisabled' => true,
-          'mergeDisabled' => true,
-          'customizationDefaultDisabled' => true,
-          'customizationReadOnlyDisabled' => true,
-          'customizationInlineEditDisabledDisabled' => true,
-          'detailLayoutIncompatibleFieldList' => [
-            0 => 'phoneNumber'
-          ]
-        ],
-        'phoneNumberIsInvalid' => (object) [
-          'type' => 'bool',
-          'notStorable' => true,
-          'layoutDetailDisabled' => true,
-          'layoutDefaultSidePanelDisabled' => true,
-          'mergeDisabled' => true,
-          'customizationDefaultDisabled' => true,
-          'customizationReadOnlyDisabled' => true,
-          'customizationInlineEditDisabledDisabled' => true,
-          'detailLayoutIncompatibleFieldList' => [
-            0 => 'phoneNumber'
-          ]
-        ],
-        'addressMap' => (object) [
-          'type' => 'map',
-          'notStorable' => true,
-          'orderDisabled' => true,
-          'readOnly' => true,
-          'layoutListDisabled' => true,
-          'provider' => 'Google',
-          'height' => 300,
-          'exportDisabled' => true,
-          'importDisabled' => true,
-          'detailLayoutIncompatibleFieldList' => []
-        ]
-      ],
-      'links' => (object) [
-        'createdBy' => (object) [
-          'type' => 'belongsTo',
-          'entity' => 'User'
-        ],
-        'modifiedBy' => (object) [
-          'type' => 'belongsTo',
-          'entity' => 'User'
-        ],
-        'assignedUser' => (object) [
-          'type' => 'belongsTo',
-          'entity' => 'User'
-        ],
-        'teams' => (object) [
-          'type' => 'hasMany',
-          'entity' => 'Team',
-          'relationName' => 'entityTeam',
-          'layoutRelationshipsDisabled' => true
-        ],
-        'meetings' => (object) [
-          'type' => 'hasMany',
-          'entity' => 'Meeting',
-          'foreign' => 'parent'
-        ],
-        'calls' => (object) [
-          'type' => 'hasMany',
-          'entity' => 'Call',
-          'foreign' => 'parent'
-        ],
-        'tasks' => (object) [
-          'type' => 'hasChildren',
-          'entity' => 'Task',
-          'foreign' => 'parent'
-        ]
-      ],
-      'collection' => (object) [
-        'orderBy' => 'createdAt',
-        'order' => 'desc',
-        'sortBy' => 'createdAt',
-        'asc' => false
-      ],
-      'indexes' => (object) [
-        'firstName' => (object) [
-          'columns' => [
-            0 => 'firstName',
-            1 => 'deleted'
-          ]
-        ],
-        'name' => (object) [
-          'columns' => [
-            0 => 'firstName',
-            1 => 'lastName'
-          ]
-        ],
-        'assignedUser' => (object) [
-          'columns' => [
-            0 => 'assignedUserId',
-            1 => 'deleted'
-          ]
-        ],
-        'createdAt' => (object) [
-          'columns' => [
-            0 => 'createdAt'
-          ]
-        ],
-        'createdAtId' => (object) [
-          'unique' => true,
-          'columns' => [
-            0 => 'createdAt',
-            1 => 'id'
-          ]
-        ]
-      ]
-    ],
     'CProduct' => (object) [
       'fields' => (object) [
         'name' => (object) [
           'type' => 'varchar',
           'required' => true,
           'pattern' => '$noBadCharacters',
-          'options' => []
+          'options' => [],
+          'maxLength' => 50
         ],
         'description' => (object) [
           'type' => 'text'
@@ -26074,8 +25757,152 @@ return (object) [
             4 => 'Other'
           ],
           'defaultType' => 'Mobile',
-          'isPersonalData' => true,
-          'view' => 'custom:views/fields/product-phone-number'
+          'isPersonalData' => true
+        ],
+        'areaName' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 100,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'houseType' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'handover' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'direction' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'landArea' => (object) [
+          'notNull' => false,
+          'type' => 'float',
+          'dbType' => 'decimal',
+          'precision' => 18,
+          'scale' => 2,
+          'isCustom' => true
+        ],
+        'constructionArea' => (object) [
+          'notNull' => false,
+          'type' => 'float',
+          'dbType' => 'decimal',
+          'precision' => 18,
+          'scale' => 2,
+          'isCustom' => true
+        ],
+        'borrow' => (object) [
+          'type' => 'currency',
+          'dbType' => 'decimal',
+          'precision' => 18,
+          'scale' => 2,
+          'isCustom' => true
+        ],
+        'gifts' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 200,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'deposit' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 200,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'bonus' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 200,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'contractType' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'bank' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 200,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'f1' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 200,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'landFund' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'dateOfPrice' => (object) [
+          'notNull' => false,
+          'type' => 'datetime',
+          'minuteStep' => 30,
+          'isCustom' => true
+        ],
+        'note' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 200,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'status' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'providerCode' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'providerName' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'providerLink' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 300,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'tts' => (object) [
+          'type' => 'currency',
+          'isCustom' => true
+        ],
+        'tttd' => (object) [
+          'type' => 'currency',
+          'isCustom' => true
+        ],
+        'csbh' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 100,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'ptg' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 100,
+          'options' => [],
+          'isCustom' => true
         ],
         'priceCurrency' => (object) [
           'type' => 'enum',
@@ -26131,6 +25958,93 @@ return (object) [
           'detailLayoutIncompatibleFieldList' => [
             0 => 'phoneNumber'
           ]
+        ],
+        'borrowCurrency' => (object) [
+          'type' => 'enum',
+          'view' => 'views/fields/currency-list',
+          'layoutDetailDisabled' => true,
+          'layoutListDisabled' => true,
+          'layoutMassUpdateDisabled' => true,
+          'layoutDefaultSidePanelDisabled' => true,
+          'customizationRequiredDisabled' => true,
+          'customizationOptionsDisabled' => true,
+          'customizationOptionsReferenceDisabled' => true,
+          'customizationIsSortedDisabled' => true,
+          'customizationDisplayAsLabelDisabled' => true,
+          'customizationAuditedDisabled' => true,
+          'customizationReadOnlyDisabled' => true,
+          'customizationInlineEditDisabledDisabled' => true,
+          'customizationDefaultView' => 'views/admin/field-manager/fields/currency-default',
+          'customizationTooltipTextDisabled' => true,
+          'maxLength' => 3,
+          'detailLayoutIncompatibleFieldList' => [
+            0 => 'borrow'
+          ]
+        ],
+        'borrowConverted' => (object) [
+          'type' => 'currencyConverted',
+          'readOnly' => true,
+          'importDisabled' => true,
+          'customizationInlineEditDisabledDisabled' => true,
+          'detailLayoutIncompatibleFieldList' => []
+        ],
+        'ttsCurrency' => (object) [
+          'type' => 'enum',
+          'view' => 'views/fields/currency-list',
+          'layoutDetailDisabled' => true,
+          'layoutListDisabled' => true,
+          'layoutMassUpdateDisabled' => true,
+          'layoutDefaultSidePanelDisabled' => true,
+          'customizationRequiredDisabled' => true,
+          'customizationOptionsDisabled' => true,
+          'customizationOptionsReferenceDisabled' => true,
+          'customizationIsSortedDisabled' => true,
+          'customizationDisplayAsLabelDisabled' => true,
+          'customizationAuditedDisabled' => true,
+          'customizationReadOnlyDisabled' => true,
+          'customizationInlineEditDisabledDisabled' => true,
+          'customizationDefaultView' => 'views/admin/field-manager/fields/currency-default',
+          'customizationTooltipTextDisabled' => true,
+          'maxLength' => 3,
+          'detailLayoutIncompatibleFieldList' => [
+            0 => 'tts'
+          ]
+        ],
+        'ttsConverted' => (object) [
+          'type' => 'currencyConverted',
+          'readOnly' => true,
+          'importDisabled' => true,
+          'customizationInlineEditDisabledDisabled' => true,
+          'detailLayoutIncompatibleFieldList' => []
+        ],
+        'tttdCurrency' => (object) [
+          'type' => 'enum',
+          'view' => 'views/fields/currency-list',
+          'layoutDetailDisabled' => true,
+          'layoutListDisabled' => true,
+          'layoutMassUpdateDisabled' => true,
+          'layoutDefaultSidePanelDisabled' => true,
+          'customizationRequiredDisabled' => true,
+          'customizationOptionsDisabled' => true,
+          'customizationOptionsReferenceDisabled' => true,
+          'customizationIsSortedDisabled' => true,
+          'customizationDisplayAsLabelDisabled' => true,
+          'customizationAuditedDisabled' => true,
+          'customizationReadOnlyDisabled' => true,
+          'customizationInlineEditDisabledDisabled' => true,
+          'customizationDefaultView' => 'views/admin/field-manager/fields/currency-default',
+          'customizationTooltipTextDisabled' => true,
+          'maxLength' => 3,
+          'detailLayoutIncompatibleFieldList' => [
+            0 => 'tttd'
+          ]
+        ],
+        'tttdConverted' => (object) [
+          'type' => 'currencyConverted',
+          'readOnly' => true,
+          'importDisabled' => true,
+          'customizationInlineEditDisabledDisabled' => true,
+          'detailLayoutIncompatibleFieldList' => []
         ]
       ],
       'links' => (object) [
@@ -26156,6 +26070,11 @@ return (object) [
       'collection' => (object) [
         'orderBy' => 'createdAt',
         'order' => 'desc',
+        'textFilterFields' => [
+          0 => 'name'
+        ],
+        'fullTextSearch' => false,
+        'countDisabled' => false,
         'sortBy' => 'createdAt',
         'asc' => false
       ],
@@ -26184,7 +26103,8 @@ return (object) [
             1 => 'id'
           ]
         ]
-      ]
+      ],
+      'optimisticConcurrencyControl' => false
     ]
   ],
   'fields' => (object) [
@@ -31410,31 +31330,9 @@ return (object) [
       'afterLinkHookClassNameList' => [],
       'afterUnlinkHookClassNameList' => []
     ],
-    'CCusomer' => (object) [
-      'duplicateWhereBuilderClassName' => 'Espo\\Classes\\DuplicateWhereBuilders\\General',
-      'readLoaderClassNameList' => [],
-      'listLoaderClassNameList' => [],
-      'saverClassNameList' => [],
-      'selectApplierClassNameList' => [],
-      'createInputFilterClassNameList' => [],
-      'updateInputFilterClassNameList' => [],
-      'outputFilterClassNameList' => [],
-      'beforeReadHookClassNameList' => [],
-      'earlyBeforeCreateHookClassNameList' => [],
-      'beforeCreateHookClassNameList' => [],
-      'earlyBeforeUpdateHookClassNameList' => [],
-      'beforeUpdateHookClassNameList' => [],
-      'beforeDeleteHookClassNameList' => [],
-      'afterCreateHookClassNameList' => [],
-      'afterUpdateHookClassNameList' => [],
-      'afterDeleteHookClassNameList' => [],
-      'beforeLinkHookClassNameList' => [],
-      'beforeUnlinkHookClassNameList' => [],
-      'afterLinkHookClassNameList' => [],
-      'afterUnlinkHookClassNameList' => []
-    ],
     'CProduct' => (object) [
       'duplicateWhereBuilderClassName' => 'Espo\\Classes\\DuplicateWhereBuilders\\General',
+      'updateDuplicateCheck' => false,
       'readLoaderClassNameList' => [],
       'listLoaderClassNameList' => [],
       'saverClassNameList' => [],
@@ -32372,34 +32270,6 @@ return (object) [
       ],
       'statusFieldLocked' => true
     ],
-    'CCusomer' => (object) [
-      'entity' => true,
-      'layouts' => true,
-      'tab' => true,
-      'acl' => true,
-      'aclPortal' => true,
-      'aclPortalLevelList' => [
-        0 => 'all',
-        1 => 'account',
-        2 => 'contact',
-        3 => 'own',
-        4 => 'no'
-      ],
-      'customizable' => true,
-      'importable' => true,
-      'notifications' => true,
-      'hasPersonalData' => true,
-      'duplicateCheckFieldList' => [
-        0 => 'name',
-        1 => 'emailAddress'
-      ],
-      'stream' => false,
-      'disabled' => false,
-      'type' => 'Person',
-      'module' => 'Custom',
-      'object' => true,
-      'isCustom' => true
-    ],
     'CProduct' => (object) [
       'entity' => true,
       'layouts' => true,
@@ -32421,7 +32291,14 @@ return (object) [
       'type' => 'Base',
       'module' => 'Custom',
       'object' => true,
-      'isCustom' => true
+      'isCustom' => true,
+      'statusField' => NULL,
+      'kanbanStatusIgnoreList' => NULL,
+      'stars' => false,
+      'preserveAuditLog' => false,
+      'duplicateCheckFieldList' => [],
+      'collaborators' => false,
+      'assignedUsers' => false
     ]
   ],
   'selectDefs' => (object) [

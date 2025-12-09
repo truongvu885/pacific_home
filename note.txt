@@ -2,6 +2,7 @@ docker exec pacific-home-db /usr/bin/mysqldump -u root -p12345678 espocrm > init
 Get-Content .\init_backup.sql | Set-Content -Encoding UTF8 .\init.sql
 Remove-Item -Path ./pacific_home -Recurse -Force | docker cp pacific-home:/var/www/html/ ./pacific_home/
 
+rm -rf ./pacific_home/
 
 Tên server:	ubuntu-1vcpu-2gb-1-03o81
 Tên đăng nhập:	root
@@ -13,3 +14,18 @@ WAN Address:	14.225.1.111
 
 user: pacifichome
 pass: pacifichome@123
+
+
+
+DELETE FROM espocrm.job ;
+DELETE FROM espocrm.account;
+DELETE FROM espocrm.action_history_record ;
+DELETE FROM espocrm.auth_log_record  ;
+DELETE FROM espocrm.auth_token ;
+DELETE FROM espocrm.c_product  ;
+DELETE FROM espocrm.contact   ;
+DELETE FROM espocrm.email_address ;
+DELETE FROM espocrm.entity_email_address  ;
+DELETE FROM espocrm.entity_phone_number   ;
+DELETE FROM espocrm.phone_number   ;
+DELETE FROM espocrm.scheduled_job_log_record;

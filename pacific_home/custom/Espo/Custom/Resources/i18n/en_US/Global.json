@@ -1,10 +1,8 @@
 {
     "scopeNames": {
-        "CProduct": "Product",
-        "CCusomer": "Cusomer"
+        "CProduct": "Product"
     },
     "scopeNamesPlural": {
-        "CProduct": "Products",
-        "CCusomer": "Cusomers"
+        "CProduct": "Products"
     }
 }

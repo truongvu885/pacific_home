@@ -2,4 +2,4 @@
 
 <div class="search-container">{{{search}}}</div>
 
-<div class="list-container custom-scroll-table">{{{list}}}</div>
+<div class="list-container">{{{list}}}</div>

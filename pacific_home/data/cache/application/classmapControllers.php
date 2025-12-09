@@ -88,7 +88,6 @@ return [
   'TargetList' => 'Espo\\Modules\\Crm\\Controllers\\TargetList',
   'TargetListCategory' => 'Espo\\Modules\\Crm\\Controllers\\TargetListCategory',
   'Task' => 'Espo\\Modules\\Crm\\Controllers\\Task',
-  'CCusomer' => 'Espo\\Custom\\Controllers\\CCusomer',
   'CProduct' => 'Espo\\Custom\\Controllers\\CProduct',
   'CallioAdmin' => 'Espo\\Custom\\Controllers\\CallioAdmin',
   'CallioCall' => 'Espo\\Custom\\Controllers\\CallioCall',
