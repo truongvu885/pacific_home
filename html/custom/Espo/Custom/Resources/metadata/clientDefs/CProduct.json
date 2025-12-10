@@ -1,0 +1,16 @@
+{
+    "controller": "controllers/record",
+    "boolFilterList": [
+        "onlyMy"
+    ],
+    "color": null,
+    "iconClass": "fas fa-house",
+    "views": {
+        "list": "custom:views/CProduct/list",
+        "detail": "custom:views/CProduct/detail"
+    },
+    "recordViews": {
+        "list": "custom:views/CProduct/record/list"
+    },
+    "kanbanViewMode": false
+}

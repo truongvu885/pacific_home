@@ -1,8 +1,16 @@
-docker exec pacific-home-db /usr/bin/mysqldump -u root -p12345678 espocrm > init_backup.sql
-Get-Content .\init_backup.sql | Set-Content -Encoding UTF8 .\init.sql
-Remove-Item -Path ./pacific_home -Recurse -Force | docker cp pacific-home:/var/www/html/ ./pacific_home/
-
+docker exec pacific-home-db /usr/bin/mysqldump -u root -p12345678 espocrm > init.sql
 rm -rf ./pacific_home/
+docker cp pacific-home:/var/www/html/ ./pacific_home/
+
+
+docker cp ./html/client/custom pacific-home:/var/www/html/client/
+docker cp ./html/custom pacific-home:/var/www/html/
+docker cp ./html/data/upload pacific-home:/var/www/html/data
+docker cp ./html/data/config-internal.php pacific-home:/var/www/html/data/config-internal.php
+docker cp ./html/data/config.php pacific-home:/var/www/html/data/config.php
+
+docker exec -i pacific-home php command.php rebuild
+docker exec -i pacific-home php command.php clear-cache
 
 Tên server:	ubuntu-1vcpu-2gb-1-03o81
 Tên đăng nhập:	root
@@ -12,8 +20,8 @@ LAN Address:	192.168.0.158
 WAN Address:	14.225.1.111
 
 
-user: pacifichome
-pass: pacifichome@123
+user: pacificadmin
+pass: pacificadmin@123
 
 
 

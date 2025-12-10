@@ -1,0 +1,15 @@
+{
+    "integrations": {
+        "label": "Integrations",
+        "itemList": [
+            {
+                "url": "#Admin/callio",
+                "label": "Callio",
+                "description": "Cấu hình tích hợp Callio cho click-to-call",
+                "iconClass": "fas fa-phone-volume",
+                "view": "custom:views/admin/callio-settings"
+            }
+        ]
+    }
+}
+

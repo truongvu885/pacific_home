@@ -1,0 +1,106 @@
+[
+    {
+        "rows": [
+            [
+                {
+                    "name": "name"
+                },
+                {
+                    "name": "areaName"
+                },
+                {
+                    "name": "houseType"
+                },
+                {
+                    "name": "handover"
+                }
+            ],
+            [
+                {
+                    "name": "direction"
+                },
+                {
+                    "name": "landArea"
+                },
+                {
+                    "name": "constructionArea"
+                }
+            ],
+            [
+                {
+                    "name": "price"
+                },
+                {
+                    "name": "borrow"
+                },
+                {
+                    "name": "tts"
+                },
+                {
+                    "name": "tttd"
+                }
+            ],
+            [
+                {
+                    "name": "csbh"
+                },
+                {
+                    "name": "ptg"
+                }
+            ],
+            [
+                {
+                    "name": "gifts"
+                },
+                {
+                    "name": "deposit"
+                }
+            ],
+            [
+                {
+                    "name": "bonus"
+                },
+                {
+                    "name": "contractType"
+                },
+                {
+                    "name": "bank"
+                }
+            ],
+            [
+                {
+                    "name": "f1"
+                },
+                {
+                    "name": "landFund"
+                },
+                {
+                    "name": "dateOfPrice"
+                }
+            ],
+            [
+                {
+                    "name": "note"
+                }
+            ],
+            [
+                {
+                    "name": "status"
+                },
+                {
+                    "name": "providerCode"
+                }
+            ],
+            [
+                {
+                    "name": "providerName"
+                },
+                {
+                    "name": "providerLink"
+                }
+            ]
+        ],
+        "style": "default",
+        "label": "Overview"
+    }
+]

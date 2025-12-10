@@ -11,7 +11,7 @@ services:
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - pacific-home-db:/var/lib/mysql
-      - ./init_backup.sql:/docker-entrypoint-initdb.d/init.sql
+      # - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "3306:3306"
     restart: always
@@ -33,7 +33,7 @@ services:
       ESPOCRM_DATABASE_PASSWORD: 12345678
       ESPOCRM_DATABASE_NAME: espocrm
       ESPOCRM_ADMIN_USERNAME: admin
-      ESPOCRM_ADMIN_PASSWORD: 12345678
+      ESPOCRM_ADMIN_PASSWORD: pacifichome123
       ESPOCRM_SITE_URL: "http://localhost:8080"
     volumes:
       # Mount only data and custom directories to preserve code from image
