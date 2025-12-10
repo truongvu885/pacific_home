@@ -100,26 +100,26 @@ else
 fi
 
 # Use host system time for the two fields
-TS="$(date '+%Y-%m-%d %H:%M:%S')"
-echo "[init-script] Using timestamp: $TS"
+# TS="$(date '+%Y-%m-%d %H:%M:%S')"
+# echo "[init-script] Using timestamp: $TS"
 
-# Direct INSERT (no pre-check). Replace the two 'thời gian' fields with current TS.
-SQL_INSERT="INSERT INTO attachment VALUES ('693129384a2156b3c','logopacific final.png',0,'image/png',73339,'companyLogo',0,'${TS}','${TS}','Attachment','EspoUploadDir',NULL,0,NULL,NULL,NULL,'Settings',NULL,'693128ca918233887');"
+# # Direct INSERT (no pre-check). Replace the two 'thời gian' fields with current TS.
+# SQL_INSERT="INSERT INTO attachment VALUES ('693129384a2156b3c','logopacific final.png',0,'image/png',73339,'companyLogo',0,'${TS}','${TS}','Attachment','EspoUploadDir',NULL,0,NULL,NULL,NULL,'Settings',NULL,'693128ca918233887');"
 
-echo "[init-script] Executing INSERT..."
-# capture stderr to show meaningful error if it fails
-if docker exec -i "$DB_CONTAINER" sh -c "mysql -uroot -p'$DB_ROOT_PASSWORD' espocrm -e \"${SQL_INSERT}\"" >/tmp/run_init_insert_out 2>/tmp/run_init_insert_err; then
-  echo "[init-script] INSERT OK"
-  rm -f /tmp/run_init_insert_out /tmp/run_init_insert_err || true
-else
-  echo "[init-script] INSERT failed. mysql stderr:"
-  cat /tmp/run_init_insert_err || true
-  rm -f /tmp/run_init_insert_out /tmp/run_init_insert_err || true
-  exit 7
-fi
+# echo "[init-script] Executing INSERT..."
+# # capture stderr to show meaningful error if it fails
+# if docker exec -i "$DB_CONTAINER" sh -c "mysql -uroot -p'$DB_ROOT_PASSWORD' espocrm -e \"${SQL_INSERT}\"" >/tmp/run_init_insert_out 2>/tmp/run_init_insert_err; then
+#   echo "[init-script] INSERT OK"
+#   rm -f /tmp/run_init_insert_out /tmp/run_init_insert_err || true
+# else
+#   echo "[init-script] INSERT failed. mysql stderr:"
+#   cat /tmp/run_init_insert_err || true
+#   rm -f /tmp/run_init_insert_out /tmp/run_init_insert_err || true
+#   exit 7
+# fi
 
-docker cp ./init_cproduct.sql "${DB_CONTAINER}:/tmp/init_cproduct.sql"
-docker exec -i "$DB_CONTAINER" sh -c "mysql --default-character-set=utf8mb4 -uroot -p'$DB_ROOT_PASSWORD' espocrm < /tmp/init_cproduct.sql"
+# docker cp ./init_cproduct.sql "${DB_CONTAINER}:/tmp/init_cproduct.sql"
+# docker exec -i "$DB_CONTAINER" sh -c "mysql --default-character-set=utf8mb4 -uroot -p'$DB_ROOT_PASSWORD' espocrm < /tmp/init_cproduct.sql"
 
 echo "[init-script] Done."
 exit 0
