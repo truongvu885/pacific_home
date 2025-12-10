@@ -277,8 +277,8 @@ return [
     0 => 'youtube.com',
     1 => 'google.com'
   ],
-  'cacheTimestamp' => 1765377444,
-  'microtime' => 1765377444.715659,
+  'cacheTimestamp' => 1765386226,
+  'microtime' => 1765386226.63288,
   'siteUrl' => 'http://localhost:8080',
   'fullTextSearchMinLength' => 4,
   'appTimestamp' => 1764829381,

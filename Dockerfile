@@ -14,7 +14,6 @@ FROM espocrm/espocrm:9.2.5
 # RUN chown -R www-data:www-data /var/www/html \
 #     && chmod -R 755 /var/www/html
 
-# Expose port web
 EXPOSE 80
 
 # ENV cho production (tùy chỉnh nếu cần)
