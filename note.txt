@@ -28,29 +28,5 @@ user: admin
 pass: pacifichome123
 
 
-
-SELECT * FROM espocrm.job ;
-SELECT * FROM espocrm.account;
-SELECT * FROM espocrm.action_history_record ;
-SELECT * FROM espocrm.auth_log_record  ;
-SELECT * FROM espocrm.auth_token ;
-SELECT * FROM espocrm.c_product  ;
-SELECT * FROM espocrm.contact   ;
-SELECT * FROM espocrm.email_address ;
-SELECT * FROM espocrm.entity_email_address  ;
-SELECT * FROM espocrm.entity_phone_number   ;
-SELECT * FROM espocrm.phone_number   ;
-SELECT * FROM espocrm.scheduled_job_log_record;
-
-DELETE FROM espocrm.job ;
-DELETE FROM espocrm.account;
-DELETE FROM espocrm.action_history_record ;
-DELETE FROM espocrm.auth_log_record  ;
-DELETE FROM espocrm.auth_token ;
-DELETE FROM espocrm.c_product  ;
-DELETE FROM espocrm.contact   ;
-DELETE FROM espocrm.email_address ;
-DELETE FROM espocrm.entity_email_address  ;
-DELETE FROM espocrm.entity_phone_number   ;
-DELETE FROM espocrm.phone_number   ;
-DELETE FROM espocrm.scheduled_job_log_record;
+docker exec -i pacific-home-db mysql -uroot -p12345678 --default-character-set=utf8mb4 espocrm < ./init_cproduct.sql
+docker exec -i pacific-home-db mysql -uroot -p12345678 --default-character-set=utf8mb4 espocrm < ./init_cspecification.sql
