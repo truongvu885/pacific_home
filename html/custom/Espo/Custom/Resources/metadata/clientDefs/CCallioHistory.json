@@ -1,0 +1,25 @@
+{
+    "controller": "controllers/record",
+    "boolFilterList": [
+        "onlyMy"
+    ],
+    "iconClass": "fas fa-headphones-simple",
+    "menu": {
+        "list": [
+            {
+                "label": "Test Controller",
+                "action": "testController",
+                "acl": "read",
+                "iconClass": "fas fa-bug"
+            }
+        ]
+    },
+    "views": {
+        "list": "custom:views/CCallioHistory/list"
+    },
+    "recordViews": {
+        "list": "custom:views/CCallioHistory/record/list"
+    },
+    "kanbanViewMode": false,
+    "color": null
+}

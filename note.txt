@@ -2,8 +2,6 @@ docker exec pacific-home-db /usr/bin/mysqldump -u root -p12345678 espocrm > init
 rm -rf ./html/
 mkdir html
 mkdir ./html/client
-docker cp pacific-home:/var/www/html/ ./pacific_home/
-
 docker cp pacific-home:/var/www/html/client/custom ./html/client
 docker cp pacific-home:/var/www/html/custom ./html/
 docker cp pacific-home:/var/www/html/data ./html/
@@ -26,10 +24,23 @@ LAN Address:	192.168.0.158
 WAN Address:	14.225.1.111
 
 
-user: pacificadmin
-pass: pacificadmin@123
+user: admin
+pass: pacifichome123
 
 
+
+SELECT * FROM espocrm.job ;
+SELECT * FROM espocrm.account;
+SELECT * FROM espocrm.action_history_record ;
+SELECT * FROM espocrm.auth_log_record  ;
+SELECT * FROM espocrm.auth_token ;
+SELECT * FROM espocrm.c_product  ;
+SELECT * FROM espocrm.contact   ;
+SELECT * FROM espocrm.email_address ;
+SELECT * FROM espocrm.entity_email_address  ;
+SELECT * FROM espocrm.entity_phone_number   ;
+SELECT * FROM espocrm.phone_number   ;
+SELECT * FROM espocrm.scheduled_job_log_record;
 
 DELETE FROM espocrm.job ;
 DELETE FROM espocrm.account;

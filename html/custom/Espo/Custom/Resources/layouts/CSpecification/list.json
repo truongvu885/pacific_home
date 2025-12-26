@@ -1,0 +1,94 @@
+[
+    {
+        "name": "name",
+        "link": true
+    },
+    {
+        "name": "areaName",
+        "width": 16
+    },
+    {
+        "name": "houseType",
+        "width": 16
+    },
+    {
+        "name": "landArea",
+        "width": 16
+    },
+    {
+        "name": "constructionArea",
+        "width": 16
+    },
+    {
+        "name": "size",
+        "width": 16
+    },
+    {
+        "name": "direction",
+        "width": 16
+    },
+    {
+        "name": "floors",
+        "width": 16
+    },
+    {
+        "name": "floor1",
+        "width": 16
+    },
+    {
+        "name": "floor2",
+        "width": 16
+    },
+    {
+        "name": "floor3",
+        "width": 16
+    },
+    {
+        "name": "floor4",
+        "width": 16
+    },
+    {
+        "name": "floor5",
+        "width": 16
+    },
+    {
+        "name": "floor6",
+        "width": 16
+    },
+    {
+        "name": "projectCode",
+        "width": 16
+    },
+    {
+        "name": "street",
+        "width": 16
+    },
+    {
+        "name": "streetEven",
+        "width": 16
+    },
+    {
+        "name": "streetNumber",
+        "width": 16
+    },
+    {
+        "name": "houseTemplate",
+        "width": 16
+    },
+    {
+        "name": "usableArea",
+        "width": 16
+    },
+    {
+        "name": "fullArea",
+        "width": 16
+    },
+    {
+        "name": "createdAt",
+        "width": 16
+    },
+    {
+        "name": "modifiedAt",
+        "width": 16
+    }
+]

@@ -1,8 +1,12 @@
 {
     "scopeNames": {
-        "CProduct": "Product"
+        "CProduct": "Nguồn hàng",
+        "CCallioHistory": "Lịch sử cuộc gọi Callio",
+        "CSpecification": "Thông số kĩ thuật"
     },
     "scopeNamesPlural": {
-        "CProduct": "Products"
+        "CProduct": "Nguồn hàng",
+        "CCallioHistory": "Lịch sử cuộc gọi Callio",
+        "CSpecification": "Thông số kĩ thuật"
     }
 }

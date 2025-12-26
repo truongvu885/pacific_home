@@ -8,5 +8,6 @@ return [
   'RecordTree' => 'Espo\\Services\\RecordTree',
   'Stream' => 'Espo\\Services\\Stream',
   'User' => 'Espo\\Services\\User',
+  'CCallioHistory' => 'Espo\\Custom\\Services\\CCallioHistory',
   'CallioIntegration' => 'Espo\\Custom\\Services\\CallioIntegration'
 ];

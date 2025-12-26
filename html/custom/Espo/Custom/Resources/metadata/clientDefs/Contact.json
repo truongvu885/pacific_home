@@ -1,0 +1,11 @@
+{
+  "kanbanViewMode": false,
+  "color": "#a4c5e0",
+  "iconClass": "fas fa-id-badge",
+  "views": {
+    "list": "custom:views/Contact/list"
+  },
+  "recordViews": {
+    "list": "custom:views/Contact/record/list"
+  }
+}

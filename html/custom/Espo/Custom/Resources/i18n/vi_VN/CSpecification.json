@@ -1,0 +1,28 @@
+{
+    "labels": {
+        "Create CSpecification": "Tạo Thông số kĩ thuật"
+    },
+    "fields": {
+        "name": "Mã căn",
+        "areaName": "Phân khu",
+        "houseType": "Loại hình",
+        "landArea": "Diện tích đất",
+        "constructionArea": "Diện tích xây dựng",
+        "size": "Kích thước",
+        "direction": "Hướng",
+        "floors": "Số tầng",
+        "floor1": "Tầng 1",
+        "floor2": "Tầng 2",
+        "floor3": "Tầng 3",
+        "floor4": "Tầng 4",
+        "floor5": "Tầng 5",
+        "floor6": "Tum/áp mái",
+        "projectCode": "Mã dự án",
+        "street": "Mã đường",
+        "streetNumber": "Số nhà",
+        "houseTemplate": "Mẫu căn",
+        "usableArea": "Diện tích thông thủy",
+        "fullArea": "Diện tích tim tường",
+        "streetEven": "Chẵn lẻ"
+    }
+}

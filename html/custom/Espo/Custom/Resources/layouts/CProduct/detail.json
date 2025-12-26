@@ -10,12 +10,12 @@
                 },
                 {
                     "name": "houseType"
-                },
-                {
-                    "name": "handover"
                 }
             ],
             [
+                {
+                    "name": "handover"
+                },
                 {
                     "name": "direction"
                 },
@@ -46,6 +46,9 @@
                 },
                 {
                     "name": "ptg"
+                },
+                {
+                    "name": "phoneNumber"
                 }
             ],
             [

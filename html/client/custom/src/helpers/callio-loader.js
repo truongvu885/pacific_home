@@ -13,32 +13,20 @@ define('custom:helpers/callio-loader', [], function () {
          * @return {boolean}
          */
         hasTelesaleRole: function (user) {
-            console.log('CallioLoader - Checking user roles');
-            
             // Lấy roles từ user model (sau khi fetch)
-            var rolesIds = user.get('rolesIds') || [];
             var rolesNames = user.get('rolesNames') || {};
-            
-            console.log('Roles IDs:', rolesIds);
-            console.log('Roles Names:', rolesNames);
-            
             // Check trong rolesNames (object: {id: name})
             if (rolesNames && typeof rolesNames === 'object') {
                 for (var roleId in rolesNames) {
                     var roleName = (rolesNames[roleId] || '').toLowerCase();
-                    console.log('Checking role:', roleName);
                     
                     // Match chính xác role name
-                    if (roleName === 'telesale' || 
-                        roleName === 'tele sale' ||
-                        roleName === 'tele-sale') {
-                        console.log('✓ Found Telesale role!');
+                    if (roleName === 'telesale' || roleName === 'admin') {
                         return true;
                     }
                 }
             }
             
-            console.log('✗ No Telesale role found');
             return false;
         },
         
@@ -53,8 +41,6 @@ define('custom:helpers/callio-loader', [], function () {
         loadWidget: function (options) {
             options = options || {};
             
-            console.log('CallioLoader.loadWidget() called with options:', options);
-            
             // Tránh load script nhiều lần
             if (window.CALLIO_LOADED) {
                 console.warn('Callio Widget already loaded - skipping');
@@ -63,7 +49,6 @@ define('custom:helpers/callio-loader', [], function () {
             
             // Đánh dấu đã load
             window.CALLIO_LOADED = true;
-            console.log('Setting CALLIO_LOADED flag to true');
             
             // Setup Callio API config
             window.CALLIO_API = {
@@ -77,16 +62,12 @@ define('custom:helpers/callio-loader', [], function () {
             
             window.CALLIO_LoadStart = new Date();
             
-            console.log('CALLIO_API config:', window.CALLIO_API);
-            
             // Inject script vào page
             var script = document.createElement('script');
             script.async = true;
             script.src = window.CALLIO_API.baseUrl + '/widget-embed.js';
             script.charset = 'UTF-8';
             script.id = 'callio-widget-script';
-            
-            console.log('Creating script tag with src:', script.src);
             
             // Add error handler
             script.onerror = function(e) {
@@ -95,22 +76,12 @@ define('custom:helpers/callio-loader', [], function () {
                 window.CALLIO_LOADED = false;
             };
             
-            // Add success handler
-            script.onload = function() {
-                console.log('✓ Callio Widget script loaded successfully!');
-                console.log('Script element:', script);
-            };
-            
             var firstScript = document.getElementsByTagName('script')[0];
             if (firstScript && firstScript.parentNode) {
-                console.log('Inserting script before first script tag');
                 firstScript.parentNode.insertBefore(script, firstScript);
             } else {
-                console.log('Appending script to document.head');
                 document.head.appendChild(script);
             }
-            
-            console.log('Script tag inserted into DOM');
             
             // Verify script was added
             setTimeout(function() {
@@ -139,8 +110,6 @@ define('custom:helpers/callio-loader', [], function () {
             // Clean up global variables
             delete window.CALLIO_API;
             delete window.CALLIO_LoadStart;
-            
-            console.log('Callio Widget unloaded');
         }
     });
     

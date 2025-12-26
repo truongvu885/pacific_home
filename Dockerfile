@@ -2,10 +2,10 @@
 # Base official EspoCRM image version cố định
 FROM espocrm/espocrm:9.2.5
 
-#USER root
-#RUN pecl install xdebug && docker-php-ext-enable xdebug
+RUN pecl install xdebug && docker-php-ext-enable xdebug
 
-# COPY ./pacific_home/ /var/www/html/
+# Sao chép cấu hình Xdebug vào thư mục conf.d
+COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 # COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 # RUN chmod +x /usr/local/bin/entrypoint.sh

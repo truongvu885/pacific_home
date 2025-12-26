@@ -1,0 +1,83 @@
+[
+    {
+        "rows": [
+            [
+                {
+                    "name": "name"
+                },
+                {
+                    "name": "areaName"
+                },
+                {
+                    "name": "houseType"
+                }
+            ],
+            [
+                {
+                    "name": "landArea"
+                },
+                {
+                    "name": "constructionArea"
+                },
+                {
+                    "name": "size"
+                },
+                {
+                    "name": "direction"
+                }
+            ],
+            [
+                {
+                    "name": "projectCode"
+                },
+                {
+                    "name": "street"
+                },
+                {
+                    "name": "streetNumber"
+                },
+                {
+                    "name": "floors"
+                }
+            ],
+            [
+                {
+                    "name": "floor1"
+                },
+                {
+                    "name": "floor2"
+                },
+                {
+                    "name": "floor3"
+                },
+                {
+                    "name": "floor4"
+                }
+            ],
+            [
+                {
+                    "name": "floor5"
+                },
+                {
+                    "name": "floor6"
+                },
+                {
+                    "name": "streetEven"
+                },
+                {
+                    "name": "houseTemplate"
+                }
+            ],
+            [
+                {
+                    "name": "usableArea"
+                },
+                {
+                    "name": "fullArea"
+                }
+            ]
+        ],
+        "style": "default",
+        "label": "Overview"
+    }
+]

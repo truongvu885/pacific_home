@@ -1,0 +1,25 @@
+{
+    "fields": {
+        "fromNumber": "Số gọi đi",
+        "toNumber": "Số gọi đến",
+        "startTime": "Thời gian bắt đầu",
+        "endTime": "Thời gian kết thúc",
+        "duration": "Thời lượng cuộc gọi (giây)",
+        "billDuration": "Thời gian đàm thoại (giây)",
+        "hangupCause": "Trạng thái kết nối",
+        "transcripts": "Nội dung"
+    },
+    "links": [],
+    "labels": {
+        "Create CCallioHistory": "Create Lịch sử cuộc gọi Callio"
+    },
+    "options": {
+        "hangupCause": {
+            "USER_BUSY": "USER_BUSY",
+            "ORIGINATOR_CANCEL": "ORIGINATOR_CANCEL",
+            "NORMAL_TEMPORARY_FAILURE": "NORMAL_TEMPORARY_FAILURE",
+            "NORMAL_CLEARING": "NORMAL_CLEARING"
+        },
+        "transcripts": []
+    }
+}

@@ -2794,6 +2794,41 @@ return (object) [
       'nonAdminReadOnly' => []
     ]
   ],
+  'CCallioHistory' => (object) [
+    'fields' => (object) [
+      'forbidden' => [],
+      'internal' => [],
+      'onlyAdmin' => [],
+      'readOnly' => [
+        0 => 'createdAt',
+        1 => 'modifiedAt',
+        2 => 'createdBy',
+        3 => 'modifiedBy'
+      ],
+      'nonAdminReadOnly' => []
+    ],
+    'attributes' => (object) [
+      'forbidden' => [],
+      'internal' => [],
+      'onlyAdmin' => [],
+      'readOnly' => [
+        0 => 'createdAt',
+        1 => 'modifiedAt',
+        2 => 'createdById',
+        3 => 'createdByName',
+        4 => 'modifiedById',
+        5 => 'modifiedByName'
+      ],
+      'nonAdminReadOnly' => []
+    ],
+    'links' => (object) [
+      'forbidden' => [],
+      'internal' => [],
+      'onlyAdmin' => [],
+      'readOnly' => [],
+      'nonAdminReadOnly' => []
+    ]
+  ],
   'CProduct' => (object) [
     'fields' => (object) [
       'forbidden' => [],
@@ -2828,6 +2863,41 @@ return (object) [
         8 => 'ttsConverted',
         9 => 'tttdConverted',
         10 => 'streamUpdatedAt'
+      ],
+      'nonAdminReadOnly' => []
+    ],
+    'links' => (object) [
+      'forbidden' => [],
+      'internal' => [],
+      'onlyAdmin' => [],
+      'readOnly' => [],
+      'nonAdminReadOnly' => []
+    ]
+  ],
+  'CSpecification' => (object) [
+    'fields' => (object) [
+      'forbidden' => [],
+      'internal' => [],
+      'onlyAdmin' => [],
+      'readOnly' => [
+        0 => 'createdAt',
+        1 => 'modifiedAt',
+        2 => 'createdBy',
+        3 => 'modifiedBy'
+      ],
+      'nonAdminReadOnly' => []
+    ],
+    'attributes' => (object) [
+      'forbidden' => [],
+      'internal' => [],
+      'onlyAdmin' => [],
+      'readOnly' => [
+        0 => 'createdAt',
+        1 => 'modifiedAt',
+        2 => 'createdById',
+        3 => 'createdByName',
+        4 => 'modifiedById',
+        5 => 'modifiedByName'
       ],
       'nonAdminReadOnly' => []
     ],

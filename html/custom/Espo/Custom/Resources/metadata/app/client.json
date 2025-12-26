@@ -2,6 +2,8 @@
     "cssList": [
         "__APPEND__",
         "client/custom/modules/CProduct/css/list.css",
-        "client/custom/css/login.css"
+        "client/custom/css/login.css",
+        "client/custom/modules/CSpecification/css/list.css",
+        "client/custom/modules/CCallioHistory/css/list.css"
     ]
 }

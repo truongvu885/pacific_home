@@ -1736,7 +1736,9 @@ Field removal does not remove data from the database. Data from the database wil
       'KnowledgeBaseCategory' => 'Knowledge Base Category',
       'CampaignLogRecord' => 'Campaign Log Record',
       'TargetListCategory' => 'Target List Category',
-      'CProduct' => 'Product'
+      'CProduct' => 'Nguồn hàng',
+      'CCallioHistory' => 'Lịch sử cuộc gọi Callio',
+      'CSpecification' => 'Thông số kĩ thuật'
     ],
     'scopeNamesPlural' => [
       'Note' => 'Notes',
@@ -1817,7 +1819,9 @@ Field removal does not remove data from the database. Data from the database wil
       'KnowledgeBaseCategory' => 'Knowledge Base Categories',
       'CampaignLogRecord' => 'Campaign Log Records',
       'TargetListCategory' => 'Target List Categories',
-      'CProduct' => 'Products'
+      'CProduct' => 'Nguồn hàng',
+      'CCallioHistory' => 'Lịch sử cuộc gọi Callio',
+      'CSpecification' => 'Thông số kĩ thuật'
     ],
     'labels' => [
       'Previous Page' => 'Previous Page',
@@ -5399,35 +5403,58 @@ Leave the field empty if you need to apply the exception only for specific users
       'replyToEmail' => 'Reply to email'
     ]
   ],
+  'CCallioHistory' => [
+    'fields' => [
+      'fromNumber' => 'Số gọi đi',
+      'toNumber' => 'Số gọi đến',
+      'startTime' => 'Thời gian bắt đầu',
+      'endTime' => 'Thời gian kết thúc',
+      'duration' => 'Thời lượng cuộc gọi (giây)',
+      'billDuration' => 'Thời gian đàm thoại (giây)',
+      'hangupCause' => 'Trạng thái kết nối',
+      'transcripts' => 'Nội dung'
+    ],
+    'links' => [],
+    'labels' => [
+      'Create CCallioHistory' => 'Create Lịch sử cuộc gọi Callio'
+    ],
+    'options' => [
+      'hangupCause' => [
+        'USER_BUSY' => 'USER_BUSY',
+        'ORIGINATOR_CANCEL' => 'ORIGINATOR_CANCEL',
+        'NORMAL_TEMPORARY_FAILURE' => 'NORMAL_TEMPORARY_FAILURE',
+        'NORMAL_CLEARING' => 'NORMAL_CLEARING'
+      ],
+      'transcripts' => []
+    ]
+  ],
   'CProduct' => [
     'fields' => [
-      'name' => 'Code',
-      'price' => 'Price',
+      'name' => 'Name',
+      'price' => 'Giá',
       'priceCurrency' => 'Price (Currency)',
       'priceConverted' => 'Price (Converted)',
       'phoneNumber' => 'Phone',
-      'areaName' => 'AreaName',
-      'houseType' => 'HouseType',
-      'handover' => 'Handover',
-      'direction' => 'Direction',
-      'landArea' => 'LandArea',
-      'constructionArea' => 'ConstructionArea',
-      'borrow' => 'Borrow',
+      'areaName' => 'Phân khu',
+      'houseType' => 'Loại hình',
+      'handover' => 'TCBG',
+      'direction' => 'Hướng',
+      'landArea' => 'DT Đất (m2)',
+      'constructionArea' => 'DT SD (m2)',
+      'borrow' => 'Vay tạm tính',
       'borrowCurrency' => 'Borrow (Currency)',
       'borrowConverted' => 'Borrow (Converted)',
-      'gifts' => 'Gifts',
-      'deposit' => 'Deposit',
-      'bonus' => 'Bonus',
-      'contractType' => 'ContractType',
+      'gifts' => 'Quà tặng',
+      'deposit' => 'Thông tin đặt cọc',
+      'bonus' => 'Thưởng sales',
+      'contractType' => 'Loại hợp đồng',
       'bank' => 'Bank',
       'f1' => 'F1',
-      'landFund' => 'LandFund',
-      'dateOfPrice' => 'DateOfPrice',
-      'note' => 'Note',
-      'status' => 'Status',
-      'providerCode' => 'ProviderCode',
-      'providerName' => 'ProviderName',
-      'providerLink' => 'ProviderLink',
+      'landFund' => 'Quỹ',
+      'dateOfPrice' => 'Ngày lấy giá',
+      'note' => 'Ghi chú',
+      'providerCode' => 'Mã nhà phân phối',
+      'providerName' => 'Tên nhà phân phối',
       'tts' => 'TTS',
       'ttsCurrency' => 'TTS (Currency)',
       'ttsConverted' => 'TTS (Converted)',
@@ -5435,12 +5462,54 @@ Leave the field empty if you need to apply the exception only for specific users
       'tttdCurrency' => 'TTTD (Currency)',
       'tttdConverted' => 'TTTD (Converted)',
       'csbh' => 'CSBH',
-      'ptg' => 'PTG',
-      'refreshTime' => 'RefreshTime'
+      'refreshTime' => 'Thời gian đồng bộ data',
+      'ptg' => 'Link hình ảnh',
+      'providerLink' => 'URL nhà phân phối',
+      'status' => 'Trạng thái',
+      'resourceType' => 'Nguồn',
+      'comments' => 'Đánh giá'
     ],
     'links' => [],
     'labels' => [
-      'Create CProduct' => 'Create Product'
+      'Create CProduct' => 'Tạo Nguồn hàng'
+    ],
+    'layouts' => [
+      'historyChange' => 'Lich su thay doi'
+    ],
+    'options' => [
+      'status' => [
+        'Còn hàng' => 'Còn hàng',
+        'Đã bán' => 'Đã bán',
+        '' => ''
+      ]
+    ]
+  ],
+  'CSpecification' => [
+    'fields' => [
+      'areaName' => 'Phân khu',
+      'houseType' => 'Loại hình',
+      'landArea' => 'Diện tích đất',
+      'constructionArea' => 'Diện tích xây dựng',
+      'size' => 'Kích thước',
+      'direction' => 'Hướng',
+      'floors' => 'Số tầng',
+      'floor1' => 'Tầng 1',
+      'floor2' => 'Tầng 2',
+      'floor3' => 'Tầng 3',
+      'floor4' => 'Tầng 4',
+      'floor5' => 'Tầng 5',
+      'floor6' => 'Tum/áp mái',
+      'projectCode' => 'Mã dự án',
+      'street' => 'Mã đường',
+      'streetNumber' => 'Số nhà',
+      'houseTemplate' => 'Mẫu căn',
+      'usableArea' => 'Diện tích thông thủy',
+      'fullArea' => 'Diện tích tim tường',
+      'streetEven' => 'Chẵn lẻ'
+    ],
+    'links' => [],
+    'labels' => [
+      'Create CSpecification' => 'Create Thông số kĩ thuật'
     ]
   ],
   'Callio' => [

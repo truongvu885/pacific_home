@@ -1,0 +1,16 @@
+TRUNCATE TABLE action_history_record;
+TRUNCATE TABLE auth_log_record;
+TRUNCATE TABLE auth_token;
+TRUNCATE TABLE c_callio_history;
+TRUNCATE TABLE c_product;
+TRUNCATE TABLE c_specification;
+TRUNCATE TABLE call_user;
+TRUNCATE TABLE contact;
+TRUNCATE TABLE email_address;
+TRUNCATE TABLE entity_email_address;
+TRUNCATE TABLE entity_phone_number;
+TRUNCATE TABLE job;
+TRUNCATE TABLE `lead`;
+TRUNCATE TABLE note;
+TRUNCATE TABLE phone_number;
+TRUNCATE TABLE scheduled_job_log_record;

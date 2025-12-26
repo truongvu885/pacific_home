@@ -32015,6 +32015,269 @@ return [
       'order' => 'DESC'
     ]
   ],
+  'CCallioHistory' => [
+    'attributes' => [
+      'id' => [
+        'len' => 17,
+        'dbType' => 'string',
+        'type' => 'id'
+      ],
+      'name' => [
+        'type' => 'varchar',
+        'fieldType' => 'varchar',
+        'len' => 255
+      ],
+      'deleted' => [
+        'type' => 'bool',
+        'default' => false
+      ],
+      'description' => [
+        'type' => 'text',
+        'fieldType' => 'text'
+      ],
+      'createdAt' => [
+        'type' => 'datetime',
+        'notNull' => false,
+        'fieldType' => 'datetime'
+      ],
+      'modifiedAt' => [
+        'type' => 'datetime',
+        'notNull' => false,
+        'fieldType' => 'datetime'
+      ],
+      'fromNumber' => [
+        'type' => 'varchar',
+        'len' => 12,
+        'fieldType' => 'varchar'
+      ],
+      'toNumber' => [
+        'type' => 'varchar',
+        'len' => 12,
+        'fieldType' => 'varchar'
+      ],
+      'startTime' => [
+        'type' => 'datetime',
+        'notNull' => false,
+        'fieldType' => 'datetime'
+      ],
+      'endTime' => [
+        'type' => 'datetime',
+        'notNull' => false,
+        'fieldType' => 'datetime'
+      ],
+      'duration' => [
+        'type' => 'varchar',
+        'len' => 100,
+        'fieldType' => 'varchar'
+      ],
+      'billDuration' => [
+        'type' => 'varchar',
+        'len' => 100,
+        'fieldType' => 'varchar'
+      ],
+      'hangupCause' => [
+        'type' => 'varchar',
+        'len' => 100,
+        'default' => 'USER_BUSY',
+        'fieldType' => 'varchar'
+      ],
+      'transcripts' => [
+        'type' => 'jsonArray',
+        'default' => [],
+        'storeArrayValues' => true,
+        'fieldType' => 'jsonArray'
+      ],
+      'createdById' => [
+        'len' => 17,
+        'dbType' => 'string',
+        'type' => 'foreignId',
+        'index' => true,
+        'attributeRole' => 'id',
+        'fieldType' => 'link',
+        'notNull' => false
+      ],
+      'createdByName' => [
+        'type' => 'foreign',
+        'notStorable' => true,
+        'attributeRole' => 'name',
+        'fieldType' => 'link',
+        'relation' => 'createdBy',
+        'foreign' => 'name',
+        'foreignType' => 'varchar'
+      ],
+      'modifiedById' => [
+        'len' => 17,
+        'dbType' => 'string',
+        'type' => 'foreignId',
+        'index' => true,
+        'attributeRole' => 'id',
+        'fieldType' => 'link',
+        'notNull' => false
+      ],
+      'modifiedByName' => [
+        'type' => 'foreign',
+        'notStorable' => true,
+        'attributeRole' => 'name',
+        'fieldType' => 'link',
+        'relation' => 'modifiedBy',
+        'foreign' => 'name',
+        'foreignType' => 'varchar'
+      ],
+      'assignedUserId' => [
+        'len' => 17,
+        'dbType' => 'string',
+        'type' => 'foreignId',
+        'index' => true,
+        'attributeRole' => 'id',
+        'fieldType' => 'link',
+        'notNull' => false
+      ],
+      'assignedUserName' => [
+        'type' => 'foreign',
+        'notStorable' => true,
+        'attributeRole' => 'name',
+        'fieldType' => 'link',
+        'relation' => 'assignedUser',
+        'foreign' => 'name',
+        'foreignType' => 'varchar'
+      ],
+      'teamsIds' => [
+        'type' => 'jsonArray',
+        'notStorable' => true,
+        'isLinkMultipleIdList' => true,
+        'relation' => 'teams',
+        'isUnordered' => true,
+        'attributeRole' => 'idList',
+        'fieldType' => 'linkMultiple'
+      ],
+      'teamsNames' => [
+        'type' => 'jsonObject',
+        'notStorable' => true,
+        'isLinkMultipleNameMap' => true,
+        'attributeRole' => 'nameMap',
+        'fieldType' => 'linkMultiple'
+      ]
+    ],
+    'relations' => [
+      'teams' => [
+        'type' => 'manyMany',
+        'entity' => 'Team',
+        'relationName' => 'entityTeam',
+        'midKeys' => [
+          0 => 'entityId',
+          1 => 'teamId'
+        ],
+        'conditions' => [
+          'entityType' => 'CCallioHistory'
+        ],
+        'additionalColumns' => [
+          'entityType' => [
+            'type' => 'varchar',
+            'len' => 100
+          ]
+        ],
+        'indexes' => [
+          'entityId' => [
+            'columns' => [
+              0 => 'entityId'
+            ],
+            'key' => 'IDX_ENTITY_ID'
+          ],
+          'teamId' => [
+            'columns' => [
+              0 => 'teamId'
+            ],
+            'key' => 'IDX_TEAM_ID'
+          ],
+          'entityId_teamId_entityType' => [
+            'type' => 'unique',
+            'columns' => [
+              0 => 'entityId',
+              1 => 'teamId',
+              2 => 'entityType'
+            ],
+            'key' => 'UNIQ_ENTITY_ID_TEAM_ID_ENTITY_TYPE'
+          ]
+        ]
+      ],
+      'assignedUser' => [
+        'type' => 'belongsTo',
+        'entity' => 'User',
+        'key' => 'assignedUserId',
+        'foreignKey' => 'id',
+        'foreign' => NULL
+      ],
+      'modifiedBy' => [
+        'type' => 'belongsTo',
+        'entity' => 'User',
+        'key' => 'modifiedById',
+        'foreignKey' => 'id',
+        'foreign' => NULL
+      ],
+      'createdBy' => [
+        'type' => 'belongsTo',
+        'entity' => 'User',
+        'key' => 'createdById',
+        'foreignKey' => 'id',
+        'foreign' => NULL
+      ]
+    ],
+    'indexes' => [
+      'name' => [
+        'columns' => [
+          0 => 'name',
+          1 => 'deleted'
+        ],
+        'key' => 'IDX_NAME'
+      ],
+      'assignedUser' => [
+        'columns' => [
+          0 => 'assignedUserId',
+          1 => 'deleted'
+        ],
+        'key' => 'IDX_ASSIGNED_USER'
+      ],
+      'createdAt' => [
+        'columns' => [
+          0 => 'createdAt'
+        ],
+        'key' => 'IDX_CREATED_AT'
+      ],
+      'createdAtId' => [
+        'unique' => true,
+        'columns' => [
+          0 => 'createdAt',
+          1 => 'id'
+        ],
+        'key' => 'UNIQ_CREATED_AT_ID'
+      ],
+      'createdById' => [
+        'type' => 'index',
+        'columns' => [
+          0 => 'createdById'
+        ],
+        'key' => 'IDX_CREATED_BY_ID'
+      ],
+      'modifiedById' => [
+        'type' => 'index',
+        'columns' => [
+          0 => 'modifiedById'
+        ],
+        'key' => 'IDX_MODIFIED_BY_ID'
+      ],
+      'assignedUserId' => [
+        'type' => 'index',
+        'columns' => [
+          0 => 'assignedUserId'
+        ],
+        'key' => 'IDX_ASSIGNED_USER_ID'
+      ]
+    ],
+    'collection' => [
+      'orderBy' => 'createdAt',
+      'order' => 'DESC'
+    ]
+  ],
   'CProduct' => [
     'attributes' => [
       'id' => [
@@ -32307,7 +32570,7 @@ return [
       ],
       'handover' => [
         'type' => 'varchar',
-        'len' => 50,
+        'len' => 100,
         'fieldType' => 'varchar'
       ],
       'direction' => [
@@ -32391,7 +32654,7 @@ return [
       ],
       'landFund' => [
         'type' => 'varchar',
-        'len' => 50,
+        'len' => 100,
         'fieldType' => 'varchar'
       ],
       'dateOfPrice' => [
@@ -32404,11 +32667,6 @@ return [
         'len' => 200,
         'fieldType' => 'varchar'
       ],
-      'status' => [
-        'type' => 'varchar',
-        'len' => 50,
-        'fieldType' => 'varchar'
-      ],
       'providerCode' => [
         'type' => 'varchar',
         'len' => 50,
@@ -32417,11 +32675,6 @@ return [
       'providerName' => [
         'type' => 'varchar',
         'len' => 50,
-        'fieldType' => 'varchar'
-      ],
-      'providerLink' => [
-        'type' => 'varchar',
-        'len' => 300,
         'fieldType' => 'varchar'
       ],
       'tts' => [
@@ -32482,18 +32735,39 @@ return [
       ],
       'csbh' => [
         'type' => 'varchar',
-        'len' => 100,
-        'fieldType' => 'varchar'
-      ],
-      'ptg' => [
-        'type' => 'varchar',
-        'len' => 100,
+        'len' => 200,
         'fieldType' => 'varchar'
       ],
       'refreshTime' => [
         'type' => 'datetime',
         'notNull' => false,
         'fieldType' => 'datetime'
+      ],
+      'ptg' => [
+        'type' => 'varchar',
+        'fieldType' => 'varchar',
+        'len' => 255
+      ],
+      'providerLink' => [
+        'type' => 'varchar',
+        'len' => 300,
+        'fieldType' => 'varchar'
+      ],
+      'status' => [
+        'type' => 'varchar',
+        'len' => 100,
+        'default' => 'Còn hàng',
+        'fieldType' => 'varchar'
+      ],
+      'resourceType' => [
+        'type' => 'varchar',
+        'len' => 50,
+        'fieldType' => 'varchar'
+      ],
+      'comments' => [
+        'type' => 'varchar',
+        'len' => 200,
+        'fieldType' => 'varchar'
       ],
       'priceCurrency' => [
         'type' => 'varchar',
@@ -33646,6 +33920,327 @@ return [
         ],
         'conditions' => [
           'entityType' => 'CProduct'
+        ],
+        'additionalColumns' => [
+          'entityType' => [
+            'type' => 'varchar',
+            'len' => 100
+          ]
+        ],
+        'indexes' => [
+          'entityId' => [
+            'columns' => [
+              0 => 'entityId'
+            ],
+            'key' => 'IDX_ENTITY_ID'
+          ],
+          'teamId' => [
+            'columns' => [
+              0 => 'teamId'
+            ],
+            'key' => 'IDX_TEAM_ID'
+          ],
+          'entityId_teamId_entityType' => [
+            'type' => 'unique',
+            'columns' => [
+              0 => 'entityId',
+              1 => 'teamId',
+              2 => 'entityType'
+            ],
+            'key' => 'UNIQ_ENTITY_ID_TEAM_ID_ENTITY_TYPE'
+          ]
+        ]
+      ],
+      'assignedUser' => [
+        'type' => 'belongsTo',
+        'entity' => 'User',
+        'key' => 'assignedUserId',
+        'foreignKey' => 'id',
+        'foreign' => NULL
+      ],
+      'modifiedBy' => [
+        'type' => 'belongsTo',
+        'entity' => 'User',
+        'key' => 'modifiedById',
+        'foreignKey' => 'id',
+        'foreign' => NULL
+      ],
+      'createdBy' => [
+        'type' => 'belongsTo',
+        'entity' => 'User',
+        'key' => 'createdById',
+        'foreignKey' => 'id',
+        'foreign' => NULL
+      ]
+    ],
+    'indexes' => [
+      'name' => [
+        'columns' => [
+          0 => 'name',
+          1 => 'deleted'
+        ],
+        'key' => 'IDX_NAME'
+      ],
+      'assignedUser' => [
+        'columns' => [
+          0 => 'assignedUserId',
+          1 => 'deleted'
+        ],
+        'key' => 'IDX_ASSIGNED_USER'
+      ],
+      'createdAt' => [
+        'columns' => [
+          0 => 'createdAt'
+        ],
+        'key' => 'IDX_CREATED_AT'
+      ],
+      'createdAtId' => [
+        'unique' => true,
+        'columns' => [
+          0 => 'createdAt',
+          1 => 'id'
+        ],
+        'key' => 'UNIQ_CREATED_AT_ID'
+      ],
+      'createdById' => [
+        'type' => 'index',
+        'columns' => [
+          0 => 'createdById'
+        ],
+        'key' => 'IDX_CREATED_BY_ID'
+      ],
+      'modifiedById' => [
+        'type' => 'index',
+        'columns' => [
+          0 => 'modifiedById'
+        ],
+        'key' => 'IDX_MODIFIED_BY_ID'
+      ],
+      'assignedUserId' => [
+        'type' => 'index',
+        'columns' => [
+          0 => 'assignedUserId'
+        ],
+        'key' => 'IDX_ASSIGNED_USER_ID'
+      ]
+    ],
+    'collection' => [
+      'orderBy' => 'createdAt',
+      'order' => 'DESC'
+    ]
+  ],
+  'CSpecification' => [
+    'attributes' => [
+      'id' => [
+        'len' => 17,
+        'dbType' => 'string',
+        'type' => 'id'
+      ],
+      'name' => [
+        'type' => 'varchar',
+        'fieldType' => 'varchar',
+        'len' => 255
+      ],
+      'deleted' => [
+        'type' => 'bool',
+        'default' => false
+      ],
+      'description' => [
+        'type' => 'text',
+        'fieldType' => 'text'
+      ],
+      'createdAt' => [
+        'type' => 'datetime',
+        'notNull' => false,
+        'fieldType' => 'datetime'
+      ],
+      'modifiedAt' => [
+        'type' => 'datetime',
+        'notNull' => false,
+        'fieldType' => 'datetime'
+      ],
+      'areaName' => [
+        'type' => 'varchar',
+        'len' => 50,
+        'fieldType' => 'varchar'
+      ],
+      'houseType' => [
+        'type' => 'varchar',
+        'len' => 50,
+        'fieldType' => 'varchar'
+      ],
+      'landArea' => [
+        'type' => 'float',
+        'notNull' => false,
+        'fieldType' => 'float'
+      ],
+      'constructionArea' => [
+        'type' => 'float',
+        'notNull' => false,
+        'fieldType' => 'float'
+      ],
+      'size' => [
+        'type' => 'varchar',
+        'len' => 50,
+        'fieldType' => 'varchar'
+      ],
+      'direction' => [
+        'type' => 'varchar',
+        'len' => 50,
+        'fieldType' => 'varchar'
+      ],
+      'floors' => [
+        'type' => 'int',
+        'fieldType' => 'int',
+        'len' => 11
+      ],
+      'floor1' => [
+        'type' => 'float',
+        'notNull' => false,
+        'fieldType' => 'float'
+      ],
+      'floor2' => [
+        'type' => 'float',
+        'notNull' => false,
+        'fieldType' => 'float'
+      ],
+      'floor3' => [
+        'type' => 'float',
+        'notNull' => false,
+        'fieldType' => 'float'
+      ],
+      'floor4' => [
+        'type' => 'float',
+        'notNull' => false,
+        'fieldType' => 'float'
+      ],
+      'floor5' => [
+        'type' => 'float',
+        'notNull' => false,
+        'fieldType' => 'float'
+      ],
+      'floor6' => [
+        'type' => 'float',
+        'notNull' => false,
+        'fieldType' => 'float'
+      ],
+      'projectCode' => [
+        'type' => 'varchar',
+        'len' => 20,
+        'fieldType' => 'varchar'
+      ],
+      'street' => [
+        'type' => 'varchar',
+        'len' => 20,
+        'fieldType' => 'varchar'
+      ],
+      'streetNumber' => [
+        'type' => 'varchar',
+        'len' => 20,
+        'fieldType' => 'varchar'
+      ],
+      'houseTemplate' => [
+        'type' => 'varchar',
+        'len' => 50,
+        'fieldType' => 'varchar'
+      ],
+      'usableArea' => [
+        'type' => 'float',
+        'notNull' => false,
+        'fieldType' => 'float'
+      ],
+      'fullArea' => [
+        'type' => 'float',
+        'notNull' => false,
+        'fieldType' => 'float'
+      ],
+      'streetEven' => [
+        'type' => 'int',
+        'fieldType' => 'int',
+        'len' => 11
+      ],
+      'createdById' => [
+        'len' => 17,
+        'dbType' => 'string',
+        'type' => 'foreignId',
+        'index' => true,
+        'attributeRole' => 'id',
+        'fieldType' => 'link',
+        'notNull' => false
+      ],
+      'createdByName' => [
+        'type' => 'foreign',
+        'notStorable' => true,
+        'attributeRole' => 'name',
+        'fieldType' => 'link',
+        'relation' => 'createdBy',
+        'foreign' => 'name',
+        'foreignType' => 'varchar'
+      ],
+      'modifiedById' => [
+        'len' => 17,
+        'dbType' => 'string',
+        'type' => 'foreignId',
+        'index' => true,
+        'attributeRole' => 'id',
+        'fieldType' => 'link',
+        'notNull' => false
+      ],
+      'modifiedByName' => [
+        'type' => 'foreign',
+        'notStorable' => true,
+        'attributeRole' => 'name',
+        'fieldType' => 'link',
+        'relation' => 'modifiedBy',
+        'foreign' => 'name',
+        'foreignType' => 'varchar'
+      ],
+      'assignedUserId' => [
+        'len' => 17,
+        'dbType' => 'string',
+        'type' => 'foreignId',
+        'index' => true,
+        'attributeRole' => 'id',
+        'fieldType' => 'link',
+        'notNull' => false
+      ],
+      'assignedUserName' => [
+        'type' => 'foreign',
+        'notStorable' => true,
+        'attributeRole' => 'name',
+        'fieldType' => 'link',
+        'relation' => 'assignedUser',
+        'foreign' => 'name',
+        'foreignType' => 'varchar'
+      ],
+      'teamsIds' => [
+        'type' => 'jsonArray',
+        'notStorable' => true,
+        'isLinkMultipleIdList' => true,
+        'relation' => 'teams',
+        'isUnordered' => true,
+        'attributeRole' => 'idList',
+        'fieldType' => 'linkMultiple'
+      ],
+      'teamsNames' => [
+        'type' => 'jsonObject',
+        'notStorable' => true,
+        'isLinkMultipleNameMap' => true,
+        'attributeRole' => 'nameMap',
+        'fieldType' => 'linkMultiple'
+      ]
+    ],
+    'relations' => [
+      'teams' => [
+        'type' => 'manyMany',
+        'entity' => 'Team',
+        'relationName' => 'entityTeam',
+        'midKeys' => [
+          0 => 'entityId',
+          1 => 'teamId'
+        ],
+        'conditions' => [
+          'entityType' => 'CSpecification'
         ],
         'additionalColumns' => [
           'entityType' => [

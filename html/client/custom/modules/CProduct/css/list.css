@@ -1,7 +1,6 @@
 /* Container div - cho phép scroll ngang */
 .list[data-scope="CProduct"] {
     overflow-x: auto;
-    /*overflow-y: visible;  Quan trọng: cho phép dropdown hiển thị ra ngoài */
     max-width: 100%;
     width: 100%;
     position: relative;
@@ -11,41 +10,46 @@
 .list .table {
     table-layout: auto;
     white-space: nowrap;
-    width: auto; /* Cho phép table rộng hơn container */
-    min-width: 100%; /* Đảm bảo ít nhất bằng container */
+    width: auto;
+    min-width: 100%;
 }
 
-/* Cột đầu tiên (checkbox) - cố định bên trái (optional) */
+/* Cột đầu tiên (checkbox) - cố định bên trái */
 .list .table th:first-child,
 .list .table td:first-child {
     position: sticky;
     left: 0;
     background: #fff;
-    z-index: 2;
+    z-index: 10;
+    min-width: 50px;
+    width: 50px;
 }
 
 .list .table thead th:first-child {
-    z-index: 3;
+    z-index: 11;
+    background: #f5f5f5;
 }
 
-/* Cột Code (cột thứ 2) - cố định bên trái (optional) */
+/* Cột thứ 2 (Name - field bị mask) - cố định bên trái */
 .list .table th:nth-child(2),
 .list .table td:nth-child(2) {
     position: sticky;
-    left: 40px; /* Bằng width của cột checkbox */
+    left: 50px;
     background: #fff;
-    z-index: 2;
+    z-index: 9;
+    min-width: 150px;
 }
 
 .list .table thead th:nth-child(2) {
-    z-index: 3;
+    z-index: 10;
+    background: #f5f5f5;
 }
 
 /* Các cột khác */
 .list .table th,
 .list .table td {
     padding: 8px 12px;
-    min-width: 100px; /* Width tối thiểu cho mỗi cột */
+    min-width: 100px;
 }
 
 .list .table td[data-name="providerLink"], 
@@ -62,9 +66,9 @@
     width: auto;
 }
 
-/* Scrollbar styling (optional - cho đẹp hơn) */
+/* Scrollbar styling */
 .list[data-scope="CProduct"]::-webkit-scrollbar {
-    height: 10px; /* Giảm chiều cao scrollbar */
+    height: 10px;
 }
 
 .list[data-scope="CProduct"]::-webkit-scrollbar-track {
@@ -75,7 +79,6 @@
 .list[data-scope="CProduct"]::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 3px;
-    /* Không set min-width để scrollbar thumb tự động ngắn theo tỷ lệ */
 }
 
 .list[data-scope="CProduct"]::-webkit-scrollbar-thumb:hover {
@@ -123,9 +126,15 @@
     color: #7777e6;
 }
 
+/* Style checkbox khi được checked trong columns dropdown */
+.columns-dropdown input[type="checkbox"]:checked {
+    background-color: #6092d0 !important;
+    accent-color: #6092d0 !important;
+}
+
 /* Styles for phone call modal */
 
-.phone-call-modal {
+/* .phone-call-modal {
     max-width: 300px;
     max-height: 300px;
 }
@@ -175,4 +184,4 @@
     margin-top: 1rem;
     display: flex;
     justify-content: center;
-}
+} */

@@ -3,47 +3,44 @@ function (Dep, CallioLoader) {
     
     return Dep.extend({
         
+        /**
+         * Custom template cho CProduct detail view
+         * Template path: client/custom/res/templates/CProduct/detail.tpl
+         * Template sẽ render custom layout với 5 panels
+         */
+        template: 'custom:CProduct/detail',
+        
         setup: function () {
             Dep.prototype.setup.call(this);
             
-            // Load Callio Widget nếu user có role Telesale
+            // Load Callio Widget nếu user có role Telesale va admin
             this.wait(
                 this.initCallioWidget()
             );
         },
         
+        afterRender: function () {
+            Dep.prototype.afterRender.call(this);
+        },
+             
         /**
-         * Initialize Callio Widget cho Telesale users
+         * Initialize Callio Widget cho Telesale va admin users
          */
         initCallioWidget: function () {
-            console.log('=== CProduct Detail - Callio Widget Debug ===');
             
             var user = this.getUser();
             var userId = user.id;
-            
-            console.log('Fetching roles for user:', user.get('userName'));
             
             // Fetch user data WITH roles từ server
             return this.getModelFactory().create('User', function (userModel) {
                 userModel.id = userId;
                 
                 this.listenToOnce(userModel, 'sync', function () {
-                    console.log('User data fetched from server');
-                    console.log('User attributes:', userModel.attributes);
-                    
-                    var rolesIds = userModel.get('rolesIds');
-                    var rolesNames = userModel.get('rolesNames');
-                    
-                    console.log('Roles IDs:', rolesIds);
-                    console.log('Roles Names:', rolesNames);
                     
                     var callioLoader = new CallioLoader();
                     var hasRole = callioLoader.hasTelesaleRole(userModel);
                     
-                    console.log('Has Telesale Role:', hasRole);
-                    
-                    if (hasRole) {
-                        console.log('Loading Callio Widget...');
+                    if (hasRole || userModel.attributes.type === "admin") {
                         callioLoader.loadWidget({
                             baseUrl: 'https://client.callio.vn',
                             token: null,
@@ -51,7 +48,7 @@ function (Dep, CallioLoader) {
                             isInbox: false
                         });
                     } else {
-                        console.log('User does not have Telesale role - Widget not loaded');
+                        console.log('User does not have Callio role - Widget not loaded');
                     }
                 }, this);
                 

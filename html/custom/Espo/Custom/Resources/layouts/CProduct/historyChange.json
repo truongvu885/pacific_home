@@ -1,0 +1,26 @@
+[
+    {
+        "name": "bank",
+        "width": 16
+    },
+    {
+        "name": "borrow",
+        "width": 16
+    },
+    {
+        "name": "bonus",
+        "width": 16
+    },
+    {
+        "name": "csbh",
+        "width": 16
+    },
+    {
+        "name": "contractType",
+        "width": 16
+    },
+    {
+        "name": "direction",
+        "width": 16
+    }
+]

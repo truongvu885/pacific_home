@@ -1,0 +1,134 @@
+/* Container div - cho phép scroll ngang */
+.list[data-scope="CSpecification"] {
+    overflow-x: auto;
+    max-width: 100%;
+    width: 100%;
+    position: relative;
+}
+
+/* Table - tắt table-layout fixed để cho phép content tự nhiên */
+.list .table {
+    table-layout: auto;
+    white-space: nowrap;
+    width: auto;
+    min-width: 100%;
+}
+
+/* Cột đầu tiên (checkbox) - cố định bên trái */
+.list .table th:first-child,
+.list .table td:first-child {
+    position: sticky;
+    left: 0;
+    background: #fff;
+    z-index: 10;
+    min-width: 50px;
+    width: 50px;
+}
+
+.list .table thead th:first-child {
+    z-index: 11;
+    background: #f5f5f5;
+}
+
+/* Cột thứ 2 (Name - field bị mask) - cố định bên trái */
+.list .table th:nth-child(2),
+.list .table td:nth-child(2) {
+    position: sticky;
+    left: 50px;
+    background: #fff;
+    z-index: 9;
+    min-width: 150px;
+}
+
+.list .table thead th:nth-child(2) {
+    z-index: 10;
+    background: #f5f5f5;
+}
+
+/* Các cột khác */
+.list .table th,
+.list .table td {
+    padding: 8px 12px;
+    min-width: 100px;
+}
+
+.list .table td[data-name="providerLink"], 
+.list .table td[data-name="ptg"]{
+    max-width: 300px; 
+}
+
+/* Cột hẹp hơn cho checkbox và action */
+.list .table th.checkbox-cell,
+.list .table td.checkbox-cell,
+.list .table th.action-cell,
+.list .table td.action-cell {
+    min-width: auto;
+    width: auto;
+}
+
+/* Scrollbar styling */
+.list[data-scope="CSpecification"]::-webkit-scrollbar {
+    height: 10px;
+}
+
+.list[data-scope="CSpecification"]::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.list[data-scope="CSpecification"]::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.list[data-scope="CSpecification"]::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Firefox scrollbar */
+.list[data-scope="CSpecification"] {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+#main>.list-container>.list[data-scope="CSpecification"]>table td.cell[data-name=buttons]>.btn-group{
+    width: 100%;
+}
+.list[data-scope="CSpecification"] .btn-group>.btn:first-child{
+    width: 100%;
+}
+.list[data-scope="CSpecification"] .pull-right>.dropdown-menu{
+    right: -3.5rem;
+    left: auto;
+    top: -2rem;
+}
+
+/* Nếu table trong container có overflow, cần adjust */
+.list .table tbody {
+    position: relative;
+}
+
+.list .table tbody tr {
+    position: relative;
+} 
+
+/* Cell chứa button dropdown */
+.cell[data-name="buttons"] {
+    overflow: visible !important;
+    position: relative;
+}
+
+.list[data-scope="CSpecification"]>table td.cell[data-name=phoneNumber]{
+    cursor: pointer;
+}
+
+.list[data-scope="CSpecification"]>table td.cell[data-name=phoneNumber] a:hover{
+    color: #7777e6;
+}
+
+/* Style checkbox khi được checked trong columns dropdown */
+.columns-dropdown input[type="checkbox"]:checked {
+    background-color: #6092d0 !important;
+    accent-color: #6092d0 !important;
+}
+

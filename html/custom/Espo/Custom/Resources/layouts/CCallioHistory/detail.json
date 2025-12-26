@@ -1,0 +1,38 @@
+[
+    {
+        "rows": [
+            [
+                {
+                    "name": "fromNumber"
+                },
+                {
+                    "name": "toNumber"
+                },
+                {
+                    "name": "hangupCause"
+                }
+            ],
+            [
+                {
+                    "name": "startTime"
+                },
+                {
+                    "name": "endTime"
+                },
+                {
+                    "name": "billDuration"
+                },
+                {
+                    "name": "duration"
+                }
+            ],
+            [
+                {
+                    "name": "transcripts"
+                }
+            ]
+        ],
+        "style": "default",
+        "label": "Overview"
+    }
+]

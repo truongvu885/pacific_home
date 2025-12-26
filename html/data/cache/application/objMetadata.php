@@ -133,6 +133,10 @@ return (object) [
       'contactLink' => 'contacts',
       'accountLink' => 'account'
     ],
+    'CCallioHistory' => (object) [
+      'contactLink' => NULL,
+      'accountLink' => NULL
+    ],
     'CProduct' => (object) [
       'contactLink' => NULL,
       'accountLink' => NULL
@@ -1097,7 +1101,9 @@ return (object) [
       ],
       'cssList' => [
         0 => 'client/custom/modules/CProduct/css/list.css',
-        1 => 'client/custom/css/login.css'
+        1 => 'client/custom/css/login.css',
+        2 => 'client/custom/modules/CSpecification/css/list.css',
+        3 => 'client/custom/modules/CCallioHistory/css/list.css'
       ]
     ],
     'clientIcons' => (object) [
@@ -7744,11 +7750,13 @@ return (object) [
       'controller' => 'controllers/record',
       'aclPortal' => 'crm:acl-portal/contact',
       'views' => (object) [
-        'detail' => 'crm:views/contact/detail'
+        'detail' => 'crm:views/contact/detail',
+        'list' => 'custom:views/Contact/list'
       ],
       'recordViews' => (object) [
         'detail' => 'crm:views/contact/record/detail',
-        'detailQuick' => 'crm:views/contact/record/detail-small'
+        'detailQuick' => 'crm:views/contact/record/detail-small',
+        'list' => 'custom:views/Contact/record/list'
       ],
       'sidePanels' => (object) [
         'detail' => [
@@ -7847,7 +7855,8 @@ return (object) [
         0 => 'portalUsers'
       ],
       'color' => '#a4c5e0',
-      'iconClass' => 'fas fa-id-badge'
+      'iconClass' => 'fas fa-id-badge',
+      'kanbanViewMode' => false
     ],
     'Document' => (object) [
       'aclPortal' => 'crm:acl-portal/document',
@@ -8068,10 +8077,12 @@ return (object) [
     'Lead' => (object) [
       'controller' => 'crm:controllers/lead',
       'views' => (object) [
-        'detail' => 'crm:views/lead/detail'
+        'detail' => 'crm:views/lead/detail',
+        'list' => 'custom:views/Lead/list'
       ],
       'recordViews' => (object) [
-        'detail' => 'crm:views/lead/record/detail'
+        'detail' => 'crm:views/lead/record/detail',
+        'list' => 'custom:views/Lead/record/list'
       ],
       'sidePanels' => (object) [
         'detail' => [
@@ -8244,7 +8255,8 @@ return (object) [
         ]
       ],
       'color' => '#d6a2c9',
-      'iconClass' => 'fas fa-address-card'
+      'iconClass' => 'fas fa-address-card',
+      'kanbanViewMode' => false
     ],
     'MassEmail' => (object) [
       'controller' => 'controllers/record',
@@ -8753,6 +8765,31 @@ return (object) [
       'iconClass' => 'fas fa-tasks',
       'kanbanViewMode' => true
     ],
+    'CCallioHistory' => (object) [
+      'controller' => 'controllers/record',
+      'boolFilterList' => [
+        0 => 'onlyMy'
+      ],
+      'iconClass' => 'fas fa-headphones-simple',
+      'menu' => (object) [
+        'list' => [
+          0 => (object) [
+            'label' => 'Test Controller',
+            'action' => 'testController',
+            'acl' => 'read',
+            'iconClass' => 'fas fa-bug'
+          ]
+        ]
+      ],
+      'views' => (object) [
+        'list' => 'custom:views/CCallioHistory/list'
+      ],
+      'recordViews' => (object) [
+        'list' => 'custom:views/CCallioHistory/record/list'
+      ],
+      'kanbanViewMode' => false,
+      'color' => NULL
+    ],
     'CProduct' => (object) [
       'controller' => 'controllers/record',
       'boolFilterList' => [
@@ -8765,9 +8802,23 @@ return (object) [
         'detail' => 'custom:views/CProduct/detail'
       ],
       'recordViews' => (object) [
-        'list' => 'custom:views/CProduct/record/list'
+        'list' => 'custom:views/CProduct/record/list',
+        'detail' => 'custom:views/CProduct/record/detail'
       ],
-      'kanbanViewMode' => false
+      'kanbanViewMode' => false,
+      'additionalLayouts' => (object) [
+        'historyChange' => (object) [
+          'type' => 'list',
+          'isCustom' => true
+        ]
+      ]
+    ],
+    'CSpecification' => (object) [
+      'controller' => 'controllers/record',
+      'boolFilterList' => [
+        0 => 'onlyMy'
+      ],
+      'iconClass' => 'fas fa-bahai'
     ]
   ],
   'dashlets' => (object) [
@@ -22302,6 +22353,8 @@ return (object) [
           0 => 'name',
           1 => 'emailAddress'
         ],
+        'fullTextSearch' => false,
+        'countDisabled' => false,
         'sortBy' => 'createdAt',
         'asc' => false
       ],
@@ -22337,7 +22390,8 @@ return (object) [
             1 => 'deleted'
           ]
         ]
-      ]
+      ],
+      'optimisticConcurrencyControl' => false
     ],
     'Document' => (object) [
       'fields' => (object) [
@@ -23526,6 +23580,8 @@ return (object) [
           1 => 'accountName',
           2 => 'emailAddress'
         ],
+        'fullTextSearch' => false,
+        'countDisabled' => false,
         'sortBy' => 'createdAt',
         'asc' => false
       ],
@@ -23579,7 +23635,8 @@ return (object) [
             1 => 'status'
           ]
         ]
-      ]
+      ],
+      'optimisticConcurrencyControl' => false
     ],
     'MassEmail' => (object) [
       'fields' => (object) [
@@ -25702,6 +25759,164 @@ return (object) [
       'repositoryClassName' => 'Espo\\Core\\Repositories\\Event',
       'optimisticConcurrencyControl' => true
     ],
+    'CCallioHistory' => (object) [
+      'fields' => (object) [
+        'name' => (object) [
+          'type' => 'varchar',
+          'required' => true,
+          'pattern' => '$noBadCharacters',
+          'options' => []
+        ],
+        'description' => (object) [
+          'type' => 'text'
+        ],
+        'createdAt' => (object) [
+          'type' => 'datetime',
+          'readOnly' => true
+        ],
+        'modifiedAt' => (object) [
+          'type' => 'datetime',
+          'readOnly' => true
+        ],
+        'createdBy' => (object) [
+          'type' => 'link',
+          'readOnly' => true,
+          'view' => 'views/fields/user'
+        ],
+        'modifiedBy' => (object) [
+          'type' => 'link',
+          'readOnly' => true,
+          'view' => 'views/fields/user'
+        ],
+        'assignedUser' => (object) [
+          'type' => 'link',
+          'required' => false,
+          'view' => 'views/fields/assigned-user'
+        ],
+        'teams' => (object) [
+          'type' => 'linkMultiple',
+          'view' => 'views/fields/teams'
+        ],
+        'fromNumber' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 12,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'toNumber' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 12,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'startTime' => (object) [
+          'notNull' => false,
+          'type' => 'datetime',
+          'minuteStep' => 30,
+          'isCustom' => true
+        ],
+        'endTime' => (object) [
+          'notNull' => false,
+          'type' => 'datetime',
+          'minuteStep' => 30,
+          'isCustom' => true
+        ],
+        'duration' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 100,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'billDuration' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 100,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'hangupCause' => (object) [
+          'type' => 'enum',
+          'options' => [
+            0 => 'USER_BUSY',
+            1 => 'ORIGINATOR_CANCEL',
+            2 => 'NORMAL_TEMPORARY_FAILURE',
+            3 => 'NORMAL_CLEARING'
+          ],
+          'style' => (object) [
+            'USER_BUSY' => 'danger',
+            'ORIGINATOR_CANCEL' => 'danger',
+            'NORMAL_TEMPORARY_FAILURE' => 'danger',
+            'NORMAL_CLEARING' => 'success'
+          ],
+          'default' => 'USER_BUSY',
+          'maxLength' => 100,
+          'isCustom' => true
+        ],
+        'transcripts' => (object) [
+          'type' => 'array',
+          'storeArrayValues' => true,
+          'default' => [],
+          'isCustom' => true
+        ]
+      ],
+      'links' => (object) [
+        'createdBy' => (object) [
+          'type' => 'belongsTo',
+          'entity' => 'User'
+        ],
+        'modifiedBy' => (object) [
+          'type' => 'belongsTo',
+          'entity' => 'User'
+        ],
+        'assignedUser' => (object) [
+          'type' => 'belongsTo',
+          'entity' => 'User'
+        ],
+        'teams' => (object) [
+          'type' => 'hasMany',
+          'entity' => 'Team',
+          'relationName' => 'entityTeam',
+          'layoutRelationshipsDisabled' => true
+        ]
+      ],
+      'collection' => (object) [
+        'orderBy' => 'createdAt',
+        'order' => 'desc',
+        'textFilterFields' => [
+          0 => 'name'
+        ],
+        'fullTextSearch' => false,
+        'countDisabled' => false,
+        'sortBy' => 'createdAt',
+        'asc' => false
+      ],
+      'indexes' => (object) [
+        'name' => (object) [
+          'columns' => [
+            0 => 'name',
+            1 => 'deleted'
+          ]
+        ],
+        'assignedUser' => (object) [
+          'columns' => [
+            0 => 'assignedUserId',
+            1 => 'deleted'
+          ]
+        ],
+        'createdAt' => (object) [
+          'columns' => [
+            0 => 'createdAt'
+          ]
+        ],
+        'createdAtId' => (object) [
+          'unique' => true,
+          'columns' => [
+            0 => 'createdAt',
+            1 => 'id'
+          ]
+        ]
+      ],
+      'optimisticConcurrencyControl' => false
+    ],
     'CProduct' => (object) [
       'fields' => (object) [
         'name' => (object) [
@@ -25749,6 +25964,7 @@ return (object) [
           'isCustom' => true
         ],
         'phoneNumber' => (object) [
+          'notStorable' => true,
           'type' => 'phone',
           'typeList' => [
             0 => 'Mobile',
@@ -25774,7 +25990,7 @@ return (object) [
         ],
         'handover' => (object) [
           'type' => 'varchar',
-          'maxLength' => 50,
+          'maxLength' => 100,
           'options' => [],
           'isCustom' => true
         ],
@@ -25845,7 +26061,7 @@ return (object) [
         ],
         'landFund' => (object) [
           'type' => 'varchar',
-          'maxLength' => 50,
+          'maxLength' => 100,
           'options' => [],
           'isCustom' => true
         ],
@@ -25861,12 +26077,6 @@ return (object) [
           'options' => [],
           'isCustom' => true
         ],
-        'status' => (object) [
-          'type' => 'varchar',
-          'maxLength' => 50,
-          'options' => [],
-          'isCustom' => true
-        ],
         'providerCode' => (object) [
           'type' => 'varchar',
           'maxLength' => 50,
@@ -25876,12 +26086,6 @@ return (object) [
         'providerName' => (object) [
           'type' => 'varchar',
           'maxLength' => 50,
-          'options' => [],
-          'isCustom' => true
-        ],
-        'providerLink' => (object) [
-          'type' => 'varchar',
-          'maxLength' => 300,
           'options' => [],
           'isCustom' => true
         ],
@@ -25901,13 +26105,7 @@ return (object) [
         ],
         'csbh' => (object) [
           'type' => 'varchar',
-          'maxLength' => 100,
-          'options' => [],
-          'isCustom' => true
-        ],
-        'ptg' => (object) [
-          'type' => 'varchar',
-          'maxLength' => 100,
+          'maxLength' => 200,
           'options' => [],
           'isCustom' => true
         ],
@@ -25915,6 +26113,43 @@ return (object) [
           'notNull' => false,
           'type' => 'datetime',
           'minuteStep' => 30,
+          'isCustom' => true
+        ],
+        'ptg' => (object) [
+          'type' => 'url',
+          'isCustom' => true
+        ],
+        'providerLink' => (object) [
+          'type' => 'url',
+          'isCustom' => true,
+          'maxLength' => 300
+        ],
+        'status' => (object) [
+          'type' => 'enum',
+          'options' => [
+            0 => 'Còn hàng',
+            1 => 'Đã bán',
+            2 => ''
+          ],
+          'style' => (object) [
+            'Còn hàng' => NULL,
+            'Đã bán' => 'danger',
+            '' => NULL
+          ],
+          'default' => 'Còn hàng',
+          'maxLength' => 100,
+          'isCustom' => true
+        ],
+        'resourceType' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'comments' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 200,
+          'options' => [],
           'isCustom' => true
         ],
         'priceCurrency' => (object) [
@@ -25947,8 +26182,8 @@ return (object) [
           'detailLayoutIncompatibleFieldList' => []
         ],
         'phoneNumberIsOptedOut' => (object) [
-          'type' => 'bool',
           'notStorable' => true,
+          'type' => 'bool',
           'layoutDetailDisabled' => true,
           'layoutDefaultSidePanelDisabled' => true,
           'mergeDisabled' => true,
@@ -25960,8 +26195,8 @@ return (object) [
           ]
         ],
         'phoneNumberIsInvalid' => (object) [
-          'type' => 'bool',
           'notStorable' => true,
+          'type' => 'bool',
           'layoutDetailDisabled' => true,
           'layoutDefaultSidePanelDisabled' => true,
           'mergeDisabled' => true,
@@ -26089,10 +26324,7 @@ return (object) [
         'orderBy' => 'createdAt',
         'order' => 'desc',
         'textFilterFields' => [
-          0 => 'name',
-          1 => 'status',
-          2 => 'areaName',
-          3 => 'gifts'
+          0 => 'name'
         ],
         'fullTextSearch' => false,
         'countDisabled' => false,
@@ -26126,6 +26358,205 @@ return (object) [
         ]
       ],
       'optimisticConcurrencyControl' => false
+    ],
+    'CSpecification' => (object) [
+      'fields' => (object) [
+        'name' => (object) [
+          'type' => 'varchar',
+          'required' => true,
+          'pattern' => '$noBadCharacters',
+          'options' => []
+        ],
+        'description' => (object) [
+          'type' => 'text'
+        ],
+        'createdAt' => (object) [
+          'type' => 'datetime',
+          'readOnly' => true
+        ],
+        'modifiedAt' => (object) [
+          'type' => 'datetime',
+          'readOnly' => true
+        ],
+        'createdBy' => (object) [
+          'type' => 'link',
+          'readOnly' => true,
+          'view' => 'views/fields/user'
+        ],
+        'modifiedBy' => (object) [
+          'type' => 'link',
+          'readOnly' => true,
+          'view' => 'views/fields/user'
+        ],
+        'assignedUser' => (object) [
+          'type' => 'link',
+          'required' => false,
+          'view' => 'views/fields/assigned-user'
+        ],
+        'teams' => (object) [
+          'type' => 'linkMultiple',
+          'view' => 'views/fields/teams'
+        ],
+        'areaName' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'houseType' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'landArea' => (object) [
+          'notNull' => false,
+          'type' => 'float',
+          'isCustom' => true
+        ],
+        'constructionArea' => (object) [
+          'notNull' => false,
+          'type' => 'float',
+          'isCustom' => true
+        ],
+        'size' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'direction' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'floors' => (object) [
+          'type' => 'int',
+          'isCustom' => true
+        ],
+        'floor1' => (object) [
+          'notNull' => false,
+          'type' => 'float',
+          'isCustom' => true
+        ],
+        'floor2' => (object) [
+          'notNull' => false,
+          'type' => 'float',
+          'isCustom' => true
+        ],
+        'floor3' => (object) [
+          'notNull' => false,
+          'type' => 'float',
+          'isCustom' => true
+        ],
+        'floor4' => (object) [
+          'notNull' => false,
+          'type' => 'float',
+          'isCustom' => true
+        ],
+        'floor5' => (object) [
+          'notNull' => false,
+          'type' => 'float',
+          'isCustom' => true
+        ],
+        'floor6' => (object) [
+          'notNull' => false,
+          'type' => 'float',
+          'isCustom' => true
+        ],
+        'projectCode' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 20,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'street' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 20,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'streetNumber' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 20,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'houseTemplate' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'usableArea' => (object) [
+          'notNull' => false,
+          'type' => 'float',
+          'isCustom' => true
+        ],
+        'fullArea' => (object) [
+          'notNull' => false,
+          'type' => 'float',
+          'isCustom' => true
+        ],
+        'streetEven' => (object) [
+          'type' => 'int',
+          'max' => 1,
+          'isCustom' => true
+        ]
+      ],
+      'links' => (object) [
+        'createdBy' => (object) [
+          'type' => 'belongsTo',
+          'entity' => 'User'
+        ],
+        'modifiedBy' => (object) [
+          'type' => 'belongsTo',
+          'entity' => 'User'
+        ],
+        'assignedUser' => (object) [
+          'type' => 'belongsTo',
+          'entity' => 'User'
+        ],
+        'teams' => (object) [
+          'type' => 'hasMany',
+          'entity' => 'Team',
+          'relationName' => 'entityTeam',
+          'layoutRelationshipsDisabled' => true
+        ]
+      ],
+      'collection' => (object) [
+        'orderBy' => 'createdAt',
+        'order' => 'desc',
+        'sortBy' => 'createdAt',
+        'asc' => false
+      ],
+      'indexes' => (object) [
+        'name' => (object) [
+          'columns' => [
+            0 => 'name',
+            1 => 'deleted'
+          ]
+        ],
+        'assignedUser' => (object) [
+          'columns' => [
+            0 => 'assignedUserId',
+            1 => 'deleted'
+          ]
+        ],
+        'createdAt' => (object) [
+          'columns' => [
+            0 => 'createdAt'
+          ]
+        ],
+        'createdAtId' => (object) [
+          'unique' => true,
+          'columns' => [
+            0 => 'createdAt',
+            1 => 'id'
+          ]
+        ]
+      ]
     ]
   ],
   'fields' => (object) [
@@ -31006,7 +31437,8 @@ return (object) [
       'beforeLinkHookClassNameList' => [],
       'beforeUnlinkHookClassNameList' => [],
       'afterLinkHookClassNameList' => [],
-      'afterUnlinkHookClassNameList' => []
+      'afterUnlinkHookClassNameList' => [],
+      'updateDuplicateCheck' => false
     ],
     'DocumentFolder' => (object) [
       'massActions' => (object) [
@@ -31125,7 +31557,8 @@ return (object) [
       'beforeLinkHookClassNameList' => [],
       'beforeUnlinkHookClassNameList' => [],
       'afterLinkHookClassNameList' => [],
-      'afterUnlinkHookClassNameList' => []
+      'afterUnlinkHookClassNameList' => [],
+      'updateDuplicateCheck' => false
     ],
     'MassEmail' => (object) [
       'massActions' => (object) [
@@ -31351,11 +31784,60 @@ return (object) [
       'afterLinkHookClassNameList' => [],
       'afterUnlinkHookClassNameList' => []
     ],
+    'CCallioHistory' => (object) [
+      'duplicateWhereBuilderClassName' => 'Espo\\Classes\\DuplicateWhereBuilders\\General',
+      'updateDuplicateCheck' => false,
+      'readLoaderClassNameList' => [],
+      'listLoaderClassNameList' => [],
+      'saverClassNameList' => [],
+      'selectApplierClassNameList' => [],
+      'createInputFilterClassNameList' => [],
+      'updateInputFilterClassNameList' => [],
+      'outputFilterClassNameList' => [],
+      'beforeReadHookClassNameList' => [],
+      'earlyBeforeCreateHookClassNameList' => [],
+      'beforeCreateHookClassNameList' => [],
+      'earlyBeforeUpdateHookClassNameList' => [],
+      'beforeUpdateHookClassNameList' => [],
+      'beforeDeleteHookClassNameList' => [],
+      'afterCreateHookClassNameList' => [],
+      'afterUpdateHookClassNameList' => [],
+      'afterDeleteHookClassNameList' => [],
+      'beforeLinkHookClassNameList' => [],
+      'beforeUnlinkHookClassNameList' => [],
+      'afterLinkHookClassNameList' => [],
+      'afterUnlinkHookClassNameList' => []
+    ],
     'CProduct' => (object) [
       'duplicateWhereBuilderClassName' => 'Espo\\Classes\\DuplicateWhereBuilders\\General',
       'updateDuplicateCheck' => false,
       'outputFilterClassNameList' => [
         0 => 'Espo\\Custom\\Classes\\FieldProcessing\\CProduct\\NameMaskingFilter'
+      ],
+      'readLoaderClassNameList' => [],
+      'listLoaderClassNameList' => [],
+      'saverClassNameList' => [],
+      'selectApplierClassNameList' => [],
+      'createInputFilterClassNameList' => [],
+      'updateInputFilterClassNameList' => [],
+      'beforeReadHookClassNameList' => [],
+      'earlyBeforeCreateHookClassNameList' => [],
+      'beforeCreateHookClassNameList' => [],
+      'earlyBeforeUpdateHookClassNameList' => [],
+      'beforeUpdateHookClassNameList' => [],
+      'beforeDeleteHookClassNameList' => [],
+      'afterCreateHookClassNameList' => [],
+      'afterUpdateHookClassNameList' => [],
+      'afterDeleteHookClassNameList' => [],
+      'beforeLinkHookClassNameList' => [],
+      'beforeUnlinkHookClassNameList' => [],
+      'afterLinkHookClassNameList' => [],
+      'afterUnlinkHookClassNameList' => []
+    ],
+    'CSpecification' => (object) [
+      'duplicateWhereBuilderClassName' => 'Espo\\Classes\\DuplicateWhereBuilders\\General',
+      'outputFilterClassNameList' => [
+        0 => 'Espo\\Custom\\Classes\\FieldProcessing\\CSpecification\\NameMaskingFilter'
       ],
       'readLoaderClassNameList' => [],
       'listLoaderClassNameList' => [],
@@ -32001,9 +32483,15 @@ return (object) [
       'object' => true,
       'hasPersonalData' => true,
       'duplicateCheckFieldList' => [
-        0 => 'name',
-        1 => 'emailAddress'
-      ]
+        0 => 'emailAddress'
+      ],
+      'disabled' => false,
+      'statusField' => NULL,
+      'kanbanStatusIgnoreList' => NULL,
+      'stars' => false,
+      'preserveAuditLog' => false,
+      'collaborators' => false,
+      'assignedUsers' => false
     ],
     'Document' => (object) [
       'entity' => true,
@@ -32122,9 +32610,14 @@ return (object) [
       'statusField' => 'status',
       'hasPersonalData' => true,
       'duplicateCheckFieldList' => [
-        0 => 'name',
-        1 => 'emailAddress'
-      ]
+        0 => 'emailAddress'
+      ],
+      'disabled' => false,
+      'kanbanStatusIgnoreList' => NULL,
+      'stars' => false,
+      'preserveAuditLog' => false,
+      'collaborators' => false,
+      'assignedUsers' => false
     ],
     'MassEmail' => (object) [
       'entity' => true,
@@ -32293,6 +32786,36 @@ return (object) [
       ],
       'statusFieldLocked' => true
     ],
+    'CCallioHistory' => (object) [
+      'entity' => true,
+      'layouts' => true,
+      'tab' => true,
+      'acl' => true,
+      'aclPortal' => true,
+      'aclPortalLevelList' => [
+        0 => 'all',
+        1 => 'account',
+        2 => 'contact',
+        3 => 'own',
+        4 => 'no'
+      ],
+      'customizable' => true,
+      'importable' => true,
+      'notifications' => true,
+      'stream' => false,
+      'disabled' => false,
+      'type' => 'Base',
+      'module' => 'Custom',
+      'object' => true,
+      'isCustom' => true,
+      'statusField' => NULL,
+      'kanbanStatusIgnoreList' => NULL,
+      'stars' => false,
+      'preserveAuditLog' => false,
+      'duplicateCheckFieldList' => [],
+      'collaborators' => false,
+      'assignedUsers' => false
+    ],
     'CProduct' => (object) [
       'entity' => true,
       'layouts' => true,
@@ -32322,6 +32845,29 @@ return (object) [
       'duplicateCheckFieldList' => [],
       'collaborators' => false,
       'assignedUsers' => false
+    ],
+    'CSpecification' => (object) [
+      'entity' => true,
+      'layouts' => true,
+      'tab' => true,
+      'acl' => true,
+      'aclPortal' => true,
+      'aclPortalLevelList' => [
+        0 => 'all',
+        1 => 'account',
+        2 => 'contact',
+        3 => 'own',
+        4 => 'no'
+      ],
+      'customizable' => true,
+      'importable' => true,
+      'notifications' => true,
+      'stream' => false,
+      'disabled' => false,
+      'type' => 'Base',
+      'module' => 'Custom',
+      'object' => true,
+      'isCustom' => true
     ]
   ],
   'selectDefs' => (object) [
@@ -33055,12 +33601,6 @@ return (object) [
           1 => 'Canceled'
         ]
       ]
-    ]
-  ],
-  'controllers' => (object) [
-    'CallioCall' => (object) [
-      'controllerClassName' => 'Espo\\Custom\\Controllers\\CallioCall',
-      'useContainer' => true
     ]
   ]
 ];

@@ -45,6 +45,7 @@
             "isCustom": true
         },
         "phoneNumber": {
+            "notStorable": true,
             "type": "phone",
             "typeList": [
                 "Mobile",
@@ -70,7 +71,7 @@
         },
         "handover": {
             "type": "varchar",
-            "maxLength": 50,
+            "maxLength": 100,
             "options": [],
             "isCustom": true
         },
@@ -141,7 +142,7 @@
         },
         "landFund": {
             "type": "varchar",
-            "maxLength": 50,
+            "maxLength": 100,
             "options": [],
             "isCustom": true
         },
@@ -157,12 +158,6 @@
             "options": [],
             "isCustom": true
         },
-        "status": {
-            "type": "varchar",
-            "maxLength": 50,
-            "options": [],
-            "isCustom": true
-        },
         "providerCode": {
             "type": "varchar",
             "maxLength": 50,
@@ -172,12 +167,6 @@
         "providerName": {
             "type": "varchar",
             "maxLength": 50,
-            "options": [],
-            "isCustom": true
-        },
-        "providerLink": {
-            "type": "varchar",
-            "maxLength": 300,
             "options": [],
             "isCustom": true
         },
@@ -197,13 +186,7 @@
         },
         "csbh": {
             "type": "varchar",
-            "maxLength": 100,
-            "options": [],
-            "isCustom": true
-        },
-        "ptg": {
-            "type": "varchar",
-            "maxLength": 100,
+            "maxLength": 200,
             "options": [],
             "isCustom": true
         },
@@ -211,6 +194,43 @@
             "notNull": false,
             "type": "datetime",
             "minuteStep": 30,
+            "isCustom": true
+        },
+        "ptg": {
+            "type": "url",
+            "isCustom": true
+        },
+        "providerLink": {
+            "type": "url",
+            "isCustom": true,
+            "maxLength": 300
+        },
+        "status": {
+            "type": "enum",
+            "options": [
+                "Còn hàng",
+                "Đã bán",
+                ""
+            ],
+            "style": {
+                "Còn hàng": null,
+                "Đã bán": "danger",
+                "": null
+            },
+            "default": "Còn hàng",
+            "maxLength": 100,
+            "isCustom": true
+        },
+        "resourceType": {
+            "type": "varchar",
+            "maxLength": 50,
+            "options": [],
+            "isCustom": true
+        },
+        "comments": {
+            "type": "varchar",
+            "maxLength": 200,
+            "options": [],
             "isCustom": true
         }
     },
@@ -238,10 +258,7 @@
         "orderBy": "createdAt",
         "order": "desc",
         "textFilterFields": [
-            "name",
-            "status",
-            "areaName",
-            "gifts"
+            "name"
         ],
         "fullTextSearch": false,
         "countDisabled": false

@@ -1,0 +1,11 @@
+{
+    "scopeNames": {
+        "CProduct": "Nguồn hàng",
+        "Lead": "Khách hàng"
+    },
+    "scopeNamesPlural": {
+        "CProduct": "Nguồn hàng",
+        "Lead": "Khách hàng",
+        "Contact": "Liên lạc"
+    }
+}

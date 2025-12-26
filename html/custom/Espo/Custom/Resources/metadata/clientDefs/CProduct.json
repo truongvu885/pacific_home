@@ -10,7 +10,14 @@
         "detail": "custom:views/CProduct/detail"
     },
     "recordViews": {
-        "list": "custom:views/CProduct/record/list"
+        "list": "custom:views/CProduct/record/list",
+        "detail": "custom:views/CProduct/record/detail"
     },
-    "kanbanViewMode": false
+    "kanbanViewMode": false,
+    "additionalLayouts": {
+        "historyChange": {
+            "type": "list",
+            "isCustom": true
+        }
+    }
 }

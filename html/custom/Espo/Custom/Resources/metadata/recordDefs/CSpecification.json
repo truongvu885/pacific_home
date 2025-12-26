@@ -1,0 +1,6 @@
+{
+  "duplicateWhereBuilderClassName": "Espo\\Classes\\DuplicateWhereBuilders\\General",
+  "outputFilterClassNameList": [
+    "Espo\\Custom\\Classes\\FieldProcessing\\CSpecification\\NameMaskingFilter"
+  ]
+}

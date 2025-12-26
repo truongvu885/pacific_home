@@ -1,0 +1,40 @@
+[
+    {
+        "name": "name",
+        "width": 16,
+        "link": true
+    },
+    {
+        "name": "fromNumber",
+        "width": 16
+    },
+    {
+        "name": "toNumber",
+        "width": 16
+    },
+    {
+        "name": "startTime",
+        "width": 16
+    },
+    {
+        "name": "endTime",
+        "width": 16
+    },
+    {
+        "name": "duration",
+        "width": 16
+    },
+    {
+        "name": "hangupCause",
+        "width": 16
+    },
+    {
+        "name": "billDuration",
+        "width": 16
+    },
+    {
+        "name": "transcripts",
+        "width": 16,
+        "notSortable": true
+    }
+]

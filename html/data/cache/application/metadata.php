@@ -133,6 +133,10 @@ return [
       'contactLink' => 'contacts',
       'accountLink' => 'account'
     ],
+    'CCallioHistory' => [
+      'contactLink' => NULL,
+      'accountLink' => NULL
+    ],
     'CProduct' => [
       'contactLink' => NULL,
       'accountLink' => NULL
@@ -1097,7 +1101,9 @@ return [
       ],
       'cssList' => [
         0 => 'client/custom/modules/CProduct/css/list.css',
-        1 => 'client/custom/css/login.css'
+        1 => 'client/custom/css/login.css',
+        2 => 'client/custom/modules/CSpecification/css/list.css',
+        3 => 'client/custom/modules/CCallioHistory/css/list.css'
       ]
     ],
     'clientIcons' => [
@@ -7744,11 +7750,13 @@ return [
       'controller' => 'controllers/record',
       'aclPortal' => 'crm:acl-portal/contact',
       'views' => [
-        'detail' => 'crm:views/contact/detail'
+        'detail' => 'crm:views/contact/detail',
+        'list' => 'custom:views/Contact/list'
       ],
       'recordViews' => [
         'detail' => 'crm:views/contact/record/detail',
-        'detailQuick' => 'crm:views/contact/record/detail-small'
+        'detailQuick' => 'crm:views/contact/record/detail-small',
+        'list' => 'custom:views/Contact/record/list'
       ],
       'sidePanels' => [
         'detail' => [
@@ -7847,7 +7855,8 @@ return [
         0 => 'portalUsers'
       ],
       'color' => '#a4c5e0',
-      'iconClass' => 'fas fa-id-badge'
+      'iconClass' => 'fas fa-id-badge',
+      'kanbanViewMode' => false
     ],
     'Document' => [
       'aclPortal' => 'crm:acl-portal/document',
@@ -8068,10 +8077,12 @@ return [
     'Lead' => [
       'controller' => 'crm:controllers/lead',
       'views' => [
-        'detail' => 'crm:views/lead/detail'
+        'detail' => 'crm:views/lead/detail',
+        'list' => 'custom:views/Lead/list'
       ],
       'recordViews' => [
-        'detail' => 'crm:views/lead/record/detail'
+        'detail' => 'crm:views/lead/record/detail',
+        'list' => 'custom:views/Lead/record/list'
       ],
       'sidePanels' => [
         'detail' => [
@@ -8244,7 +8255,8 @@ return [
         ]
       ],
       'color' => '#d6a2c9',
-      'iconClass' => 'fas fa-address-card'
+      'iconClass' => 'fas fa-address-card',
+      'kanbanViewMode' => false
     ],
     'MassEmail' => [
       'controller' => 'controllers/record',
@@ -8753,6 +8765,31 @@ return [
       'iconClass' => 'fas fa-tasks',
       'kanbanViewMode' => true
     ],
+    'CCallioHistory' => [
+      'controller' => 'controllers/record',
+      'boolFilterList' => [
+        0 => 'onlyMy'
+      ],
+      'iconClass' => 'fas fa-headphones-simple',
+      'menu' => [
+        'list' => [
+          0 => [
+            'label' => 'Test Controller',
+            'action' => 'testController',
+            'acl' => 'read',
+            'iconClass' => 'fas fa-bug'
+          ]
+        ]
+      ],
+      'views' => [
+        'list' => 'custom:views/CCallioHistory/list'
+      ],
+      'recordViews' => [
+        'list' => 'custom:views/CCallioHistory/record/list'
+      ],
+      'kanbanViewMode' => false,
+      'color' => NULL
+    ],
     'CProduct' => [
       'controller' => 'controllers/record',
       'boolFilterList' => [
@@ -8765,9 +8802,23 @@ return [
         'detail' => 'custom:views/CProduct/detail'
       ],
       'recordViews' => [
-        'list' => 'custom:views/CProduct/record/list'
+        'list' => 'custom:views/CProduct/record/list',
+        'detail' => 'custom:views/CProduct/record/detail'
       ],
-      'kanbanViewMode' => false
+      'kanbanViewMode' => false,
+      'additionalLayouts' => [
+        'historyChange' => [
+          'type' => 'list',
+          'isCustom' => true
+        ]
+      ]
+    ],
+    'CSpecification' => [
+      'controller' => 'controllers/record',
+      'boolFilterList' => [
+        0 => 'onlyMy'
+      ],
+      'iconClass' => 'fas fa-bahai'
     ]
   ],
   'dashlets' => [
@@ -22302,6 +22353,8 @@ return [
           0 => 'name',
           1 => 'emailAddress'
         ],
+        'fullTextSearch' => false,
+        'countDisabled' => false,
         'sortBy' => 'createdAt',
         'asc' => false
       ],
@@ -22337,7 +22390,8 @@ return [
             1 => 'deleted'
           ]
         ]
-      ]
+      ],
+      'optimisticConcurrencyControl' => false
     ],
     'Document' => [
       'fields' => [
@@ -23526,6 +23580,8 @@ return [
           1 => 'accountName',
           2 => 'emailAddress'
         ],
+        'fullTextSearch' => false,
+        'countDisabled' => false,
         'sortBy' => 'createdAt',
         'asc' => false
       ],
@@ -23579,7 +23635,8 @@ return [
             1 => 'status'
           ]
         ]
-      ]
+      ],
+      'optimisticConcurrencyControl' => false
     ],
     'MassEmail' => [
       'fields' => [
@@ -25702,6 +25759,164 @@ return [
       'repositoryClassName' => 'Espo\\Core\\Repositories\\Event',
       'optimisticConcurrencyControl' => true
     ],
+    'CCallioHistory' => [
+      'fields' => [
+        'name' => [
+          'type' => 'varchar',
+          'required' => true,
+          'pattern' => '$noBadCharacters',
+          'options' => []
+        ],
+        'description' => [
+          'type' => 'text'
+        ],
+        'createdAt' => [
+          'type' => 'datetime',
+          'readOnly' => true
+        ],
+        'modifiedAt' => [
+          'type' => 'datetime',
+          'readOnly' => true
+        ],
+        'createdBy' => [
+          'type' => 'link',
+          'readOnly' => true,
+          'view' => 'views/fields/user'
+        ],
+        'modifiedBy' => [
+          'type' => 'link',
+          'readOnly' => true,
+          'view' => 'views/fields/user'
+        ],
+        'assignedUser' => [
+          'type' => 'link',
+          'required' => false,
+          'view' => 'views/fields/assigned-user'
+        ],
+        'teams' => [
+          'type' => 'linkMultiple',
+          'view' => 'views/fields/teams'
+        ],
+        'fromNumber' => [
+          'type' => 'varchar',
+          'maxLength' => 12,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'toNumber' => [
+          'type' => 'varchar',
+          'maxLength' => 12,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'startTime' => [
+          'notNull' => false,
+          'type' => 'datetime',
+          'minuteStep' => 30,
+          'isCustom' => true
+        ],
+        'endTime' => [
+          'notNull' => false,
+          'type' => 'datetime',
+          'minuteStep' => 30,
+          'isCustom' => true
+        ],
+        'duration' => [
+          'type' => 'varchar',
+          'maxLength' => 100,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'billDuration' => [
+          'type' => 'varchar',
+          'maxLength' => 100,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'hangupCause' => [
+          'type' => 'enum',
+          'options' => [
+            0 => 'USER_BUSY',
+            1 => 'ORIGINATOR_CANCEL',
+            2 => 'NORMAL_TEMPORARY_FAILURE',
+            3 => 'NORMAL_CLEARING'
+          ],
+          'style' => [
+            'USER_BUSY' => 'danger',
+            'ORIGINATOR_CANCEL' => 'danger',
+            'NORMAL_TEMPORARY_FAILURE' => 'danger',
+            'NORMAL_CLEARING' => 'success'
+          ],
+          'default' => 'USER_BUSY',
+          'maxLength' => 100,
+          'isCustom' => true
+        ],
+        'transcripts' => [
+          'type' => 'array',
+          'storeArrayValues' => true,
+          'default' => [],
+          'isCustom' => true
+        ]
+      ],
+      'links' => [
+        'createdBy' => [
+          'type' => 'belongsTo',
+          'entity' => 'User'
+        ],
+        'modifiedBy' => [
+          'type' => 'belongsTo',
+          'entity' => 'User'
+        ],
+        'assignedUser' => [
+          'type' => 'belongsTo',
+          'entity' => 'User'
+        ],
+        'teams' => [
+          'type' => 'hasMany',
+          'entity' => 'Team',
+          'relationName' => 'entityTeam',
+          'layoutRelationshipsDisabled' => true
+        ]
+      ],
+      'collection' => [
+        'orderBy' => 'createdAt',
+        'order' => 'desc',
+        'textFilterFields' => [
+          0 => 'name'
+        ],
+        'fullTextSearch' => false,
+        'countDisabled' => false,
+        'sortBy' => 'createdAt',
+        'asc' => false
+      ],
+      'indexes' => [
+        'name' => [
+          'columns' => [
+            0 => 'name',
+            1 => 'deleted'
+          ]
+        ],
+        'assignedUser' => [
+          'columns' => [
+            0 => 'assignedUserId',
+            1 => 'deleted'
+          ]
+        ],
+        'createdAt' => [
+          'columns' => [
+            0 => 'createdAt'
+          ]
+        ],
+        'createdAtId' => [
+          'unique' => true,
+          'columns' => [
+            0 => 'createdAt',
+            1 => 'id'
+          ]
+        ]
+      ],
+      'optimisticConcurrencyControl' => false
+    ],
     'CProduct' => [
       'fields' => [
         'name' => [
@@ -25749,6 +25964,7 @@ return [
           'isCustom' => true
         ],
         'phoneNumber' => [
+          'notStorable' => true,
           'type' => 'phone',
           'typeList' => [
             0 => 'Mobile',
@@ -25774,7 +25990,7 @@ return [
         ],
         'handover' => [
           'type' => 'varchar',
-          'maxLength' => 50,
+          'maxLength' => 100,
           'options' => [],
           'isCustom' => true
         ],
@@ -25845,7 +26061,7 @@ return [
         ],
         'landFund' => [
           'type' => 'varchar',
-          'maxLength' => 50,
+          'maxLength' => 100,
           'options' => [],
           'isCustom' => true
         ],
@@ -25861,12 +26077,6 @@ return [
           'options' => [],
           'isCustom' => true
         ],
-        'status' => [
-          'type' => 'varchar',
-          'maxLength' => 50,
-          'options' => [],
-          'isCustom' => true
-        ],
         'providerCode' => [
           'type' => 'varchar',
           'maxLength' => 50,
@@ -25876,12 +26086,6 @@ return [
         'providerName' => [
           'type' => 'varchar',
           'maxLength' => 50,
-          'options' => [],
-          'isCustom' => true
-        ],
-        'providerLink' => [
-          'type' => 'varchar',
-          'maxLength' => 300,
           'options' => [],
           'isCustom' => true
         ],
@@ -25901,13 +26105,7 @@ return [
         ],
         'csbh' => [
           'type' => 'varchar',
-          'maxLength' => 100,
-          'options' => [],
-          'isCustom' => true
-        ],
-        'ptg' => [
-          'type' => 'varchar',
-          'maxLength' => 100,
+          'maxLength' => 200,
           'options' => [],
           'isCustom' => true
         ],
@@ -25915,6 +26113,43 @@ return [
           'notNull' => false,
           'type' => 'datetime',
           'minuteStep' => 30,
+          'isCustom' => true
+        ],
+        'ptg' => [
+          'type' => 'url',
+          'isCustom' => true
+        ],
+        'providerLink' => [
+          'type' => 'url',
+          'isCustom' => true,
+          'maxLength' => 300
+        ],
+        'status' => [
+          'type' => 'enum',
+          'options' => [
+            0 => 'Còn hàng',
+            1 => 'Đã bán',
+            2 => ''
+          ],
+          'style' => [
+            'Còn hàng' => NULL,
+            'Đã bán' => 'danger',
+            '' => NULL
+          ],
+          'default' => 'Còn hàng',
+          'maxLength' => 100,
+          'isCustom' => true
+        ],
+        'resourceType' => [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'comments' => [
+          'type' => 'varchar',
+          'maxLength' => 200,
+          'options' => [],
           'isCustom' => true
         ],
         'priceCurrency' => [
@@ -25947,8 +26182,8 @@ return [
           'detailLayoutIncompatibleFieldList' => []
         ],
         'phoneNumberIsOptedOut' => [
-          'type' => 'bool',
           'notStorable' => true,
+          'type' => 'bool',
           'layoutDetailDisabled' => true,
           'layoutDefaultSidePanelDisabled' => true,
           'mergeDisabled' => true,
@@ -25960,8 +26195,8 @@ return [
           ]
         ],
         'phoneNumberIsInvalid' => [
-          'type' => 'bool',
           'notStorable' => true,
+          'type' => 'bool',
           'layoutDetailDisabled' => true,
           'layoutDefaultSidePanelDisabled' => true,
           'mergeDisabled' => true,
@@ -26089,10 +26324,7 @@ return [
         'orderBy' => 'createdAt',
         'order' => 'desc',
         'textFilterFields' => [
-          0 => 'name',
-          1 => 'status',
-          2 => 'areaName',
-          3 => 'gifts'
+          0 => 'name'
         ],
         'fullTextSearch' => false,
         'countDisabled' => false,
@@ -26126,6 +26358,205 @@ return [
         ]
       ],
       'optimisticConcurrencyControl' => false
+    ],
+    'CSpecification' => [
+      'fields' => [
+        'name' => [
+          'type' => 'varchar',
+          'required' => true,
+          'pattern' => '$noBadCharacters',
+          'options' => []
+        ],
+        'description' => [
+          'type' => 'text'
+        ],
+        'createdAt' => [
+          'type' => 'datetime',
+          'readOnly' => true
+        ],
+        'modifiedAt' => [
+          'type' => 'datetime',
+          'readOnly' => true
+        ],
+        'createdBy' => [
+          'type' => 'link',
+          'readOnly' => true,
+          'view' => 'views/fields/user'
+        ],
+        'modifiedBy' => [
+          'type' => 'link',
+          'readOnly' => true,
+          'view' => 'views/fields/user'
+        ],
+        'assignedUser' => [
+          'type' => 'link',
+          'required' => false,
+          'view' => 'views/fields/assigned-user'
+        ],
+        'teams' => [
+          'type' => 'linkMultiple',
+          'view' => 'views/fields/teams'
+        ],
+        'areaName' => [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'houseType' => [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'landArea' => [
+          'notNull' => false,
+          'type' => 'float',
+          'isCustom' => true
+        ],
+        'constructionArea' => [
+          'notNull' => false,
+          'type' => 'float',
+          'isCustom' => true
+        ],
+        'size' => [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'direction' => [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'floors' => [
+          'type' => 'int',
+          'isCustom' => true
+        ],
+        'floor1' => [
+          'notNull' => false,
+          'type' => 'float',
+          'isCustom' => true
+        ],
+        'floor2' => [
+          'notNull' => false,
+          'type' => 'float',
+          'isCustom' => true
+        ],
+        'floor3' => [
+          'notNull' => false,
+          'type' => 'float',
+          'isCustom' => true
+        ],
+        'floor4' => [
+          'notNull' => false,
+          'type' => 'float',
+          'isCustom' => true
+        ],
+        'floor5' => [
+          'notNull' => false,
+          'type' => 'float',
+          'isCustom' => true
+        ],
+        'floor6' => [
+          'notNull' => false,
+          'type' => 'float',
+          'isCustom' => true
+        ],
+        'projectCode' => [
+          'type' => 'varchar',
+          'maxLength' => 20,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'street' => [
+          'type' => 'varchar',
+          'maxLength' => 20,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'streetNumber' => [
+          'type' => 'varchar',
+          'maxLength' => 20,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'houseTemplate' => [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'usableArea' => [
+          'notNull' => false,
+          'type' => 'float',
+          'isCustom' => true
+        ],
+        'fullArea' => [
+          'notNull' => false,
+          'type' => 'float',
+          'isCustom' => true
+        ],
+        'streetEven' => [
+          'type' => 'int',
+          'max' => 1,
+          'isCustom' => true
+        ]
+      ],
+      'links' => [
+        'createdBy' => [
+          'type' => 'belongsTo',
+          'entity' => 'User'
+        ],
+        'modifiedBy' => [
+          'type' => 'belongsTo',
+          'entity' => 'User'
+        ],
+        'assignedUser' => [
+          'type' => 'belongsTo',
+          'entity' => 'User'
+        ],
+        'teams' => [
+          'type' => 'hasMany',
+          'entity' => 'Team',
+          'relationName' => 'entityTeam',
+          'layoutRelationshipsDisabled' => true
+        ]
+      ],
+      'collection' => [
+        'orderBy' => 'createdAt',
+        'order' => 'desc',
+        'sortBy' => 'createdAt',
+        'asc' => false
+      ],
+      'indexes' => [
+        'name' => [
+          'columns' => [
+            0 => 'name',
+            1 => 'deleted'
+          ]
+        ],
+        'assignedUser' => [
+          'columns' => [
+            0 => 'assignedUserId',
+            1 => 'deleted'
+          ]
+        ],
+        'createdAt' => [
+          'columns' => [
+            0 => 'createdAt'
+          ]
+        ],
+        'createdAtId' => [
+          'unique' => true,
+          'columns' => [
+            0 => 'createdAt',
+            1 => 'id'
+          ]
+        ]
+      ]
     ]
   ],
   'fields' => [
@@ -31006,7 +31437,8 @@ return [
       'beforeLinkHookClassNameList' => [],
       'beforeUnlinkHookClassNameList' => [],
       'afterLinkHookClassNameList' => [],
-      'afterUnlinkHookClassNameList' => []
+      'afterUnlinkHookClassNameList' => [],
+      'updateDuplicateCheck' => false
     ],
     'DocumentFolder' => [
       'massActions' => [
@@ -31125,7 +31557,8 @@ return [
       'beforeLinkHookClassNameList' => [],
       'beforeUnlinkHookClassNameList' => [],
       'afterLinkHookClassNameList' => [],
-      'afterUnlinkHookClassNameList' => []
+      'afterUnlinkHookClassNameList' => [],
+      'updateDuplicateCheck' => false
     ],
     'MassEmail' => [
       'massActions' => [
@@ -31351,11 +31784,60 @@ return [
       'afterLinkHookClassNameList' => [],
       'afterUnlinkHookClassNameList' => []
     ],
+    'CCallioHistory' => [
+      'duplicateWhereBuilderClassName' => 'Espo\\Classes\\DuplicateWhereBuilders\\General',
+      'updateDuplicateCheck' => false,
+      'readLoaderClassNameList' => [],
+      'listLoaderClassNameList' => [],
+      'saverClassNameList' => [],
+      'selectApplierClassNameList' => [],
+      'createInputFilterClassNameList' => [],
+      'updateInputFilterClassNameList' => [],
+      'outputFilterClassNameList' => [],
+      'beforeReadHookClassNameList' => [],
+      'earlyBeforeCreateHookClassNameList' => [],
+      'beforeCreateHookClassNameList' => [],
+      'earlyBeforeUpdateHookClassNameList' => [],
+      'beforeUpdateHookClassNameList' => [],
+      'beforeDeleteHookClassNameList' => [],
+      'afterCreateHookClassNameList' => [],
+      'afterUpdateHookClassNameList' => [],
+      'afterDeleteHookClassNameList' => [],
+      'beforeLinkHookClassNameList' => [],
+      'beforeUnlinkHookClassNameList' => [],
+      'afterLinkHookClassNameList' => [],
+      'afterUnlinkHookClassNameList' => []
+    ],
     'CProduct' => [
       'duplicateWhereBuilderClassName' => 'Espo\\Classes\\DuplicateWhereBuilders\\General',
       'updateDuplicateCheck' => false,
       'outputFilterClassNameList' => [
         0 => 'Espo\\Custom\\Classes\\FieldProcessing\\CProduct\\NameMaskingFilter'
+      ],
+      'readLoaderClassNameList' => [],
+      'listLoaderClassNameList' => [],
+      'saverClassNameList' => [],
+      'selectApplierClassNameList' => [],
+      'createInputFilterClassNameList' => [],
+      'updateInputFilterClassNameList' => [],
+      'beforeReadHookClassNameList' => [],
+      'earlyBeforeCreateHookClassNameList' => [],
+      'beforeCreateHookClassNameList' => [],
+      'earlyBeforeUpdateHookClassNameList' => [],
+      'beforeUpdateHookClassNameList' => [],
+      'beforeDeleteHookClassNameList' => [],
+      'afterCreateHookClassNameList' => [],
+      'afterUpdateHookClassNameList' => [],
+      'afterDeleteHookClassNameList' => [],
+      'beforeLinkHookClassNameList' => [],
+      'beforeUnlinkHookClassNameList' => [],
+      'afterLinkHookClassNameList' => [],
+      'afterUnlinkHookClassNameList' => []
+    ],
+    'CSpecification' => [
+      'duplicateWhereBuilderClassName' => 'Espo\\Classes\\DuplicateWhereBuilders\\General',
+      'outputFilterClassNameList' => [
+        0 => 'Espo\\Custom\\Classes\\FieldProcessing\\CSpecification\\NameMaskingFilter'
       ],
       'readLoaderClassNameList' => [],
       'listLoaderClassNameList' => [],
@@ -32001,9 +32483,15 @@ return [
       'object' => true,
       'hasPersonalData' => true,
       'duplicateCheckFieldList' => [
-        0 => 'name',
-        1 => 'emailAddress'
-      ]
+        0 => 'emailAddress'
+      ],
+      'disabled' => false,
+      'statusField' => NULL,
+      'kanbanStatusIgnoreList' => NULL,
+      'stars' => false,
+      'preserveAuditLog' => false,
+      'collaborators' => false,
+      'assignedUsers' => false
     ],
     'Document' => [
       'entity' => true,
@@ -32122,9 +32610,14 @@ return [
       'statusField' => 'status',
       'hasPersonalData' => true,
       'duplicateCheckFieldList' => [
-        0 => 'name',
-        1 => 'emailAddress'
-      ]
+        0 => 'emailAddress'
+      ],
+      'disabled' => false,
+      'kanbanStatusIgnoreList' => NULL,
+      'stars' => false,
+      'preserveAuditLog' => false,
+      'collaborators' => false,
+      'assignedUsers' => false
     ],
     'MassEmail' => [
       'entity' => true,
@@ -32293,6 +32786,36 @@ return [
       ],
       'statusFieldLocked' => true
     ],
+    'CCallioHistory' => [
+      'entity' => true,
+      'layouts' => true,
+      'tab' => true,
+      'acl' => true,
+      'aclPortal' => true,
+      'aclPortalLevelList' => [
+        0 => 'all',
+        1 => 'account',
+        2 => 'contact',
+        3 => 'own',
+        4 => 'no'
+      ],
+      'customizable' => true,
+      'importable' => true,
+      'notifications' => true,
+      'stream' => false,
+      'disabled' => false,
+      'type' => 'Base',
+      'module' => 'Custom',
+      'object' => true,
+      'isCustom' => true,
+      'statusField' => NULL,
+      'kanbanStatusIgnoreList' => NULL,
+      'stars' => false,
+      'preserveAuditLog' => false,
+      'duplicateCheckFieldList' => [],
+      'collaborators' => false,
+      'assignedUsers' => false
+    ],
     'CProduct' => [
       'entity' => true,
       'layouts' => true,
@@ -32322,6 +32845,29 @@ return [
       'duplicateCheckFieldList' => [],
       'collaborators' => false,
       'assignedUsers' => false
+    ],
+    'CSpecification' => [
+      'entity' => true,
+      'layouts' => true,
+      'tab' => true,
+      'acl' => true,
+      'aclPortal' => true,
+      'aclPortalLevelList' => [
+        0 => 'all',
+        1 => 'account',
+        2 => 'contact',
+        3 => 'own',
+        4 => 'no'
+      ],
+      'customizable' => true,
+      'importable' => true,
+      'notifications' => true,
+      'stream' => false,
+      'disabled' => false,
+      'type' => 'Base',
+      'module' => 'Custom',
+      'object' => true,
+      'isCustom' => true
     ]
   ],
   'selectDefs' => [
@@ -33055,12 +33601,6 @@ return [
           1 => 'Canceled'
         ]
       ]
-    ]
-  ],
-  'controllers' => [
-    'CallioCall' => [
-      'controllerClassName' => 'Espo\\Custom\\Controllers\\CallioCall',
-      'useContainer' => true
     ]
   ]
 ];

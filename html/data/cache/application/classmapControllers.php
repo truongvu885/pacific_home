@@ -88,8 +88,8 @@ return [
   'TargetList' => 'Espo\\Modules\\Crm\\Controllers\\TargetList',
   'TargetListCategory' => 'Espo\\Modules\\Crm\\Controllers\\TargetListCategory',
   'Task' => 'Espo\\Modules\\Crm\\Controllers\\Task',
+  'CCallioHistory' => 'Espo\\Custom\\Controllers\\CCallioHistory',
   'CProduct' => 'Espo\\Custom\\Controllers\\CProduct',
-  'CallioAdmin' => 'Espo\\Custom\\Controllers\\CallioAdmin',
-  'CallioCall' => 'Espo\\Custom\\Controllers\\CallioCall',
-  'CallioHistory' => 'Espo\\Custom\\Controllers\\CallioHistory'
+  'CSpecification' => 'Espo\\Custom\\Controllers\\CSpecification',
+  'CallioAdmin' => 'Espo\\Custom\\Controllers\\CallioAdmin'
 ];

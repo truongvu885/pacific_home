@@ -1,32 +1,30 @@
 {
     "fields": {
-        "name": "Code",
-        "price": "Price",
+        "name": "Name",
+        "price": "Giá",
         "priceCurrency": "Price (Currency)",
         "priceConverted": "Price (Converted)",
         "phoneNumber": "Phone",
-        "areaName": "AreaName",
-        "houseType": "HouseType",
-        "handover": "Handover",
-        "direction": "Direction",
-        "landArea": "LandArea",
-        "constructionArea": "ConstructionArea",
-        "borrow": "Borrow",
+        "areaName": "Phân khu",
+        "houseType": "Loại hình",
+        "handover": "TCBG",
+        "direction": "Hướng",
+        "landArea": "DT Đất (m2)",
+        "constructionArea": "DT SD (m2)",
+        "borrow": "Vay tạm tính",
         "borrowCurrency": "Borrow (Currency)",
         "borrowConverted": "Borrow (Converted)",
-        "gifts": "Gifts",
-        "deposit": "Deposit",
-        "bonus": "Bonus",
-        "contractType": "ContractType",
+        "gifts": "Quà tặng",
+        "deposit": "Thông tin đặt cọc",
+        "bonus": "Thưởng sales",
+        "contractType": "Loại hợp đồng",
         "bank": "Bank",
         "f1": "F1",
-        "landFund": "LandFund",
-        "dateOfPrice": "DateOfPrice",
-        "note": "Note",
-        "status": "Status",
-        "providerCode": "ProviderCode",
-        "providerName": "ProviderName",
-        "providerLink": "ProviderLink",
+        "landFund": "Quỹ",
+        "dateOfPrice": "Ngày lấy giá",
+        "note": "Ghi chú",
+        "providerCode": "Mã nhà phân phối",
+        "providerName": "Tên nhà phân phối",
         "tts": "TTS",
         "ttsCurrency": "TTS (Currency)",
         "ttsConverted": "TTS (Converted)",
@@ -34,11 +32,25 @@
         "tttdCurrency": "TTTD (Currency)",
         "tttdConverted": "TTTD (Converted)",
         "csbh": "CSBH",
-        "ptg": "PTG",
-        "refreshTime": "RefreshTime"
+        "refreshTime": "Thời gian đồng bộ data",
+        "ptg": "Link hình ảnh",
+        "providerLink": "URL nhà phân phối",
+        "status": "Trạng thái",
+        "resourceType": "Nguồn",
+        "comments": "Đánh giá"
     },
     "links": [],
     "labels": {
-        "Create CProduct": "Create Product"
+        "Create CProduct": "Tạo Nguồn hàng"
+    },
+    "layouts": {
+        "historyChange": "Lich su thay doi"
+    },
+    "options": {
+        "status": {
+            "Còn hàng": "Còn hàng",
+            "Đã bán": "Đã bán",
+            "": ""
+        }
     }
 }

@@ -1,5 +1,39 @@
 {
-  "labels": {
-    "Create CProduct": "Tạo Product"
-  }
+    "labels": {
+        "Create CProduct": "Tạo Nguồn hàng"
+    },
+    "fields": {
+        "name": "Mã căn",
+        "status": "Trạng thái",
+        "resourceType": "Nguồn",
+        "comments": "Đánh giá",
+        "areaName": "Phân khu",
+        "houseType": "Loại hình",
+        "handover": "TCBG",
+        "direction": "Hướng",
+        "landArea": "DT Đất (m2)",
+        "constructionArea": "DT SD (m2)",
+        "price": "Giá",
+        "borrow": "Vay tạm tính",
+        "ptg": "Link hình ảnh",
+        "gifts": "Quà tặng",
+        "deposit": "Thông tin đặt cọc",
+        "bonus": "Thưởng sales",
+        "contractType": "Loại hợp đồng",
+        "landFund": "Quỹ",
+        "dateOfPrice": "Ngày lấy giá",
+        "note": "Ghi chú",
+        "providerCode": "Mã nhà phân phối",
+        "providerName": "Tên nhà phân phối",
+        "providerLink": "URL nhà phân phối",
+        "refreshTime": "Thời gian đồng bộ data",
+        "phoneNumber": "Số điện thoại"
+    },
+    "options": {
+        "status": {
+            "Còn hàng": "Còn hàng",
+            "Đã bán": "Đã bán",
+            "": ""
+        }
+    }
 }

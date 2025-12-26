@@ -1,7 +1,12 @@
 [
     {
         "name": "name",
+        "width": 16,
         "link": true
+    },
+    {
+        "name": "status",
+        "width": 16
     },
     {
         "name": "areaName",
@@ -9,6 +14,14 @@
     },
     {
         "name": "houseType",
+        "width": 16
+    },
+    {
+        "name": "resourceType",
+        "width": 16
+    },
+    {
+        "name": "phoneNumber",
         "width": 16
     },
     {
@@ -88,10 +101,6 @@
         "width": 16
     },
     {
-        "name": "status",
-        "width": 16
-    },
-    {
         "name": "assignedUser",
         "width": 16
     },
@@ -105,6 +114,10 @@
     },
     {
         "name": "providerLink",
+        "width": 16
+    },
+    {
+        "name": "comments",
         "width": 16
     },
     {
