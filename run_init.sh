@@ -120,6 +120,8 @@ fi
 
 # docker cp ./init_cproduct.sql "${DB_CONTAINER}:/tmp/init_cproduct.sql"
 # docker exec -i "$DB_CONTAINER" sh -c "mysql --default-character-set=utf8mb4 -uroot -p'$DB_ROOT_PASSWORD' espocrm < /tmp/init_cproduct.sql"
+docker exec -i pacific-home-db mysql -uroot -p12345678 --default-character-set=utf8mb4 espocrm < ./init_cproduct.sql
+docker exec -i pacific-home-db mysql -uroot -p12345678 --default-character-set=utf8mb4 espocrm < ./init_cspecification.sql
 
 echo "[init-script] Done."
 exit 0
