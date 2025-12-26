@@ -11,8 +11,8 @@ FROM espocrm/espocrm:9.2.5
 # RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Set quyền file chuẩn cho Apache / PHP
-# RUN chown -R www-data:www-data /var/www/html \
-#     && chmod -R 755 /var/www/html
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html
 
 EXPOSE 80
 
