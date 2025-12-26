@@ -1,3 +1,4 @@
+USE espocrm;
 TRUNCATE TABLE action_history_record;
 TRUNCATE TABLE auth_log_record;
 TRUNCATE TABLE auth_token;
