@@ -10,12 +10,12 @@
                 },
                 {
                     "name": "houseType"
+                },
+                {
+                    "name": "landArea"
                 }
             ],
             [
-                {
-                    "name": "landArea"
-                },
                 {
                     "name": "constructionArea"
                 },
@@ -24,12 +24,12 @@
                 },
                 {
                     "name": "direction"
+                },
+                {
+                    "name": "projectCode"
                 }
             ],
             [
-                {
-                    "name": "projectCode"
-                },
                 {
                     "name": "street"
                 },
@@ -38,12 +38,12 @@
                 },
                 {
                     "name": "floors"
+                },
+                {
+                    "name": "floor1"
                 }
             ],
             [
-                {
-                    "name": "floor1"
-                },
                 {
                     "name": "floor2"
                 },
@@ -52,29 +52,32 @@
                 },
                 {
                     "name": "floor4"
+                },
+                {
+                    "name": "floor5"
                 }
             ],
             [
                 {
-                    "name": "floor5"
+                    "name": "floor6"
                 },
                 {
-                    "name": "floor6"
+                    "name": "houseTemplate"
                 },
                 {
                     "name": "streetEven"
                 },
                 {
-                    "name": "houseTemplate"
+                    "name": "usableArea"
                 }
             ],
             [
                 {
-                    "name": "usableArea"
-                },
-                {
                     "name": "fullArea"
-                }
+                },
+                false,
+                false,
+                false
             ]
         ],
         "style": "default",

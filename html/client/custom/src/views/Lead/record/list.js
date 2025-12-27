@@ -21,8 +21,6 @@ define("custom:views/Lead/record/list", ["views/record/list"], function (Dep) {
           this.callViaCallio(phoneNumber);
         }.bind(this)
       );
-
-      this.addActionColumnHeader();
     },
 
     callViaCallio: function (phoneNumber) {

@@ -5,5 +5,8 @@
         "client/custom/css/login.css",
         "client/custom/modules/CSpecification/css/list.css",
         "client/custom/modules/CCallioHistory/css/list.css"
-    ]
+    ],
+    "viewSetups": {
+        "views/login": "custom:views/login"
+    }
 }

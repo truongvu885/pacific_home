@@ -520,6 +520,13 @@ return (object) [
       'delete' => 'all',
       'create' => 'yes'
     ],
+    'UserRegistration' => (object) [
+      'read' => 'all',
+      'stream' => 'all',
+      'edit' => 'all',
+      'delete' => 'all',
+      'create' => 'yes'
+    ],
     'Target' => false,
     'Stream' => true,
     'ImportEml' => true

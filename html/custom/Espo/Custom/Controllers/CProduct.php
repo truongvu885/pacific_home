@@ -4,6 +4,7 @@ namespace Espo\Custom\Controllers;
 
 use Espo\Core\Api\Request;
 use Espo\Core\Api\Response;
+use GuzzleHttp\Client;
 use stdClass;
 
 class CProduct extends \Espo\Core\Templates\Controllers\Base
@@ -26,5 +27,29 @@ class CProduct extends \Espo\Core\Templates\Controllers\Base
         }
 
         return $result;
+    }
+
+    public function getActionRead(Request $request, Response $response): stdClass
+    {
+
+        $result_parent = parent::getActionRead($request, $response);
+        $httpClient = new Client();
+
+        if (!empty($result_parent->ptg)) {
+            $httpResponse = $httpClient->request(
+                'GET',
+                'https://script.google.com/macros/s/AKfycbxw-e9nZacgUDoK31RoKgqgeBEx97KdnwRPL-GZMoIeB4nGWwzP85GITuVKZ_CrZlM7/exec',
+                [
+                    'query' => [
+                        'url' => $result_parent->ptg,
+                    ],
+                    'timeout' => 30,
+                ]
+            );
+            $body = $httpResponse->getBody()->getContents();
+            $data = json_decode($body, true);
+            $result_parent->ptgData = $data;
+        }
+        return $result_parent;
     }
 }

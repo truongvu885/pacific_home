@@ -4,21 +4,46 @@ define("custom:views/CProduct/record/detail", [
   return Dep.extend({
     template: "custom:CProduct/record/detail",
 
+    gasUrl:
+      "https://script.google.com/macros/s/AKfycbxw-e9nZacgUDoK31RoKgqgeBEx97KdnwRPL-GZMoIeB4nGWwzP85GITuVKZ_CrZlM7/exec",
+
+    data: function () {
+      return {
+        ptgDataIds: this.ptgDataIds || [],
+      };
+    },
     setup: function () {
       Dep.prototype.setup.call(this);
 
       // Load custom CSS
       this.loadCProductDetailCSS();
+      this.ptgDataIds = [];
+      const ptgData = this.model.get("ptgData");
+      console.log("test ptgData:");
+      
+      console.log(ptgData);
+      if (ptgData) {
+        this.getPtgId(ptgData);
+      }
     },
 
     afterRender: function () {
       Dep.prototype.afterRender.call(this);
+
+      console.log(this.ptgDataIds);
 
       // Create child views for custom panels
       this.createPanelViews();
 
       // Setup fullscreen image viewer
       this.setupImageViewer();
+    },
+
+    getPtgId: function (ptgData) {
+      ptgData.forEach((element) => {
+        var ptgId = element.viewUrl.split("=")[1];
+        this.ptgDataIds.push(ptgId);
+      });
     },
 
     /**
@@ -116,7 +141,7 @@ define("custom:views/CProduct/record/detail", [
       var zoomStep = 0.25;
       var minZoom = 0.5;
       var maxZoom = 3;
-      
+
       // Pan variables
       var isDragging = false;
       var startX = 0;
@@ -151,23 +176,37 @@ define("custom:views/CProduct/record/detail", [
       // Function to update zoom
       var updateZoom = function (newZoom) {
         currentZoom = Math.max(minZoom, Math.min(maxZoom, newZoom));
-        
+
         // Reset translate when zoom is 1 or less
         if (currentZoom <= 1) {
           translateX = 0;
           translateY = 0;
         }
-        
+
         viewerImage.css({
-          transform: "scale(" + currentZoom + ") translate(" + translateX + "px, " + translateY + "px)",
+          transform:
+            "scale(" +
+            currentZoom +
+            ") translate(" +
+            translateX +
+            "px, " +
+            translateY +
+            "px)",
           transition: "transform 0.2s ease",
         });
       };
-      
+
       // Function to update pan position
       var updatePan = function () {
         viewerImage.css({
-          transform: "scale(" + currentZoom + ") translate(" + translateX + "px, " + translateY + "px)",
+          transform:
+            "scale(" +
+            currentZoom +
+            ") translate(" +
+            translateX +
+            "px, " +
+            translateY +
+            "px)",
           transition: "none",
         });
       };
@@ -218,7 +257,7 @@ define("custom:views/CProduct/record/detail", [
           updateZoom(currentZoom - zoomStep / 2);
         }
       });
-      
+
       // Mouse drag to pan (when zoomed)
       viewerImage.on("mousedown", function (e) {
         if (currentZoom <= 1) return;
@@ -228,14 +267,14 @@ define("custom:views/CProduct/record/detail", [
         viewerImage.css("cursor", "grabbing");
         e.preventDefault();
       });
-      
+
       $(document).on("mousemove.cproductPan", function (e) {
         if (!isDragging || currentZoom <= 1) return;
         translateX = e.clientX - startX;
         translateY = e.clientY - startY;
         updatePan();
       });
-      
+
       $(document).on("mouseup.cproductPan", function () {
         if (isDragging) {
           isDragging = false;
@@ -246,13 +285,13 @@ define("custom:views/CProduct/record/detail", [
           }
         }
       });
-      
+
       // Touch events for mobile
       var touchStartX = 0;
       var touchStartY = 0;
       var lastTouchX = 0;
       var lastTouchY = 0;
-      
+
       viewerImage.on("touchstart", function (e) {
         if (currentZoom <= 1) return;
         var touch = e.originalEvent.touches[0];
@@ -263,7 +302,7 @@ define("custom:views/CProduct/record/detail", [
         isDragging = true;
         e.preventDefault();
       });
-      
+
       viewerImage.on("touchmove", function (e) {
         if (!isDragging || currentZoom <= 1) return;
         var touch = e.originalEvent.touches[0];
@@ -274,11 +313,11 @@ define("custom:views/CProduct/record/detail", [
         updatePan();
         e.preventDefault();
       });
-      
+
       viewerImage.on("touchend", function () {
         isDragging = false;
       });
-      
+
       // Update cursor based on zoom level
       viewerImage.on("load", function () {
         if (currentZoom > 1) {

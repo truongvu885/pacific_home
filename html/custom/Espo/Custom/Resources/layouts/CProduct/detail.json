@@ -10,12 +10,12 @@
                 },
                 {
                     "name": "houseType"
+                },
+                {
+                    "name": "handover"
                 }
             ],
             [
-                {
-                    "name": "handover"
-                },
                 {
                     "name": "direction"
                 },
@@ -24,12 +24,12 @@
                 },
                 {
                     "name": "constructionArea"
+                },
+                {
+                    "name": "price"
                 }
             ],
             [
-                {
-                    "name": "price"
-                },
                 {
                     "name": "borrow"
                 },
@@ -38,20 +38,18 @@
                 },
                 {
                     "name": "tttd"
+                },
+                {
+                    "name": "csbh"
                 }
             ],
             [
-                {
-                    "name": "csbh"
-                },
                 {
                     "name": "ptg"
                 },
                 {
                     "name": "phoneNumber"
-                }
-            ],
-            [
+                },
                 {
                     "name": "gifts"
                 },
@@ -68,39 +66,36 @@
                 },
                 {
                     "name": "bank"
+                },
+                {
+                    "name": "f1"
                 }
             ],
             [
-                {
-                    "name": "f1"
-                },
                 {
                     "name": "landFund"
                 },
                 {
                     "name": "dateOfPrice"
-                }
-            ],
-            [
-                {
-                    "name": "note"
-                }
-            ],
-            [
-                {
-                    "name": "status"
                 },
                 {
-                    "name": "providerCode"
+                    "name": "note"
+                },
+                {
+                    "name": "status"
                 }
             ],
             [
                 {
-                    "name": "providerName"
+                    "name": "providerCode"
                 },
                 {
                     "name": "providerLink"
-                }
+                },
+                {
+                    "name": "providerName"
+                },
+                false
             ]
         ],
         "style": "default",

@@ -1,0 +1,43 @@
+{
+    "fields": {
+        "userName": {
+            "type": "varchar",
+            "required": true,
+            "maxLength": 50,
+            "view": "views/fields/varchar"
+        },
+        "fullName": {
+            "type": "personName",
+            "required": true
+        },
+        "phoneNumber": {
+            "type": "phone",
+            "required": true
+        },
+        "emailAddress": {
+            "type": "email",
+            "required": true
+        },
+        "password": {
+            "type": "password",
+            "required": true,
+            "maxLength": 150
+        },
+        "requestedRole": {
+            "type": "enum",
+            "required": true,
+            "options": ["user", "portal-user", "sales"],
+            "view": "views/fields/enum"
+        },
+        "status": {
+            "type": "enum",
+            "default": "Pending",
+            "options": ["Pending", "Approved", "Rejected"]
+        }
+    },
+    "links": {},
+    "collection": {
+        "sortBy": "createdAt",
+        "asc": false
+    }
+}

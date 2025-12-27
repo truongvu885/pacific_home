@@ -2908,5 +2908,32 @@ return (object) [
       'readOnly' => [],
       'nonAdminReadOnly' => []
     ]
+  ],
+  'UserRegistration' => (object) [
+    'fields' => (object) [
+      'forbidden' => [],
+      'internal' => [],
+      'onlyAdmin' => [],
+      'readOnly' => [
+        0 => 'streamUpdatedAt'
+      ],
+      'nonAdminReadOnly' => []
+    ],
+    'attributes' => (object) [
+      'forbidden' => [],
+      'internal' => [],
+      'onlyAdmin' => [],
+      'readOnly' => [
+        0 => 'streamUpdatedAt'
+      ],
+      'nonAdminReadOnly' => []
+    ],
+    'links' => (object) [
+      'forbidden' => [],
+      'internal' => [],
+      'onlyAdmin' => [],
+      'readOnly' => [],
+      'nonAdminReadOnly' => []
+    ]
   ]
 ];

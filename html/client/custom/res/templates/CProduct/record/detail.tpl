@@ -205,16 +205,26 @@
                                 <div class="cproduct-gallery">
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <div class="gallery-item">
-                                                   {{!-- Proxy through local endpoint to avoid Drive CORS --}}
-                                                   <img id="cproduct-image-1" 
-                                                       src="/image-proxy.php?id=1aHnkye6LBOyU2vDprFMpOA359GoSuE_r"
-                                                       alt="Product Image 1"
-                                                       class="img-responsive image-preview cproduct-zoomable-image"
-                                                       loading="lazy"
-                                                       data-fullscreen="true"
-                                                    >
-                                            </div>
+                                           {{#if ptgDataIds}}
+                                                {{#each ptgDataIds}}
+                                                    <div class="gallery-item">
+                                                        {{!-- Proxy through local endpoint to avoid Drive CORS --}}
+                                                            <img 
+                                                                src="/image-proxy.php?id={{this}}"
+                                                                alt="Product Image 1"
+                                                                class="img-responsive image-preview cproduct-zoomable-image"
+                                                                loading="lazy"
+                                                                data-fullscreen="true"
+                                                            >
+                                                        
+                                                    </div>
+                                                {{/each}}   
+                                            {{else}}
+                                                <div class="cproduct-empty-state">
+                                                    <i class="fas fa-link"></i>
+                                                    <p>{{translate 'Không có ảnh nào' scope='CProduct'}}</p>
+                                                </div>
+                                            {{/if}}
                                         </div>
                                     </div>
                                 </div>

@@ -4248,7 +4248,7 @@ Available placeholders:
       'Preferences' => 'Tùy chỉnh',
       'Change Password' => 'Đổi mật khẩu',
       'Teams and Access Control' => 'Nhóm và kiểm soát truy cập',
-      'Forgot Password?' => 'Quên mật khẩu?',
+      'Forgot Password?' => 'Quên Mật Khẩu?',
       'Password Change Request' => 'Yêu cầu đổi mật khẩu',
       'Email Address' => 'Địa chỉ email',
       'External Accounts' => 'Tài khoản bên ngoài',
@@ -4266,7 +4266,9 @@ Available placeholders:
       'Code' => 'Code',
       'Secret' => 'Secret',
       'Send Code' => 'Send Code',
-      'Login Link' => 'Login Link'
+      'Login Link' => 'Login Link',
+      'Don\'t have an account?' => 'Không có tài khoản?',
+      'Register' => 'Đăng Ký'
     ],
     'tooltips' => [
       'defaultTeam' => 'All records created by this user will be related to this team by default.',

@@ -34350,6 +34350,1289 @@ return [
       'order' => 'DESC'
     ]
   ],
+  'UserRegistration' => [
+    'attributes' => [
+      'id' => [
+        'len' => 17,
+        'dbType' => 'string',
+        'type' => 'id'
+      ],
+      'name' => [
+        'type' => 'varchar',
+        'notStorable' => true
+      ],
+      'deleted' => [
+        'type' => 'bool',
+        'default' => false
+      ],
+      'userName' => [
+        'type' => 'varchar',
+        'len' => 50,
+        'fieldType' => 'varchar'
+      ],
+      'fullName' => [
+        'type' => 'varchar',
+        'fieldType' => 'personName',
+        'notStorable' => true,
+        'select' => [
+          'select' => 'NULLIF:(TRIM:(CONCAT:(IFNULL:(firstFullName, \'\'), \' \', IFNULL:(lastFullName, \'\'))), \'\')'
+        ],
+        'selectForeign' => [
+          'select' => 'NULLIF:(TRIM:(CONCAT:(IFNULL:({alias}.firstFullName, \'\'), \' \', IFNULL:({alias}.lastFullName, \'\'))), \'\')'
+        ],
+        'where' => [
+          'LIKE' => [
+            'whereClause' => [
+              'OR' => [
+                'firstFullName*' => '{value}',
+                'lastFullName*' => '{value}',
+                'CONCAT:(firstFullName, \' \', lastFullName)*' => '{value}',
+                'CONCAT:(lastFullName, \' \', firstFullName)*' => '{value}'
+              ]
+            ]
+          ],
+          'NOT LIKE' => [
+            'whereClause' => [
+              'AND' => [
+                'firstFullName!*' => '{value}',
+                'lastFullName!*' => '{value}',
+                'CONCAT:(firstFullName, \' \', lastFullName)!*' => '{value}',
+                'CONCAT:(lastFullName, \' \', firstFullName)!*' => '{value}'
+              ]
+            ]
+          ],
+          '=' => [
+            'whereClause' => [
+              'OR' => [
+                'firstFullName' => '{value}',
+                'lastFullName' => '{value}',
+                'CONCAT:(firstFullName, \' \', lastFullName)' => '{value}',
+                'CONCAT:(lastFullName, \' \', firstFullName)' => '{value}'
+              ]
+            ]
+          ]
+        ],
+        'order' => [
+          'order' => [
+            0 => [
+              0 => 'firstFullName',
+              1 => '{direction}'
+            ],
+            1 => [
+              0 => 'lastFullName',
+              1 => '{direction}'
+            ]
+          ]
+        ]
+      ],
+      'phoneNumber' => [
+        'type' => 'varchar',
+        'notStorable' => true,
+        'fieldType' => 'phone',
+        'select' => [
+          'select' => 'phoneNumbers.name',
+          'leftJoins' => [
+            0 => [
+              0 => 'phoneNumbers',
+              1 => 'phoneNumbers',
+              2 => [
+                'primary' => true
+              ]
+            ]
+          ]
+        ],
+        'selectForeign' => [
+          'select' => 'phoneNumberUserRegistration{alias}Foreign.name',
+          'leftJoins' => [
+            0 => [
+              0 => 'EntityPhoneNumber',
+              1 => 'phoneNumberUserRegistration{alias}ForeignMiddle',
+              2 => [
+                'phoneNumberUserRegistration{alias}ForeignMiddle.entityId:' => '{alias}.id',
+                'phoneNumberUserRegistration{alias}ForeignMiddle.primary' => true,
+                'phoneNumberUserRegistration{alias}ForeignMiddle.deleted' => false
+              ]
+            ],
+            1 => [
+              0 => 'PhoneNumber',
+              1 => 'phoneNumberUserRegistration{alias}Foreign',
+              2 => [
+                'phoneNumberUserRegistration{alias}Foreign.id:' => 'phoneNumberUserRegistration{alias}ForeignMiddle.phoneNumberId',
+                'phoneNumberUserRegistration{alias}Foreign.deleted' => false
+              ]
+            ]
+          ]
+        ],
+        'where' => [
+          'LIKE' => [
+            'whereClause' => [
+              'id=s' => [
+                'from' => 'EntityPhoneNumber',
+                'select' => [
+                  0 => 'entityId'
+                ],
+                'joins' => [
+                  0 => [
+                    0 => 'phoneNumber',
+                    1 => 'phoneNumber',
+                    2 => [
+                      'phoneNumber.id:' => 'phoneNumberId',
+                      'phoneNumber.deleted' => false
+                    ]
+                  ]
+                ],
+                'whereClause' => [
+                  'deleted' => false,
+                  'entityType' => 'UserRegistration',
+                  'phoneNumber.name*' => '{value}'
+                ]
+              ]
+            ]
+          ],
+          'NOT LIKE' => [
+            'whereClause' => [
+              'id!=s' => [
+                'from' => 'EntityPhoneNumber',
+                'select' => [
+                  0 => 'entityId'
+                ],
+                'joins' => [
+                  0 => [
+                    0 => 'phoneNumber',
+                    1 => 'phoneNumber',
+                    2 => [
+                      'phoneNumber.id:' => 'phoneNumberId',
+                      'phoneNumber.deleted' => false
+                    ]
+                  ]
+                ],
+                'whereClause' => [
+                  'deleted' => false,
+                  'entityType' => 'UserRegistration',
+                  'phoneNumber.name*' => '{value}'
+                ]
+              ]
+            ]
+          ],
+          '=' => [
+            'leftJoins' => [
+              0 => [
+                0 => 'phoneNumbers',
+                1 => 'phoneNumbersMultiple'
+              ]
+            ],
+            'whereClause' => [
+              'phoneNumbersMultiple.name=' => '{value}'
+            ]
+          ],
+          '<>' => [
+            'whereClause' => [
+              'id!=s' => [
+                'from' => 'EntityPhoneNumber',
+                'select' => [
+                  0 => 'entityId'
+                ],
+                'joins' => [
+                  0 => [
+                    0 => 'phoneNumber',
+                    1 => 'phoneNumber',
+                    2 => [
+                      'phoneNumber.id:' => 'phoneNumberId',
+                      'phoneNumber.deleted' => false
+                    ]
+                  ]
+                ],
+                'whereClause' => [
+                  'deleted' => false,
+                  'entityType' => 'UserRegistration',
+                  'phoneNumber.name' => '{value}'
+                ]
+              ]
+            ]
+          ],
+          'IN' => [
+            'whereClause' => [
+              'id=s' => [
+                'from' => 'EntityPhoneNumber',
+                'select' => [
+                  0 => 'entityId'
+                ],
+                'joins' => [
+                  0 => [
+                    0 => 'phoneNumber',
+                    1 => 'phoneNumber',
+                    2 => [
+                      'phoneNumber.id:' => 'phoneNumberId',
+                      'phoneNumber.deleted' => false
+                    ]
+                  ]
+                ],
+                'whereClause' => [
+                  'deleted' => false,
+                  'entityType' => 'UserRegistration',
+                  'phoneNumber.name' => '{value}'
+                ]
+              ]
+            ]
+          ],
+          'NOT IN' => [
+            'whereClause' => [
+              'id=s' => [
+                'from' => 'EntityPhoneNumber',
+                'select' => [
+                  0 => 'entityId'
+                ],
+                'joins' => [
+                  0 => [
+                    0 => 'phoneNumber',
+                    1 => 'phoneNumber',
+                    2 => [
+                      'phoneNumber.id:' => 'phoneNumberId',
+                      'phoneNumber.deleted' => false
+                    ]
+                  ]
+                ],
+                'whereClause' => [
+                  'deleted' => false,
+                  'entityType' => 'UserRegistration',
+                  'phoneNumber.name!=' => '{value}'
+                ]
+              ]
+            ]
+          ],
+          'IS NULL' => [
+            'leftJoins' => [
+              0 => [
+                0 => 'phoneNumbers',
+                1 => 'phoneNumbersMultiple'
+              ]
+            ],
+            'whereClause' => [
+              'phoneNumbersMultiple.name=' => NULL
+            ]
+          ],
+          'IS NOT NULL' => [
+            'whereClause' => [
+              'id=s' => [
+                'from' => 'EntityPhoneNumber',
+                'select' => [
+                  0 => 'entityId'
+                ],
+                'whereClause' => [
+                  'deleted' => false,
+                  'entityType' => 'UserRegistration'
+                ]
+              ]
+            ]
+          ]
+        ],
+        'order' => [
+          'order' => [
+            0 => [
+              0 => 'phoneNumbers.name',
+              1 => '{direction}'
+            ]
+          ],
+          'leftJoins' => [
+            0 => [
+              0 => 'phoneNumbers',
+              1 => 'phoneNumbers',
+              2 => [
+                'primary' => true
+              ]
+            ]
+          ],
+          'additionalSelect' => [
+            0 => 'phoneNumbers.name'
+          ]
+        ]
+      ],
+      'emailAddress' => [
+        'type' => 'varchar',
+        'notStorable' => true,
+        'fieldType' => 'email',
+        'select' => [
+          'select' => 'emailAddresses.name',
+          'leftJoins' => [
+            0 => [
+              0 => 'emailAddresses',
+              1 => 'emailAddresses',
+              2 => [
+                'primary' => true
+              ]
+            ]
+          ]
+        ],
+        'selectForeign' => [
+          'select' => 'emailAddressUserRegistration{alias}Foreign.name',
+          'leftJoins' => [
+            0 => [
+              0 => 'EntityEmailAddress',
+              1 => 'emailAddressUserRegistration{alias}ForeignMiddle',
+              2 => [
+                'emailAddressUserRegistration{alias}ForeignMiddle.entityId:' => '{alias}.id',
+                'emailAddressUserRegistration{alias}ForeignMiddle.primary' => true,
+                'emailAddressUserRegistration{alias}ForeignMiddle.deleted' => false
+              ]
+            ],
+            1 => [
+              0 => 'EmailAddress',
+              1 => 'emailAddressUserRegistration{alias}Foreign',
+              2 => [
+                'emailAddressUserRegistration{alias}Foreign.id:' => 'emailAddressUserRegistration{alias}ForeignMiddle.emailAddressId',
+                'emailAddressUserRegistration{alias}Foreign.deleted' => false
+              ]
+            ]
+          ]
+        ],
+        'where' => [
+          'LIKE' => [
+            'whereClause' => [
+              'id=s' => [
+                'from' => 'EntityEmailAddress',
+                'select' => [
+                  0 => 'entityId'
+                ],
+                'joins' => [
+                  0 => [
+                    0 => 'emailAddress',
+                    1 => 'emailAddress',
+                    2 => [
+                      'emailAddress.id:' => 'emailAddressId',
+                      'emailAddress.deleted' => false
+                    ]
+                  ]
+                ],
+                'whereClause' => [
+                  'deleted' => false,
+                  'entityType' => 'UserRegistration',
+                  'LIKE:(emailAddress.lower, LOWER:({value})):' => NULL
+                ]
+              ]
+            ]
+          ],
+          'NOT LIKE' => [
+            'whereClause' => [
+              'id!=s' => [
+                'from' => 'EntityEmailAddress',
+                'select' => [
+                  0 => 'entityId'
+                ],
+                'joins' => [
+                  0 => [
+                    0 => 'emailAddress',
+                    1 => 'emailAddress',
+                    2 => [
+                      'emailAddress.id:' => 'emailAddressId',
+                      'emailAddress.deleted' => false
+                    ]
+                  ]
+                ],
+                'whereClause' => [
+                  'deleted' => false,
+                  'entityType' => 'UserRegistration',
+                  'LIKE:(emailAddress.lower, LOWER:({value})):' => NULL
+                ]
+              ]
+            ]
+          ],
+          '=' => [
+            'leftJoins' => [
+              0 => [
+                0 => 'emailAddresses',
+                1 => 'emailAddressesMultiple'
+              ]
+            ],
+            'whereClause' => [
+              'EQUAL:(emailAddressesMultiple.lower, LOWER:({value})):' => NULL
+            ]
+          ],
+          '<>' => [
+            'whereClause' => [
+              'id!=s' => [
+                'from' => 'EntityEmailAddress',
+                'select' => [
+                  0 => 'entityId'
+                ],
+                'joins' => [
+                  0 => [
+                    0 => 'emailAddress',
+                    1 => 'emailAddress',
+                    2 => [
+                      'emailAddress.id:' => 'emailAddressId',
+                      'emailAddress.deleted' => false
+                    ]
+                  ]
+                ],
+                'whereClause' => [
+                  'deleted' => false,
+                  'entityType' => 'UserRegistration',
+                  'EQUAL:(emailAddress.lower, LOWER:({value})):' => NULL
+                ]
+              ]
+            ]
+          ],
+          'IN' => [
+            'whereClause' => [
+              'id=s' => [
+                'from' => 'EntityEmailAddress',
+                'select' => [
+                  0 => 'entityId'
+                ],
+                'joins' => [
+                  0 => [
+                    0 => 'emailAddress',
+                    1 => 'emailAddress',
+                    2 => [
+                      'emailAddress.id:' => 'emailAddressId',
+                      'emailAddress.deleted' => false
+                    ]
+                  ]
+                ],
+                'whereClause' => [
+                  'deleted' => false,
+                  'entityType' => 'UserRegistration',
+                  'emailAddress.lower' => '{value}'
+                ]
+              ]
+            ]
+          ],
+          'NOT IN' => [
+            'whereClause' => [
+              'id!=s' => [
+                'from' => 'EntityEmailAddress',
+                'select' => [
+                  0 => 'entityId'
+                ],
+                'joins' => [
+                  0 => [
+                    0 => 'emailAddress',
+                    1 => 'emailAddress',
+                    2 => [
+                      'emailAddress.id:' => 'emailAddressId',
+                      'emailAddress.deleted' => false
+                    ]
+                  ]
+                ],
+                'whereClause' => [
+                  'deleted' => false,
+                  'entityType' => 'UserRegistration',
+                  'emailAddress.lower' => '{value}'
+                ]
+              ]
+            ]
+          ],
+          'IS NULL' => [
+            'leftJoins' => [
+              0 => [
+                0 => 'emailAddresses',
+                1 => 'emailAddressesMultiple'
+              ]
+            ],
+            'whereClause' => [
+              'emailAddressesMultiple.lower=' => NULL
+            ]
+          ],
+          'IS NOT NULL' => [
+            'whereClause' => [
+              'id=s' => [
+                'from' => 'EntityEmailAddress',
+                'select' => [
+                  0 => 'entityId'
+                ],
+                'whereClause' => [
+                  'deleted' => false,
+                  'entityType' => 'UserRegistration'
+                ]
+              ]
+            ]
+          ]
+        ],
+        'order' => [
+          'order' => [
+            0 => [
+              0 => 'emailAddresses.lower',
+              1 => '{direction}'
+            ]
+          ],
+          'leftJoins' => [
+            0 => [
+              0 => 'emailAddresses',
+              1 => 'emailAddresses',
+              2 => [
+                'primary' => true
+              ]
+            ]
+          ],
+          'additionalSelect' => [
+            0 => 'emailAddresses.lower'
+          ]
+        ]
+      ],
+      'password' => [
+        'type' => 'password',
+        'len' => 150,
+        'fieldType' => 'password',
+        'dbType' => 'string'
+      ],
+      'requestedRole' => [
+        'type' => 'varchar',
+        'fieldType' => 'varchar',
+        'len' => 255
+      ],
+      'status' => [
+        'type' => 'varchar',
+        'default' => 'Pending',
+        'fieldType' => 'varchar',
+        'len' => 255
+      ],
+      'salutationFullName' => [
+        'type' => 'varchar',
+        'fieldType' => 'varchar',
+        'len' => 255
+      ],
+      'firstFullName' => [
+        'type' => 'varchar',
+        'fieldType' => 'varchar',
+        'len' => 255
+      ],
+      'lastFullName' => [
+        'type' => 'varchar',
+        'fieldType' => 'varchar',
+        'len' => 255
+      ],
+      'middleFullName' => [
+        'type' => 'varchar',
+        'len' => 100,
+        'fieldType' => 'varchar'
+      ],
+      'phoneNumberIsOptedOut' => [
+        'type' => 'bool',
+        'notNull' => true,
+        'notStorable' => true,
+        'fieldType' => 'bool',
+        'select' => [
+          'select' => 'phoneNumbers.optOut',
+          'leftJoins' => [
+            0 => [
+              0 => 'phoneNumbers',
+              1 => 'phoneNumbers',
+              2 => [
+                'primary' => true
+              ]
+            ]
+          ]
+        ],
+        'selectForeign' => [
+          'select' => 'phoneNumberUserRegistration{alias}Foreign.optOut',
+          'leftJoins' => [
+            0 => [
+              0 => 'EntityPhoneNumber',
+              1 => 'phoneNumberUserRegistration{alias}ForeignMiddle',
+              2 => [
+                'phoneNumberUserRegistration{alias}ForeignMiddle.entityId:' => '{alias}.id',
+                'phoneNumberUserRegistration{alias}ForeignMiddle.primary' => true,
+                'phoneNumberUserRegistration{alias}ForeignMiddle.deleted' => false
+              ]
+            ],
+            1 => [
+              0 => 'PhoneNumber',
+              1 => 'phoneNumberUserRegistration{alias}Foreign',
+              2 => [
+                'phoneNumberUserRegistration{alias}Foreign.id:' => 'phoneNumberUserRegistration{alias}ForeignMiddle.phoneNumberId',
+                'phoneNumberUserRegistration{alias}Foreign.deleted' => false
+              ]
+            ]
+          ]
+        ],
+        'where' => [
+          '= TRUE' => [
+            'whereClause' => [
+              0 => [
+                'phoneNumbers.optOut=' => true
+              ],
+              1 => [
+                'phoneNumbers.optOut!=' => NULL
+              ]
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'phoneNumbers',
+                1 => 'phoneNumbers',
+                2 => [
+                  'primary' => true
+                ]
+              ]
+            ]
+          ],
+          '= FALSE' => [
+            'whereClause' => [
+              'OR' => [
+                0 => [
+                  'phoneNumbers.optOut=' => false
+                ],
+                1 => [
+                  'phoneNumbers.optOut=' => NULL
+                ]
+              ]
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'phoneNumbers',
+                1 => 'phoneNumbers',
+                2 => [
+                  'primary' => true
+                ]
+              ]
+            ]
+          ]
+        ],
+        'order' => [
+          'order' => [
+            0 => [
+              0 => 'phoneNumbers.optOut',
+              1 => '{direction}'
+            ]
+          ],
+          'leftJoins' => [
+            0 => [
+              0 => 'phoneNumbers',
+              1 => 'phoneNumbers',
+              2 => [
+                'primary' => true
+              ]
+            ]
+          ],
+          'additionalSelect' => [
+            0 => 'phoneNumbers.optOut'
+          ]
+        ],
+        'default' => false
+      ],
+      'phoneNumberIsInvalid' => [
+        'type' => 'bool',
+        'notNull' => true,
+        'notStorable' => true,
+        'fieldType' => 'bool',
+        'select' => [
+          'select' => 'phoneNumbers.invalid',
+          'leftJoins' => [
+            0 => [
+              0 => 'phoneNumbers',
+              1 => 'phoneNumbers',
+              2 => [
+                'primary' => true
+              ]
+            ]
+          ]
+        ],
+        'selectForeign' => [
+          'select' => 'phoneNumberUserRegistration{alias}Foreign.invalid',
+          'leftJoins' => [
+            0 => [
+              0 => 'EntityPhoneNumber',
+              1 => 'phoneNumberUserRegistration{alias}ForeignMiddle',
+              2 => [
+                'phoneNumberUserRegistration{alias}ForeignMiddle.entityId:' => '{alias}.id',
+                'phoneNumberUserRegistration{alias}ForeignMiddle.primary' => true,
+                'phoneNumberUserRegistration{alias}ForeignMiddle.deleted' => false
+              ]
+            ],
+            1 => [
+              0 => 'PhoneNumber',
+              1 => 'phoneNumberUserRegistration{alias}Foreign',
+              2 => [
+                'phoneNumberUserRegistration{alias}Foreign.id:' => 'phoneNumberUserRegistration{alias}ForeignMiddle.phoneNumberId',
+                'phoneNumberUserRegistration{alias}Foreign.deleted' => false
+              ]
+            ]
+          ]
+        ],
+        'where' => [
+          '= TRUE' => [
+            'whereClause' => [
+              0 => [
+                'phoneNumbers.invalid=' => true
+              ],
+              1 => [
+                'phoneNumbers.invalid!=' => NULL
+              ]
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'phoneNumbers',
+                1 => 'phoneNumbers',
+                2 => [
+                  'primary' => true
+                ]
+              ]
+            ]
+          ],
+          '= FALSE' => [
+            'whereClause' => [
+              'OR' => [
+                0 => [
+                  'phoneNumbers.invalid=' => false
+                ],
+                1 => [
+                  'phoneNumbers.invalid=' => NULL
+                ]
+              ]
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'phoneNumbers',
+                1 => 'phoneNumbers',
+                2 => [
+                  'primary' => true
+                ]
+              ]
+            ]
+          ]
+        ],
+        'order' => [
+          'order' => [
+            0 => [
+              0 => 'phoneNumbers.invalid',
+              1 => '{direction}'
+            ]
+          ],
+          'leftJoins' => [
+            0 => [
+              0 => 'phoneNumbers',
+              1 => 'phoneNumbers',
+              2 => [
+                'primary' => true
+              ]
+            ]
+          ],
+          'additionalSelect' => [
+            0 => 'phoneNumbers.invalid'
+          ]
+        ],
+        'default' => false
+      ],
+      'emailAddressIsOptedOut' => [
+        'type' => 'bool',
+        'notNull' => true,
+        'notStorable' => true,
+        'fieldType' => 'bool',
+        'select' => [
+          'select' => 'emailAddresses.optOut',
+          'leftJoins' => [
+            0 => [
+              0 => 'emailAddresses',
+              1 => 'emailAddresses',
+              2 => [
+                'primary' => true
+              ]
+            ]
+          ]
+        ],
+        'selectForeign' => [
+          'select' => 'emailAddressUserRegistration{alias}Foreign.optOut',
+          'leftJoins' => [
+            0 => [
+              0 => 'EntityEmailAddress',
+              1 => 'emailAddressUserRegistration{alias}ForeignMiddle',
+              2 => [
+                'emailAddressUserRegistration{alias}ForeignMiddle.entityId:' => '{alias}.id',
+                'emailAddressUserRegistration{alias}ForeignMiddle.primary' => true,
+                'emailAddressUserRegistration{alias}ForeignMiddle.deleted' => false
+              ]
+            ],
+            1 => [
+              0 => 'EmailAddress',
+              1 => 'emailAddressUserRegistration{alias}Foreign',
+              2 => [
+                'emailAddressUserRegistration{alias}Foreign.id:' => 'emailAddressUserRegistration{alias}ForeignMiddle.emailAddressId',
+                'emailAddressUserRegistration{alias}Foreign.deleted' => false
+              ]
+            ]
+          ]
+        ],
+        'where' => [
+          '= TRUE' => [
+            'whereClause' => [
+              0 => [
+                'emailAddresses.optOut=' => true
+              ],
+              1 => [
+                'emailAddresses.optOut!=' => NULL
+              ]
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'emailAddresses',
+                1 => 'emailAddresses',
+                2 => [
+                  'primary' => true
+                ]
+              ]
+            ]
+          ],
+          '= FALSE' => [
+            'whereClause' => [
+              'OR' => [
+                0 => [
+                  'emailAddresses.optOut=' => false
+                ],
+                1 => [
+                  'emailAddresses.optOut=' => NULL
+                ]
+              ]
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'emailAddresses',
+                1 => 'emailAddresses',
+                2 => [
+                  'primary' => true
+                ]
+              ]
+            ]
+          ]
+        ],
+        'order' => [
+          'order' => [
+            0 => [
+              0 => 'emailAddresses.optOut',
+              1 => '{direction}'
+            ]
+          ],
+          'leftJoins' => [
+            0 => [
+              0 => 'emailAddresses',
+              1 => 'emailAddresses',
+              2 => [
+                'primary' => true
+              ]
+            ]
+          ],
+          'additionalSelect' => [
+            0 => 'emailAddresses.optOut'
+          ]
+        ],
+        'default' => false
+      ],
+      'emailAddressIsInvalid' => [
+        'type' => 'bool',
+        'notNull' => true,
+        'notStorable' => true,
+        'fieldType' => 'bool',
+        'select' => [
+          'select' => 'emailAddresses.invalid',
+          'leftJoins' => [
+            0 => [
+              0 => 'emailAddresses',
+              1 => 'emailAddresses',
+              2 => [
+                'primary' => true
+              ]
+            ]
+          ]
+        ],
+        'selectForeign' => [
+          'select' => 'emailAddressUserRegistration{alias}Foreign.invalid',
+          'leftJoins' => [
+            0 => [
+              0 => 'EntityEmailAddress',
+              1 => 'emailAddressUserRegistration{alias}ForeignMiddle',
+              2 => [
+                'emailAddressUserRegistration{alias}ForeignMiddle.entityId:' => '{alias}.id',
+                'emailAddressUserRegistration{alias}ForeignMiddle.primary' => true,
+                'emailAddressUserRegistration{alias}ForeignMiddle.deleted' => false
+              ]
+            ],
+            1 => [
+              0 => 'EmailAddress',
+              1 => 'emailAddressUserRegistration{alias}Foreign',
+              2 => [
+                'emailAddressUserRegistration{alias}Foreign.id:' => 'emailAddressUserRegistration{alias}ForeignMiddle.emailAddressId',
+                'emailAddressUserRegistration{alias}Foreign.deleted' => false
+              ]
+            ]
+          ]
+        ],
+        'where' => [
+          '= TRUE' => [
+            'whereClause' => [
+              0 => [
+                'emailAddresses.invalid=' => true
+              ],
+              1 => [
+                'emailAddresses.invalid!=' => NULL
+              ]
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'emailAddresses',
+                1 => 'emailAddresses',
+                2 => [
+                  'primary' => true
+                ]
+              ]
+            ]
+          ],
+          '= FALSE' => [
+            'whereClause' => [
+              'OR' => [
+                0 => [
+                  'emailAddresses.invalid=' => false
+                ],
+                1 => [
+                  'emailAddresses.invalid=' => NULL
+                ]
+              ]
+            ],
+            'leftJoins' => [
+              0 => [
+                0 => 'emailAddresses',
+                1 => 'emailAddresses',
+                2 => [
+                  'primary' => true
+                ]
+              ]
+            ]
+          ]
+        ],
+        'order' => [
+          'order' => [
+            0 => [
+              0 => 'emailAddresses.invalid',
+              1 => '{direction}'
+            ]
+          ],
+          'leftJoins' => [
+            0 => [
+              0 => 'emailAddresses',
+              1 => 'emailAddresses',
+              2 => [
+                'primary' => true
+              ]
+            ]
+          ],
+          'additionalSelect' => [
+            0 => 'emailAddresses.invalid'
+          ]
+        ],
+        'default' => false
+      ],
+      'streamUpdatedAt' => [
+        'type' => 'datetime',
+        'notNull' => false,
+        'fieldType' => 'datetime'
+      ],
+      'phoneNumberData' => [
+        'type' => 'jsonArray',
+        'notStorable' => true,
+        'notExportable' => true,
+        'isPhoneNumberData' => true,
+        'field' => 'phoneNumber'
+      ],
+      'phoneNumberNumeric' => [
+        'type' => 'varchar',
+        'notStorable' => true,
+        'notExportable' => true,
+        'where' => [
+          'LIKE' => [
+            'whereClause' => [
+              'id=s' => [
+                'from' => 'EntityPhoneNumber',
+                'select' => [
+                  0 => 'entityId'
+                ],
+                'joins' => [
+                  0 => [
+                    0 => 'phoneNumber',
+                    1 => 'phoneNumber',
+                    2 => [
+                      'phoneNumber.id:' => 'phoneNumberId',
+                      'phoneNumber.deleted' => false
+                    ]
+                  ]
+                ],
+                'whereClause' => [
+                  'deleted' => false,
+                  'entityType' => 'UserRegistration',
+                  'phoneNumber.numeric*' => '{value}'
+                ]
+              ]
+            ]
+          ],
+          'NOT LIKE' => [
+            'whereClause' => [
+              'id!=s' => [
+                'from' => 'EntityPhoneNumber',
+                'select' => [
+                  0 => 'entityId'
+                ],
+                'joins' => [
+                  0 => [
+                    0 => 'phoneNumber',
+                    1 => 'phoneNumber',
+                    2 => [
+                      'phoneNumber.id:' => 'phoneNumberId',
+                      'phoneNumber.deleted' => false
+                    ]
+                  ]
+                ],
+                'whereClause' => [
+                  'deleted' => false,
+                  'entityType' => 'UserRegistration',
+                  'phoneNumber.numeric*' => '{value}'
+                ]
+              ]
+            ]
+          ],
+          '=' => [
+            'whereClause' => [
+              'id=s' => [
+                'from' => 'EntityPhoneNumber',
+                'select' => [
+                  0 => 'entityId'
+                ],
+                'joins' => [
+                  0 => [
+                    0 => 'phoneNumber',
+                    1 => 'phoneNumber',
+                    2 => [
+                      'phoneNumber.id:' => 'phoneNumberId',
+                      'phoneNumber.deleted' => false
+                    ]
+                  ]
+                ],
+                'whereClause' => [
+                  'deleted' => false,
+                  'entityType' => 'UserRegistration',
+                  'phoneNumber.numeric' => '{value}'
+                ]
+              ]
+            ]
+          ],
+          '<>' => [
+            'whereClause' => [
+              'id!=s' => [
+                'from' => 'EntityPhoneNumber',
+                'select' => [
+                  0 => 'entityId'
+                ],
+                'joins' => [
+                  0 => [
+                    0 => 'phoneNumber',
+                    1 => 'phoneNumber',
+                    2 => [
+                      'phoneNumber.id:' => 'phoneNumberId',
+                      'phoneNumber.deleted' => false
+                    ]
+                  ]
+                ],
+                'whereClause' => [
+                  'deleted' => false,
+                  'entityType' => 'UserRegistration',
+                  'phoneNumber.numeric' => '{value}'
+                ]
+              ]
+            ]
+          ],
+          'IN' => [
+            'whereClause' => [
+              'id=s' => [
+                'from' => 'EntityPhoneNumber',
+                'select' => [
+                  0 => 'entityId'
+                ],
+                'joins' => [
+                  0 => [
+                    0 => 'phoneNumber',
+                    1 => 'phoneNumber',
+                    2 => [
+                      'phoneNumber.id:' => 'phoneNumberId',
+                      'phoneNumber.deleted' => false
+                    ]
+                  ]
+                ],
+                'whereClause' => [
+                  'deleted' => false,
+                  'entityType' => 'UserRegistration',
+                  'phoneNumber.numeric' => '{value}'
+                ]
+              ]
+            ]
+          ],
+          'NOT IN' => [
+            'whereClause' => [
+              'id!=s' => [
+                'from' => 'EntityPhoneNumber',
+                'select' => [
+                  0 => 'entityId'
+                ],
+                'joins' => [
+                  0 => [
+                    0 => 'phoneNumber',
+                    1 => 'phoneNumber',
+                    2 => [
+                      'phoneNumber.id:' => 'phoneNumberId',
+                      'phoneNumber.deleted' => false
+                    ]
+                  ]
+                ],
+                'whereClause' => [
+                  'deleted' => false,
+                  'entityType' => 'UserRegistration',
+                  'phoneNumber.numeric' => '{value}'
+                ]
+              ]
+            ]
+          ],
+          'IS NULL' => [
+            'leftJoins' => [
+              0 => [
+                0 => 'phoneNumbers',
+                1 => 'phoneNumbersMultiple'
+              ]
+            ],
+            'whereClause' => [
+              'phoneNumbersMultiple.numeric=' => NULL
+            ]
+          ],
+          'IS NOT NULL' => [
+            'whereClause' => [
+              'id=s' => [
+                'from' => 'EntityPhoneNumber',
+                'select' => [
+                  0 => 'entityId'
+                ],
+                'whereClause' => [
+                  'deleted' => false,
+                  'entityType' => 'UserRegistration'
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      'emailAddressData' => [
+        'type' => 'jsonArray',
+        'notStorable' => true,
+        'notExportable' => true,
+        'isEmailAddressData' => true,
+        'field' => 'emailAddress'
+      ],
+      'isFollowed' => [
+        'type' => 'bool',
+        'notStorable' => true,
+        'notExportable' => true,
+        'default' => false
+      ],
+      'followersIds' => [
+        'type' => 'jsonArray',
+        'notStorable' => true,
+        'notExportable' => true
+      ],
+      'followersNames' => [
+        'type' => 'jsonObject',
+        'notStorable' => true,
+        'notExportable' => true
+      ]
+    ],
+    'relations' => [
+      'phoneNumbers' => [
+        'type' => 'manyMany',
+        'entity' => 'PhoneNumber',
+        'relationName' => 'entityPhoneNumber',
+        'midKeys' => [
+          0 => 'entityId',
+          1 => 'phoneNumberId'
+        ],
+        'conditions' => [
+          'entityType' => 'UserRegistration'
+        ],
+        'additionalColumns' => [
+          'entityType' => [
+            'type' => 'varchar',
+            'len' => 100
+          ],
+          'primary' => [
+            'type' => 'bool',
+            'default' => false
+          ]
+        ],
+        'indexes' => [
+          'entityId' => [
+            'columns' => [
+              0 => 'entityId'
+            ],
+            'key' => 'IDX_ENTITY_ID'
+          ],
+          'phoneNumberId' => [
+            'columns' => [
+              0 => 'phoneNumberId'
+            ],
+            'key' => 'IDX_PHONE_NUMBER_ID'
+          ],
+          'entityId_phoneNumberId_entityType' => [
+            'type' => 'unique',
+            'columns' => [
+              0 => 'entityId',
+              1 => 'phoneNumberId',
+              2 => 'entityType'
+            ],
+            'key' => 'UNIQ_ENTITY_ID_PHONE_NUMBER_ID_ENTITY_TYPE'
+          ]
+        ]
+      ],
+      'emailAddresses' => [
+        'type' => 'manyMany',
+        'entity' => 'EmailAddress',
+        'relationName' => 'entityEmailAddress',
+        'midKeys' => [
+          0 => 'entityId',
+          1 => 'emailAddressId'
+        ],
+        'conditions' => [
+          'entityType' => 'UserRegistration'
+        ],
+        'additionalColumns' => [
+          'entityType' => [
+            'type' => 'varchar',
+            'len' => 100
+          ],
+          'primary' => [
+            'type' => 'bool',
+            'default' => false
+          ]
+        ],
+        'indexes' => [
+          'entityId' => [
+            'columns' => [
+              0 => 'entityId'
+            ],
+            'key' => 'IDX_ENTITY_ID'
+          ],
+          'emailAddressId' => [
+            'columns' => [
+              0 => 'emailAddressId'
+            ],
+            'key' => 'IDX_EMAIL_ADDRESS_ID'
+          ],
+          'entityId_emailAddressId_entityType' => [
+            'type' => 'unique',
+            'columns' => [
+              0 => 'entityId',
+              1 => 'emailAddressId',
+              2 => 'entityType'
+            ],
+            'key' => 'UNIQ_ENTITY_ID_EMAIL_ADDRESS_ID_ENTITY_TYPE'
+          ]
+        ]
+      ]
+    ],
+    'indexes' => [],
+    'collection' => [
+      'order' => 'DESC'
+    ]
+  ],
   'EmailEmailAccount' => [
     'skipRebuild' => true,
     'attributes' => [

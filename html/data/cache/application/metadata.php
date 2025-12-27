@@ -1104,6 +1104,9 @@ return [
         1 => 'client/custom/css/login.css',
         2 => 'client/custom/modules/CSpecification/css/list.css',
         3 => 'client/custom/modules/CCallioHistory/css/list.css'
+      ],
+      'viewSetups' => [
+        'views/login' => 'custom:views/login'
       ]
     ],
     'clientIcons' => [
@@ -8764,6 +8767,9 @@ return [
       ],
       'iconClass' => 'fas fa-tasks',
       'kanbanViewMode' => true
+    ],
+    'App' => [
+      'loginView' => 'custom:views/login'
     ],
     'CCallioHistory' => [
       'controller' => 'controllers/record',
@@ -26557,6 +26563,145 @@ return [
           ]
         ]
       ]
+    ],
+    'UserRegistration' => [
+      'fields' => [
+        'userName' => [
+          'type' => 'varchar',
+          'required' => true,
+          'maxLength' => 50,
+          'view' => 'views/fields/varchar'
+        ],
+        'fullName' => [
+          'type' => 'personName',
+          'required' => true
+        ],
+        'phoneNumber' => [
+          'type' => 'phone',
+          'required' => true
+        ],
+        'emailAddress' => [
+          'type' => 'email',
+          'required' => true
+        ],
+        'password' => [
+          'type' => 'password',
+          'required' => true,
+          'maxLength' => 150
+        ],
+        'requestedRole' => [
+          'type' => 'enum',
+          'required' => true,
+          'options' => [
+            0 => 'user',
+            1 => 'portal-user',
+            2 => 'sales'
+          ],
+          'view' => 'views/fields/enum'
+        ],
+        'status' => [
+          'type' => 'enum',
+          'default' => 'Pending',
+          'options' => [
+            0 => 'Pending',
+            1 => 'Approved',
+            2 => 'Rejected'
+          ]
+        ],
+        'salutationFullName' => [
+          'type' => 'enum',
+          'customizationOptionsReferenceDisabled' => true,
+          'detailLayoutIncompatibleFieldList' => [
+            0 => 'fullName'
+          ]
+        ],
+        'firstFullName' => [
+          'type' => 'varchar',
+          'pattern' => '$noBadCharacters',
+          'detailLayoutIncompatibleFieldList' => [
+            0 => 'fullName'
+          ]
+        ],
+        'lastFullName' => [
+          'type' => 'varchar',
+          'pattern' => '$noBadCharacters',
+          'detailLayoutIncompatibleFieldList' => [
+            0 => 'fullName'
+          ]
+        ],
+        'middleFullName' => [
+          'type' => 'varchar',
+          'maxLength' => 100,
+          'pattern' => '$noBadCharacters',
+          'detailLayoutIncompatibleFieldList' => [
+            0 => 'fullName'
+          ]
+        ],
+        'phoneNumberIsOptedOut' => [
+          'type' => 'bool',
+          'notStorable' => true,
+          'layoutDetailDisabled' => true,
+          'layoutDefaultSidePanelDisabled' => true,
+          'mergeDisabled' => true,
+          'customizationDefaultDisabled' => true,
+          'customizationReadOnlyDisabled' => true,
+          'customizationInlineEditDisabledDisabled' => true,
+          'detailLayoutIncompatibleFieldList' => [
+            0 => 'phoneNumber'
+          ]
+        ],
+        'phoneNumberIsInvalid' => [
+          'type' => 'bool',
+          'notStorable' => true,
+          'layoutDetailDisabled' => true,
+          'layoutDefaultSidePanelDisabled' => true,
+          'mergeDisabled' => true,
+          'customizationDefaultDisabled' => true,
+          'customizationReadOnlyDisabled' => true,
+          'customizationInlineEditDisabledDisabled' => true,
+          'detailLayoutIncompatibleFieldList' => [
+            0 => 'phoneNumber'
+          ]
+        ],
+        'emailAddressIsOptedOut' => [
+          'type' => 'bool',
+          'notStorable' => true,
+          'layoutDetailDisabled' => true,
+          'layoutDefaultSidePanelDisabled' => true,
+          'mergeDisabled' => true,
+          'customizationDefaultDisabled' => true,
+          'customizationReadOnlyDisabled' => true,
+          'customizationInlineEditDisabledDisabled' => true,
+          'detailLayoutIncompatibleFieldList' => [
+            0 => 'emailAddress'
+          ]
+        ],
+        'emailAddressIsInvalid' => [
+          'type' => 'bool',
+          'notStorable' => true,
+          'layoutDetailDisabled' => true,
+          'layoutDefaultSidePanelDisabled' => true,
+          'mergeDisabled' => true,
+          'customizationDefaultDisabled' => true,
+          'customizationReadOnlyDisabled' => true,
+          'customizationInlineEditDisabledDisabled' => true,
+          'detailLayoutIncompatibleFieldList' => [
+            0 => 'emailAddress'
+          ]
+        ],
+        'streamUpdatedAt' => [
+          'type' => 'datetime',
+          'readOnly' => true,
+          'customizationReadOnlyDisabled' => true
+        ]
+      ],
+      'links' => [],
+      'collection' => [
+        'sortBy' => 'createdAt',
+        'asc' => false,
+        'orderBy' => 'createdAt',
+        'order' => 'desc'
+      ]
     ]
   ],
   'fields' => [
@@ -32868,6 +33013,14 @@ return [
       'module' => 'Custom',
       'object' => true,
       'isCustom' => true
+    ],
+    'UserRegistration' => [
+      'entity' => true,
+      'layouts' => true,
+      'tab' => true,
+      'acl' => true,
+      'customizable' => true,
+      'stream' => true
     ]
   ],
   'selectDefs' => [

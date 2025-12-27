@@ -535,6 +535,13 @@ return (object) [
       'edit' => 'all',
       'delete' => 'all',
       'create' => 'yes'
+    ],
+    'UserRegistration' => (object) [
+      'read' => 'all',
+      'stream' => 'all',
+      'edit' => 'all',
+      'delete' => 'all',
+      'create' => 'yes'
     ]
   ],
   'fieldTable' => (object) [
@@ -615,7 +622,8 @@ return (object) [
     'Task' => (object) [],
     'CCallioHistory' => (object) [],
     'CProduct' => (object) [],
-    'CSpecification' => (object) []
+    'CSpecification' => (object) [],
+    'UserRegistration' => (object) []
   ],
   'assignmentPermission' => 'all',
   'messagePermission' => 'all',
@@ -2325,6 +2333,28 @@ return (object) [
       ]
     ],
     'CSpecification' => (object) [
+      'attributes' => (object) [
+        'read' => (object) [
+          'yes' => [],
+          'no' => []
+        ],
+        'edit' => (object) [
+          'yes' => [],
+          'no' => []
+        ]
+      ],
+      'fields' => (object) [
+        'read' => (object) [
+          'yes' => [],
+          'no' => []
+        ],
+        'edit' => (object) [
+          'yes' => [],
+          'no' => []
+        ]
+      ]
+    ],
+    'UserRegistration' => (object) [
       'attributes' => (object) [
         'read' => (object) [
           'yes' => [],

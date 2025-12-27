@@ -88,6 +88,11 @@ if [ -f "$SRC_DIR/data/config.php" ]; then
   docker cp "$SRC_DIR/data/config.php" "${PACIFIC_HOME_CONTAINER}:/var/www/html/data/config.php"
 fi
 
+if [ -f "$SRC_DIR/image-proxy.php" ]; then
+  echo "[init-script] Copying image-proxy.php"
+  docker cp "$SRC_DIR/image-proxy.php" "${PACIFIC_HOME_CONTAINER}:/var/www/html/public/image-proxy.php"
+fi
+
 echo "[init-script] Trying chown inside web container (best-effort)"
 docker exec -u 0 "$PACIFIC_HOME_CONTAINER" sh -c "chown -R www-data:www-data /var/www/html || true"
 
