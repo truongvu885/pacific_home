@@ -24,8 +24,26 @@ LAN Address:	192.168.0.158
 WAN Address:	14.225.1.111
 
 
+1. DoubleBoss admin
 user: admin
 pass: pacifichome123
+
+2. Pacific Owner
+user: pacific_owner
+pass: pacifichome123
+
+3. Pacific Admin
+user: pacific_admin
+pass: 123456
+
+4. Pacific Sale
+user: pacific_sale
+pass: 123456
+
+5. Pacific Telesale
+user: pacific_telesale
+pass: 123456
+
 
 
 docker exec -i pacific-home-db mysql -uroot -p12345678 --default-character-set=utf8mb4 espocrm < ./init_cproduct.sql

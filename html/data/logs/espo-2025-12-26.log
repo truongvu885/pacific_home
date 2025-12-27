@@ -550,3 +550,521 @@
 [2025-12-26 03:35:56] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
 [2025-12-26 03:35:56] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
 [2025-12-26 03:35:56] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 03:56:55] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 03:56:55] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 03:56:55] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 03:56:55] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 03:56:55] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 03:56:55] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 03:56:55] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 03:56:55] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 04:03:51] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 04:03:51] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 04:03:51] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 04:03:51] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 04:03:51] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 04:03:51] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 04:03:51] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 04:03:51] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 04:04:24] INFO: Auth: Trying to login as user 'pacific_telesale' by token but token is not found.
+[2025-12-26 04:04:26] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 04:04:26] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 04:04:26] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 04:04:26] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 04:04:26] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 04:04:26] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 04:04:26] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 04:04:26] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 04:07:44] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 04:07:44] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 04:07:44] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 04:07:44] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 04:07:44] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 04:07:44] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 04:07:44] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 04:07:44] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 04:26:07] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 04:26:07] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 04:26:07] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 04:26:07] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 04:26:07] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 04:26:07] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 04:26:07] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 04:26:07] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 04:28:53] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 04:28:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 04:28:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 04:28:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 04:28:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 04:28:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 04:28:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 04:28:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 04:31:27] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 04:31:27] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 04:31:27] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 04:31:27] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 04:31:27] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 04:31:27] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 04:31:27] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 04:31:27] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 04:31:35] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 04:31:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 04:31:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 04:31:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 04:31:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 04:31:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 04:31:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 04:31:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 04:31:46] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 04:31:46] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 04:31:46] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 04:31:46] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 04:31:46] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 04:31:46] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 04:31:46] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 04:31:46] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 04:32:01] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 04:32:01] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 04:32:01] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 04:32:01] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 04:32:01] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 04:32:01] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 04:32:01] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 04:32:01] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 04:32:16] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 04:32:16] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 04:32:16] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 04:32:16] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 04:32:16] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 04:32:16] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 04:32:16] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 04:32:16] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 04:33:01] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 04:33:01] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 04:33:01] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 04:33:01] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 04:33:01] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 04:33:01] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 04:33:01] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 04:33:01] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 04:33:17] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 04:33:17] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 04:33:17] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 04:33:17] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 04:33:17] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 04:33:17] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 04:33:17] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 04:33:17] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 04:33:27] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 04:33:27] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 04:33:27] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 04:33:27] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 04:33:27] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 04:33:27] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 04:33:27] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 04:33:27] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 05:20:07] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 05:20:07] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 05:20:07] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 05:20:07] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 05:20:07] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 05:20:07] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 05:20:07] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 05:20:07] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 05:25:06] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 05:25:06] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 05:25:06] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 05:25:06] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 05:25:06] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 05:25:06] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 05:25:06] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 05:25:06] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 05:25:23] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 05:25:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 05:25:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 05:25:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 05:25:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 05:25:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 05:25:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 05:25:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 08:37:37] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 08:37:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 08:37:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 08:37:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 08:37:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 08:37:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 08:37:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 08:37:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 08:38:32] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 08:38:32] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 08:38:32] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 08:38:32] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 08:38:32] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 08:38:32] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 08:38:32] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 08:38:32] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 08:38:32] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:32] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:32] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:32] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:32] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:32] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:32] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:32] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:32] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:32] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:32] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:32] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:32] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:32] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:32] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:32] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:32] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:32] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:32] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:32] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:34] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:34] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:34] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:41] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:41] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:41] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:38:41] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:40:53] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 08:40:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 08:40:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 08:40:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 08:40:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 08:40:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 08:40:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 08:40:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 08:40:53] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:40:53] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:40:53] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:40:53] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:41:39] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 08:41:39] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 08:41:39] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 08:41:39] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 08:41:39] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 08:41:39] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 08:41:39] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 08:41:39] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 08:41:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:41:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:41:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:41:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:49:02] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 08:49:02] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 08:49:02] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 08:49:02] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 08:49:02] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 08:49:02] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 08:49:02] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 08:49:02] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 08:49:02] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:49:03] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:49:03] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:49:03] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:50:35] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 08:50:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 08:50:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 08:50:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 08:50:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 08:50:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 08:50:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 08:50:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 08:50:35] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:50:36] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:50:36] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:50:36] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:52:35] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 08:52:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 08:52:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 08:52:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 08:52:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 08:52:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 08:52:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 08:52:35] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 08:52:35] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:52:35] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:52:35] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:52:35] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:57:13] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 08:57:13] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 08:57:13] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 08:57:13] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 08:57:13] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 08:57:13] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 08:57:13] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 08:57:13] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 08:57:13] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:57:14] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:57:14] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:57:14] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:59:50] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 08:59:50] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 08:59:50] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 08:59:50] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 08:59:50] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 08:59:50] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 08:59:50] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 08:59:50] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 08:59:50] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:59:50] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:59:50] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 08:59:50] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:01:54] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 09:01:54] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 09:01:54] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 09:01:54] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 09:01:54] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 09:01:54] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 09:01:54] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 09:01:54] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 09:01:54] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:01:54] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:01:54] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:01:54] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:08] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 09:02:08] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 09:02:08] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 09:02:08] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 09:02:08] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 09:02:08] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 09:02:08] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 09:02:08] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 09:02:10] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:10] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:10] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:10] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:10] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:10] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:10] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:10] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:10] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:10] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:10] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:10] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:10] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:10] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:10] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:10] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:10] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:10] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:10] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:10] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:16] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:16] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:16] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:18] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:18] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:18] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:02:19] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:03:11] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 09:03:11] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 09:03:11] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 09:03:11] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 09:03:11] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 09:03:11] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 09:03:11] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 09:03:11] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 09:03:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:03:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:03:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:03:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:03:37] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 09:03:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 09:03:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 09:03:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 09:03:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 09:03:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 09:03:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 09:03:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 09:03:37] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:03:38] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:03:38] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:03:38] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:06:23] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 09:06:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 09:06:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 09:06:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 09:06:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 09:06:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 09:06:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 09:06:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 09:06:23] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:06:24] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:06:24] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:06:24] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:08:57] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 09:08:57] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 09:08:57] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 09:08:57] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 09:08:57] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 09:08:57] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 09:08:57] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 09:08:57] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 09:08:57] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:08:57] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:08:57] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:08:57] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:11:11] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 09:11:11] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 09:11:11] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 09:11:11] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 09:11:11] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 09:11:11] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 09:11:11] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 09:11:11] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 09:11:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:11:12] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:11:12] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:11:12] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:14:23] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 09:14:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 09:14:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 09:14:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 09:14:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 09:14:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 09:14:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 09:14:23] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 09:14:23] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:14:24] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:14:24] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:14:24] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:17:56] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 09:17:56] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 09:17:56] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 09:17:56] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 09:17:56] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 09:17:56] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 09:17:56] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 09:17:56] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 09:17:56] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:17:56] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:17:56] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:17:56] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:10] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 09:18:10] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 09:18:10] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 09:18:10] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 09:18:10] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 09:18:10] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 09:18:10] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 09:18:10] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 09:18:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:11] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:15] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:15] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:15] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:15] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:15] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:15] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:17] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:17] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:17] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:18:17] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:37] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 09:32:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 09:32:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 09:32:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 09:32:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 09:32:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 09:32:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 09:32:37] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 09:32:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:39] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:46] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:46] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:46] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:46] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:46] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:46] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:47] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:48] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:48] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:32:48] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:40:53] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 09:40:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 09:40:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 09:40:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 09:40:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 09:40:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 09:40:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 09:40:53] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 09:40:53] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:40:54] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:40:54] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:40:54] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:44:31] NOTICE: E_DEPRECATED: Creation of dynamic property React\Socket\Connection::$decor is deprecated
+[2025-12-26 09:44:31] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$resourceId is deprecated
+[2025-12-26 09:44:31] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$remoteAddress is deprecated
+[2025-12-26 09:44:31] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpHeadersReceived is deprecated
+[2025-12-26 09:44:31] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpBuffer is deprecated
+[2025-12-26 09:44:31] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$httpRequest is deprecated
+[2025-12-26 09:44:31] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WebSocket is deprecated
+[2025-12-26 09:44:31] NOTICE: E_DEPRECATED: Creation of dynamic property Ratchet\Server\IoConnection::$WAMP is deprecated
+[2025-12-26 09:44:31] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:44:31] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:44:31] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:44:31] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:21] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:21] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:21] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:21] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:21] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:21] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:21] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:21] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:21] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:21] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:21] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:21] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:21] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:21] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:21] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:21] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:21] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:21] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:21] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:21] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:50] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 09:49:52] NOTICE: E_USER_DEPRECATED: Accessing related records with Entity::get is deprecated. Use `$entityManager->getRelation(...)->find()`.
+[2025-12-26 12:08:24] ERROR: (2002) Uncaught Exception PDOException: "SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for pacific-home-db failed: Temporary failure in name resolution" at /var/www/html/application/Espo/ORM/PDO/MysqlPDOFactory.php line 73 :: /var/www/html/application/Espo/ORM/PDO/MysqlPDOFactory.php(73)

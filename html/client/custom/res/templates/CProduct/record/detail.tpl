@@ -207,56 +207,36 @@
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <div class="gallery-item">
                                                    {{!-- Proxy through local endpoint to avoid Drive CORS --}}
-                                                   <img src="https://via.placeholder.com/300x300?text=Image+1"
+                                                   <img id="cproduct-image-1" 
+                                                       src="/image-proxy.php?id=1aHnkye6LBOyU2vDprFMpOA359GoSuE_r"
                                                        alt="Product Image 1"
-                                                       class="img-responsive"
+                                                       class="img-responsive image-preview cproduct-zoomable-image"
                                                        loading="lazy"
-                                                       decoding="async"
-                                                       referrerpolicy="no-referrer"
-                                                       crossorigin="anonymous"
-                                                       onerror="this.onerror=null; this.src='https://via.placeholder.com/600x600?text=Image+unavailable';">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <div class="gallery-item">
-                                                   <img src="https://via.placeholder.com/300x300?text=Image+2"
-                                                       alt="Product Image 2"
-                                                       class="img-responsive"
-                                                       loading="lazy"
-                                                       decoding="async"
-                                                       referrerpolicy="no-referrer"
-                                                       crossorigin="anonymous"
-                                                       onerror="this.onerror=null; this.src='https://via.placeholder.com/600x600?text=Image+unavailable';">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <div class="gallery-item">
-                                                   <img src="https://via.placeholder.com/300x300?text=Image+3"
-                                                       alt="Product Image 3"
-                                                       class="img-responsive"
-                                                       loading="lazy"
-                                                       decoding="async"
-                                                       referrerpolicy="no-referrer"
-                                                       crossorigin="anonymous"
-                                                       onerror="this.onerror=null; this.src='https://via.placeholder.com/600x600?text=Image+unavailable';">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <div class="gallery-item">
-                                                   <img src="https://via.placeholder.com/300x300?text=Image+4"
-                                                       alt="Product Image 4"
-                                                       class="img-responsive"
-                                                       loading="lazy"
-                                                       decoding="async"
-                                                       referrerpolicy="no-referrer"
-                                                       crossorigin="anonymous">
+                                                       data-fullscreen="true"
+                                                    >
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="cproduct-lightbox hidden" aria-hidden="true">
-                                    <span class="cproduct-lightbox__close" role="button" aria-label="Close">&times;</span>
-                                    <img class="cproduct-lightbox__image" alt="Preview">
+                                <div id="cproduct-fullscreen-viewer" class="cproduct-fullscreen-viewer" style="display: none;">
+                                    <div class="cproduct-fullscreen-overlay"></div>
+                                    <div class="cproduct-fullscreen-content">
+                                        <button class="cproduct-fullscreen-close" aria-label="Close">&times;</button>
+                                        <div class="cproduct-fullscreen-controls">
+                                            <button class="cproduct-zoom-btn cproduct-zoom-in" title="Zoom In">
+                                                <i class="fas fa-search-plus"></i>
+                                            </button>
+                                            <button class="cproduct-zoom-btn cproduct-zoom-out" title="Zoom Out">
+                                                <i class="fas fa-search-minus"></i>
+                                            </button>
+                                            <button class="cproduct-zoom-btn cproduct-zoom-reset" title="Reset Zoom">
+                                                <i class="fas fa-compress"></i>
+                                            </button>
+                                        </div>
+                                        <div class="cproduct-fullscreen-image-container">
+                                            <img id="cproduct-fullscreen-image" src="" alt="Fullscreen Preview">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -284,44 +264,4 @@
     </div>
 </div>
 
-<script>
-(function () {
-    var gallery = document.querySelector('.cproduct-gallery');
-    var lightbox = document.querySelector('.cproduct-lightbox');
-    if (!gallery || !lightbox) return;
 
-    var lightboxImg = lightbox.querySelector('.cproduct-lightbox__image');
-    var closeBtn = lightbox.querySelector('.cproduct-lightbox__close');
-
-    var hide = function () {
-        lightbox.classList.add('hidden');
-        lightbox.setAttribute('aria-hidden', 'true');
-        lightboxImg.removeAttribute('src');
-    };
-
-    var show = function (src, alt) {
-        if (!src) return;
-        lightboxImg.src = src;
-        lightboxImg.alt = alt || '';
-        lightbox.classList.remove('hidden');
-        lightbox.setAttribute('aria-hidden', 'false');
-    };
-
-    gallery.querySelectorAll('img').forEach(function (img) {
-        img.style.cursor = 'zoom-in';
-        img.addEventListener('click', function () {
-            show(img.getAttribute('src'), img.getAttribute('alt'));
-        });
-    });
-
-    lightbox.addEventListener('click', function (e) {
-        if (e.target === lightbox) hide();
-    });
-
-    if (closeBtn) closeBtn.addEventListener('click', hide);
-
-    document.addEventListener('keyup', function (e) {
-        if (e.key === 'Escape') hide();
-    });
-})();
-</script>
