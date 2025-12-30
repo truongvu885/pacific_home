@@ -1,0 +1,34 @@
+[
+    {
+        "name": "name",
+        "link": true
+    },
+    {
+        "name": "code",
+        "width": 16
+    },
+    {
+        "name": "phone",
+        "width": 16
+    },
+    {
+        "name": "phone2",
+        "width": 16
+    },
+    {
+        "name": "email",
+        "width": 16
+    },
+    {
+        "name": "collectedDate",
+        "width": 16
+    },
+    {
+        "name": "createdAt",
+        "width": 16
+    },
+    {
+        "name": "modifiedAt",
+        "width": 16
+    }
+]

@@ -1,0 +1,12 @@
+{
+    "labels": {
+        "Create CCustomer": "Tạo Khách hàng"
+    },
+    "fields": {
+        "code": "Mã căn",
+        "phone": "Số điện thoại 1",
+        "phone2": "Số điện thoại 2",
+        "email": "Email",
+        "collectedDate": "Ngày đồng bộ data"
+    }
+}

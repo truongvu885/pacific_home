@@ -1,5 +1,8 @@
 {
     "labels": {
         "Create Lead": "Tạo Khách hàng"
+    },
+    "fields": {
+        "cCode": "Mã căn"
     }
 }

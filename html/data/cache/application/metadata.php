@@ -1103,10 +1103,8 @@ return [
         0 => 'client/custom/modules/CProduct/css/list.css',
         1 => 'client/custom/css/login.css',
         2 => 'client/custom/modules/CSpecification/css/list.css',
-        3 => 'client/custom/modules/CCallioHistory/css/list.css'
-      ],
-      'viewSetups' => [
-        'views/login' => 'custom:views/login'
+        3 => 'client/custom/modules/CCallioHistory/css/list.css',
+        4 => 'client/custom/modules/CCustomer/css/list.css'
       ]
     ],
     'clientIcons' => [
@@ -8768,9 +8766,6 @@ return [
       'iconClass' => 'fas fa-tasks',
       'kanbanViewMode' => true
     ],
-    'App' => [
-      'loginView' => 'custom:views/login'
-    ],
     'CCallioHistory' => [
       'controller' => 'controllers/record',
       'boolFilterList' => [
@@ -8795,6 +8790,20 @@ return [
       ],
       'kanbanViewMode' => false,
       'color' => NULL
+    ],
+    'CCustomer' => [
+      'controller' => 'controllers/record',
+      'boolFilterList' => [
+        0 => 'onlyMy'
+      ],
+      'iconClass' => 'fas fa-person',
+      'views' => [
+        'list' => 'custom:views/CCustomer/list',
+        'detail' => 'custom:views/CCustomer/detail'
+      ],
+      'recordViews' => [
+        'list' => 'custom:views/CCustomer/record/list'
+      ]
     ],
     'CProduct' => [
       'controller' => 'controllers/record',
@@ -23363,6 +23372,12 @@ return [
           'layoutAvailabilityList' => [],
           'directAccessDisabled' => true
         ],
+        'cCode' => [
+          'type' => 'varchar',
+          'maxLength' => 20,
+          'options' => [],
+          'isCustom' => true
+        ],
         'middleName' => [
           'type' => 'varchar',
           'maxLength' => 100,
@@ -25923,6 +25938,132 @@ return [
       ],
       'optimisticConcurrencyControl' => false
     ],
+    'CCustomer' => [
+      'fields' => [
+        'name' => [
+          'type' => 'varchar',
+          'required' => true,
+          'pattern' => '$noBadCharacters'
+        ],
+        'description' => [
+          'type' => 'text'
+        ],
+        'createdAt' => [
+          'type' => 'datetime',
+          'readOnly' => true
+        ],
+        'modifiedAt' => [
+          'type' => 'datetime',
+          'readOnly' => true
+        ],
+        'createdBy' => [
+          'type' => 'link',
+          'readOnly' => true,
+          'view' => 'views/fields/user'
+        ],
+        'modifiedBy' => [
+          'type' => 'link',
+          'readOnly' => true,
+          'view' => 'views/fields/user'
+        ],
+        'assignedUser' => [
+          'type' => 'link',
+          'required' => false,
+          'view' => 'views/fields/assigned-user'
+        ],
+        'teams' => [
+          'type' => 'linkMultiple',
+          'view' => 'views/fields/teams'
+        ],
+        'code' => [
+          'type' => 'varchar',
+          'maxLength' => 20,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'phone' => [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'phone2' => [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'email' => [
+          'type' => 'varchar',
+          'maxLength' => 200,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'collectedDate' => [
+          'notNull' => false,
+          'type' => 'datetime',
+          'minuteStep' => 30,
+          'isCustom' => true
+        ],
+        'streamUpdatedAt' => [
+          'type' => 'datetime',
+          'readOnly' => true,
+          'customizationReadOnlyDisabled' => true
+        ]
+      ],
+      'links' => [
+        'createdBy' => [
+          'type' => 'belongsTo',
+          'entity' => 'User'
+        ],
+        'modifiedBy' => [
+          'type' => 'belongsTo',
+          'entity' => 'User'
+        ],
+        'assignedUser' => [
+          'type' => 'belongsTo',
+          'entity' => 'User'
+        ],
+        'teams' => [
+          'type' => 'hasMany',
+          'entity' => 'Team',
+          'relationName' => 'entityTeam',
+          'layoutRelationshipsDisabled' => true
+        ]
+      ],
+      'collection' => [
+        'orderBy' => 'createdAt',
+        'order' => 'desc',
+        'sortBy' => 'createdAt',
+        'asc' => false
+      ],
+      'indexes' => [
+        'name' => [
+          'columns' => [
+            0 => 'name',
+            1 => 'deleted'
+          ]
+        ],
+        'assignedUser' => [
+          'columns' => [
+            0 => 'assignedUserId',
+            1 => 'deleted'
+          ]
+        ],
+        'createdAt' => [
+          'columns' => [
+            0 => 'createdAt'
+          ]
+        ],
+        'createdAtId' => [
+          'unique' => true,
+          'columns' => [
+            0 => 'createdAt',
+            1 => 'id'
+          ]
+        ]
+      ]
+    ],
     'CProduct' => [
       'fields' => [
         'name' => [
@@ -25930,7 +26071,8 @@ return [
           'required' => true,
           'pattern' => '$noBadCharacters',
           'options' => [],
-          'maxLength' => 50
+          'maxLength' => 50,
+          'readOnlyAfterCreate' => true
         ],
         'description' => [
           'type' => 'text'
@@ -26079,7 +26221,7 @@ return [
         ],
         'note' => [
           'type' => 'varchar',
-          'maxLength' => 200,
+          'maxLength' => 1000,
           'options' => [],
           'isCustom' => true
         ],
@@ -26115,7 +26257,7 @@ return [
           'options' => [],
           'isCustom' => true
         ],
-        'refreshTime' => [
+        'refreshAt' => [
           'notNull' => false,
           'type' => 'datetime',
           'minuteStep' => 30,
@@ -26138,7 +26280,7 @@ return [
             2 => ''
           ],
           'style' => [
-            'Còn hàng' => NULL,
+            'Còn hàng' => 'success',
             'Đã bán' => 'danger',
             '' => NULL
           ],
@@ -26154,7 +26296,59 @@ return [
         ],
         'comments' => [
           'type' => 'varchar',
+          'maxLength' => 1000,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'assignedUserInfo' => [
+          'type' => 'varchar',
+          'notStorable' => true,
+          'readOnly' => true,
+          'view' => 'custom:views/CProduct/fields/assigned-user-info',
+          'layoutDetailDisabled' => false,
+          'layoutListDisabled' => true,
+          'isCustom' => true
+        ],
+        'code' => [
+          'type' => 'varchar',
+          'maxLength' => 100,
+          'options' => [],
+          'isCustom' => true,
+          'readOnlyAfterCreate' => true
+        ],
+        'assigneeName' => [
+          'type' => 'varchar',
+          'maxLength' => 100,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'assigneePhone' => [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'bankDepending' => [
+          'type' => 'varchar',
           'maxLength' => 200,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'legal' => [
+          'type' => 'varchar',
+          'maxLength' => 100,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'supportBorrow' => [
+          'type' => 'varchar',
+          'maxLength' => 200,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'priceType' => [
+          'type' => 'varchar',
+          'maxLength' => 50,
           'options' => [],
           'isCustom' => true
         ],
@@ -26508,6 +26702,12 @@ return [
         'streetEven' => [
           'type' => 'int',
           'max' => 1,
+          'isCustom' => true
+        ],
+        'code' => [
+          'type' => 'varchar',
+          'maxLength' => 20,
+          'options' => [],
           'isCustom' => true
         ]
       ],
@@ -31953,6 +32153,29 @@ return [
       'afterLinkHookClassNameList' => [],
       'afterUnlinkHookClassNameList' => []
     ],
+    'CCustomer' => [
+      'duplicateWhereBuilderClassName' => 'Espo\\Classes\\DuplicateWhereBuilders\\General',
+      'readLoaderClassNameList' => [],
+      'listLoaderClassNameList' => [],
+      'saverClassNameList' => [],
+      'selectApplierClassNameList' => [],
+      'createInputFilterClassNameList' => [],
+      'updateInputFilterClassNameList' => [],
+      'outputFilterClassNameList' => [],
+      'beforeReadHookClassNameList' => [],
+      'earlyBeforeCreateHookClassNameList' => [],
+      'beforeCreateHookClassNameList' => [],
+      'earlyBeforeUpdateHookClassNameList' => [],
+      'beforeUpdateHookClassNameList' => [],
+      'beforeDeleteHookClassNameList' => [],
+      'afterCreateHookClassNameList' => [],
+      'afterUpdateHookClassNameList' => [],
+      'afterDeleteHookClassNameList' => [],
+      'beforeLinkHookClassNameList' => [],
+      'beforeUnlinkHookClassNameList' => [],
+      'afterLinkHookClassNameList' => [],
+      'afterUnlinkHookClassNameList' => []
+    ],
     'CProduct' => [
       'duplicateWhereBuilderClassName' => 'Espo\\Classes\\DuplicateWhereBuilders\\General',
       'updateDuplicateCheck' => false,
@@ -32960,6 +33183,29 @@ return [
       'duplicateCheckFieldList' => [],
       'collaborators' => false,
       'assignedUsers' => false
+    ],
+    'CCustomer' => [
+      'entity' => true,
+      'layouts' => true,
+      'tab' => true,
+      'acl' => true,
+      'aclPortal' => true,
+      'aclPortalLevelList' => [
+        0 => 'all',
+        1 => 'account',
+        2 => 'contact',
+        3 => 'own',
+        4 => 'no'
+      ],
+      'customizable' => true,
+      'importable' => true,
+      'notifications' => true,
+      'stream' => true,
+      'disabled' => false,
+      'type' => 'Base',
+      'module' => 'Custom',
+      'object' => true,
+      'isCustom' => true
     ],
     'CProduct' => [
       'entity' => true,

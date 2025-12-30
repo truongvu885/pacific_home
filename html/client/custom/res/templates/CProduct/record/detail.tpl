@@ -204,27 +204,14 @@
                             <div class="panel-body">
                                 <div class="cproduct-gallery">
                                     <div class="row">
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                           {{#if ptgDataIds}}
-                                                {{#each ptgDataIds}}
-                                                    <div class="gallery-item">
-                                                        {{!-- Proxy through local endpoint to avoid Drive CORS --}}
-                                                            <img 
-                                                                src="/image-proxy.php?id={{this}}"
-                                                                alt="Product Image 1"
-                                                                class="img-responsive image-preview cproduct-zoomable-image"
-                                                                loading="lazy"
-                                                                data-fullscreen="true"
-                                                            >
-                                                        
-                                                    </div>
-                                                {{/each}}   
-                                            {{else}}
-                                                <div class="cproduct-empty-state">
-                                                    <i class="fas fa-link"></i>
-                                                    <p>{{translate 'Không có ảnh nào' scope='CProduct'}}</p>
+                                        {{!-- Gallery sẽ được render động bởi JS --}}
+                                        <div class="col-md-12">
+                                            <div class="cproduct-loading-state">
+                                                <div class="spinner">
+                                                    <i class="fas fa-spinner fa-spin fa-3x"></i>
                                                 </div>
-                                            {{/if}}
+                                                <p>{{translate 'Đang tải ảnh...' scope='CProduct'}}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

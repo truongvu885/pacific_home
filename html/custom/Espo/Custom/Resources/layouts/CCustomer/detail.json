@@ -1,0 +1,32 @@
+[
+    {
+        "rows": [
+            [
+                {
+                    "name": "name"
+                },
+                {
+                    "name": "code"
+                },
+                {
+                    "name": "phone"
+                },
+                {
+                    "name": "phone2"
+                }
+            ],
+            [
+                {
+                    "name": "email"
+                },
+                {
+                    "name": "collectedDate"
+                },
+                false,
+                false
+            ]
+        ],
+        "style": "default",
+        "label": "Overview"
+    }
+]

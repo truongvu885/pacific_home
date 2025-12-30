@@ -60,7 +60,7 @@ class NameMaskingFilter implements Filter
         // Kiểm tra có role tên là "sale" không
         foreach ($roles as $role) {
             $roleName = strtolower($role->get('name') ?? '');
-            if ($roleName === 'sale' || $roleName === 'sales') {
+            if ($roleName === 'ctv' || $roleName === 'ctvs') {
                 return true;
             }
         }

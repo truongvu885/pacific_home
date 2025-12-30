@@ -12,7 +12,7 @@ return [
   'smtpPassword' => NULL,
   'logger' => [
     'path' => 'data/logs/espo.log',
-    'level' => 'INFO',
+    'level' => 'WARNING',
     'rotation' => true,
     'maxFileNumber' => 30,
     'printTrace' => false,

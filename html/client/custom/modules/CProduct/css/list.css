@@ -57,6 +57,11 @@
     max-width: 300px; 
 }
 
+.list .table td[data-name="note"],
+.list .table td[data-name="comments"]{
+    max-width: 400px; 
+}
+
 /* Cột hẹp hơn cho checkbox và action */
 .list .table th.checkbox-cell,
 .list .table td.checkbox-cell,

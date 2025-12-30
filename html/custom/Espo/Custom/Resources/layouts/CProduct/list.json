@@ -21,10 +21,6 @@
         "width": 16
     },
     {
-        "name": "phoneNumber",
-        "width": 16
-    },
-    {
         "name": "handover",
         "width": 16
     },
@@ -101,7 +97,27 @@
         "width": 16
     },
     {
-        "name": "assignedUser",
+        "name": "assigneeName",
+        "width": 16
+    },
+    {
+        "name": "assigneePhone",
+        "width": 16
+    },
+    {
+        "name": "bankDepending",
+        "width": 16
+    },
+    {
+        "name": "supportBorrow",
+        "width": 16
+    },
+    {
+        "name": "pricetype",
+        "width": 16
+    },
+    {
+        "name": "legal",
         "width": 16
     },
     {

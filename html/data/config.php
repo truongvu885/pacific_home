@@ -8,7 +8,7 @@ return [
   'daemonInterval' => 10,
   'daemonProcessTimeout' => 36000,
   'jobForceUtc' => false,
-  'recordsPerPage' => 20,
+  'recordsPerPage' => 50,
   'recordsPerPageSmall' => 5,
   'recordsPerPageSelect' => 10,
   'recordsPerPageKanban' => 5,
@@ -48,19 +48,16 @@ return [
   'tabList' => [
     0 => (object) [
       'type' => 'divider',
-      'id' => '342567',
-      'text' => '$CRM'
-    ],
-    1 => 'Contact',
-    2 => 'Lead',
-    3 => (object) [
-      'type' => 'divider',
-      'text' => '$Activities',
+      'text' => 'Management',
       'id' => '219419'
     ],
-    4 => 'CProduct',
-    5 => 'CCallioHistory',
-    6 => 'CSpecification'
+    1 => 'CProduct',
+    2 => 'CCallioHistory',
+    3 => 'CSpecification',
+    4 => 'CCustomer',
+    5 => 'User',
+    6 => '_delimiter-ext_',
+    7 => '_delimiter_'
   ],
   'quickCreateList' => [],
   'exportDisabled' => false,
@@ -271,8 +268,8 @@ return [
     0 => 'youtube.com',
     1 => 'google.com'
   ],
-  'cacheTimestamp' => 1766846124,
-  'microtime' => 1766846124.366635,
+  'cacheTimestamp' => 1767070750,
+  'microtime' => 1767070750.825128,
   'siteUrl' => 'http://localhost:8080',
   'fullTextSearchMinLength' => 4,
   'appTimestamp' => 1764829381,

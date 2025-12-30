@@ -45,21 +45,21 @@
             ],
             [
                 {
-                    "name": "ptg"
-                },
-                {
                     "name": "phoneNumber"
                 },
                 {
                     "name": "gifts"
                 },
                 {
-                    "name": "deposit"
+                    "name": "resourceType"
+                },
+                {
+                    "name": "ptg"
                 }
             ],
             [
                 {
-                    "name": "bonus"
+                    "name": "deposit"
                 },
                 {
                     "name": "contractType"
@@ -73,19 +73,22 @@
             ],
             [
                 {
-                    "name": "landFund"
+                    "name": "status"
                 },
                 {
                     "name": "dateOfPrice"
                 },
                 {
-                    "name": "note"
+                    "name": "bonus"
                 },
                 {
-                    "name": "status"
+                    "name": "note"
                 }
             ],
             [
+                {
+                    "name": "landFund"
+                },
                 {
                     "name": "providerCode"
                 },
@@ -94,7 +97,30 @@
                 },
                 {
                     "name": "providerName"
+                }
+            ],
+            [
+                {
+                    "name": "bankDepending"
                 },
+                {
+                    "name": "supportBorrow"
+                },
+                {
+                    "name": "legal"
+                },
+                {
+                    "name": "priceType"
+                }
+            ],
+            [
+                {
+                    "name": "assigneeName"
+                },
+                {
+                    "name": "assigneePhone"
+                },
+                false,
                 false
             ]
         ],

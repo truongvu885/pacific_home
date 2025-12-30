@@ -44,7 +44,13 @@ pass: 123456
 user: pacific_telesale
 pass: 123456
 
+ALTER TABLE `c_product` 
+MODIFY name VARCHAR(255)
+COLLATE utf8mb4_0900_ai_ci;
 
+ALTER TABLE `c_specification`
+MODIFY name VARCHAR(255)
+COLLATE utf8mb4_0900_ai_ci;
 
 docker exec -i pacific-home-db mysql -uroot -p12345678 --default-character-set=utf8mb4 espocrm < ./init_cproduct.sql
 docker exec -i pacific-home-db mysql -uroot -p12345678 --default-character-set=utf8mb4 espocrm < ./init_cspecification.sql

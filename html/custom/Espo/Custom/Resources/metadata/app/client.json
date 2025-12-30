@@ -4,9 +4,7 @@
         "client/custom/modules/CProduct/css/list.css",
         "client/custom/css/login.css",
         "client/custom/modules/CSpecification/css/list.css",
-        "client/custom/modules/CCallioHistory/css/list.css"
-    ],
-    "viewSetups": {
-        "views/login": "custom:views/login"
-    }
+        "client/custom/modules/CCallioHistory/css/list.css",
+        "client/custom/modules/CCustomer/css/list.css"
+    ]
 }

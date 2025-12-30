@@ -1,0 +1,12 @@
+{
+  "controller": "controllers/record",
+  "boolFilterList": ["onlyMy"],
+  "iconClass": "fas fa-person",
+  "views": {
+    "list": "custom:views/CCustomer/list",
+    "detail": "custom:views/CCustomer/detail"
+  },
+  "recordViews": {
+    "list": "custom:views/CCustomer/record/list"
+  }
+}

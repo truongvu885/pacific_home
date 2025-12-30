@@ -4,46 +4,172 @@ define("custom:views/CProduct/record/detail", [
   return Dep.extend({
     template: "custom:CProduct/record/detail",
 
-    gasUrl:
-      "https://script.google.com/macros/s/AKfycbxw-e9nZacgUDoK31RoKgqgeBEx97KdnwRPL-GZMoIeB4nGWwzP85GITuVKZ_CrZlM7/exec",
-
-    data: function () {
-      return {
-        ptgDataIds: this.ptgDataIds || [],
-      };
-    },
     setup: function () {
       Dep.prototype.setup.call(this);
 
+      this.ptgDataIds = [];
+      this.hasFetchedPtg = false; // Flag để biết đã fetch xong chưa
+      // Nếu có PTG field thì set loading = true ngay từ đầu
+      var ptg = this.model.get('ptg');
+      this.isLoadingPtg = !!(ptg); // true nếu có ptg, false nếu không
+      
       // Load custom CSS
       this.loadCProductDetailCSS();
-      this.ptgDataIds = [];
-      const ptgData = this.model.get("ptgData");
-      console.log("test ptgData:");
-      
-      console.log(ptgData);
-      if (ptgData) {
-        this.getPtgId(ptgData);
-      }
     },
-
+    data: function () {
+      // Merge parent data so built-in scope attributes stay intact
+      var data = Dep.prototype.data.call(this);
+      data.ptgDataIds = this.ptgDataIds || [];
+      data.isLoadingPtg = this.isLoadingPtg;
+      return data;
+    },
     afterRender: function () {
       Dep.prototype.afterRender.call(this);
-
-      console.log(this.ptgDataIds);
-
       // Create child views for custom panels
       this.createPanelViews();
 
       // Setup fullscreen image viewer
       this.setupImageViewer();
+
+      // Gọi API lấy dữ liệu PTG sau khi render xong
+      this.fetchPtgDataAsync();
     },
 
+    /**
+     * Gọi API Google App Script bất đồng bộ sau khi trang đã load xong
+     */
+    fetchPtgDataAsync: function () {
+      var self = this;
+      var recordId = this.model.get('id');
+      
+      var ptg = this.model.get('ptg');
+
+      // Reset ptgDataIds cho record mới
+      self.ptgDataIds = [];
+
+      // Chỉ gọi API nếu có field ptg
+      if (!ptg) {
+        console.log('PTG field is empty, skipping Google App Script API call');
+        self.isLoadingPtg = false;
+        self.hasFetchedPtg = true; // Đánh dấu đã xử lý xong
+        self.renderGallery();
+        return;
+      }
+
+      // Set loading state
+      self.isLoadingPtg = true;
+      self.renderGallery();
+
+      console.log('Fetching PTG data from Google App Script...');
+
+      // Gọi API mới để lấy dữ liệu PTG
+      Espo.Ajax.getRequest('CProduct/action/fetchPtgData', {id: recordId})
+        .then(function (response) {   
+          // Tắt loading state
+          self.isLoadingPtg = false;
+          self.hasFetchedPtg = true; // Đánh dấu đã fetch xong
+          
+          if (response.success && response.ptgData) {
+            // Cập nhật model với dữ liệu mới
+            self.model.set('ptgData', response.ptgData);
+            console.log('PTG data received:', response.ptgData);
+            
+            // Xử lý ptgDataIds
+            self.getPtgId(response.ptgData);
+            // Re-render gallery với dữ liệu mới
+            self.renderGallery();
+            // Setup lại image viewer cho các ảnh mới
+            self.setupImageViewer();
+          } else {
+            console.error('Failed to load PTG data:', response.error || 'Unknown error');
+            // Render gallery (sẽ hiển thị empty state)
+            self.renderGallery();
+          }
+        })
+        .catch(function (error) {
+          console.error('Error fetching PTG data:', error);
+          // Tắt loading state và hiển thị empty state
+          self.isLoadingPtg = false;
+          self.hasFetchedPtg = true; // Đánh dấu đã xử lý xong
+          self.renderGallery();
+        });
+    },
+
+    /**
+     * Parse ptgData để lấy danh sách ptgIds
+     */
     getPtgId: function (ptgData) {
+      // Clear array trước khi parse dữ liệu mới
+      this.ptgDataIds = [];
+      
       ptgData.forEach((element) => {
         var ptgId = element.viewUrl.split("=")[1];
         this.ptgDataIds.push(ptgId);
       });
+    },
+
+    /**
+     * Render lại gallery với dữ liệu mới từ ptgDataIds
+     */
+    renderGallery: function () {
+      var galleryContainer = this.$el.find('.cproduct-gallery .row');
+      
+      if (!galleryContainer.length) {
+        console.error('Gallery container not found');
+        return;
+      }
+
+      // Xóa nội dung cũ
+      galleryContainer.empty();
+
+      // Hiển thị loading nếu chưa fetch xong
+      if (!this.hasFetchedPtg) {
+        var loadingHtml = 
+          '<div class="col-md-12">' +
+            '<div class="cproduct-loading-state">' +
+              '<div class="spinner">' +
+                '<i class="fas fa-spinner fa-spin fa-3x"></i>' +
+              '</div>' +
+              '<p>' + this.translate('Đang tải ảnh...', 'CProduct') + '</p>' +
+            '</div>' +
+          '</div>';
+        
+        galleryContainer.append(loadingHtml);
+        console.log('Displaying loading state');
+        return;
+      }
+
+      if (this.ptgDataIds && this.ptgDataIds.length > 0) {
+        // Tạo HTML cho từng ảnh
+        this.ptgDataIds.forEach(function(ptgId) {
+          var galleryItemHtml = 
+            '<div class="col-md-6 col-sm-6 col-xs-12">' +
+              '<div class="gallery-item">' +
+                '<img ' +
+                  'src="/image-proxy.php?id=' + ptgId + '" ' +
+                  'alt="Product Image" ' +
+                  'class="img-responsive image-preview cproduct-zoomable-image" ' +
+                  'loading="lazy" ' +
+                  'data-fullscreen="true" ' +
+                '>' +
+              '</div>' +
+            '</div>';
+          
+          galleryContainer.append(galleryItemHtml);
+        });
+        
+        console.log('Gallery rendered with ' + this.ptgDataIds.length + ' images');
+      } else {
+        // Hiển thị empty state
+        var emptyStateHtml = 
+          '<div class="col-md-12">' +
+            '<div class="cproduct-empty-state">' +
+              '<i class="fas fa-image"></i>' +
+              '<p>' + this.translate('Không có ảnh nào', 'CProduct') + '</p>' +
+            '</div>' +
+          '</div>';
+        galleryContainer.append(emptyStateHtml);
+      }
     },
 
     /**

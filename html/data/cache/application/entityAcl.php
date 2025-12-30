@@ -2829,7 +2829,7 @@ return (object) [
       'nonAdminReadOnly' => []
     ]
   ],
-  'CProduct' => (object) [
+  'CCustomer' => (object) [
     'fields' => (object) [
       'forbidden' => [],
       'internal' => [],
@@ -2839,11 +2839,7 @@ return (object) [
         1 => 'modifiedAt',
         2 => 'createdBy',
         3 => 'modifiedBy',
-        4 => 'priceConverted',
-        5 => 'borrowConverted',
-        6 => 'ttsConverted',
-        7 => 'tttdConverted',
-        8 => 'streamUpdatedAt'
+        4 => 'streamUpdatedAt'
       ],
       'nonAdminReadOnly' => []
     ],
@@ -2858,11 +2854,54 @@ return (object) [
         3 => 'createdByName',
         4 => 'modifiedById',
         5 => 'modifiedByName',
-        6 => 'priceConverted',
-        7 => 'borrowConverted',
-        8 => 'ttsConverted',
-        9 => 'tttdConverted',
-        10 => 'streamUpdatedAt'
+        6 => 'streamUpdatedAt'
+      ],
+      'nonAdminReadOnly' => []
+    ],
+    'links' => (object) [
+      'forbidden' => [],
+      'internal' => [],
+      'onlyAdmin' => [],
+      'readOnly' => [],
+      'nonAdminReadOnly' => []
+    ]
+  ],
+  'CProduct' => (object) [
+    'fields' => (object) [
+      'forbidden' => [],
+      'internal' => [],
+      'onlyAdmin' => [],
+      'readOnly' => [
+        0 => 'createdAt',
+        1 => 'modifiedAt',
+        2 => 'createdBy',
+        3 => 'modifiedBy',
+        4 => 'assignedUserInfo',
+        5 => 'priceConverted',
+        6 => 'borrowConverted',
+        7 => 'ttsConverted',
+        8 => 'tttdConverted',
+        9 => 'streamUpdatedAt'
+      ],
+      'nonAdminReadOnly' => []
+    ],
+    'attributes' => (object) [
+      'forbidden' => [],
+      'internal' => [],
+      'onlyAdmin' => [],
+      'readOnly' => [
+        0 => 'createdAt',
+        1 => 'modifiedAt',
+        2 => 'createdById',
+        3 => 'createdByName',
+        4 => 'modifiedById',
+        5 => 'modifiedByName',
+        6 => 'assignedUserInfo',
+        7 => 'priceConverted',
+        8 => 'borrowConverted',
+        9 => 'ttsConverted',
+        10 => 'tttdConverted',
+        11 => 'streamUpdatedAt'
       ],
       'nonAdminReadOnly' => []
     ],

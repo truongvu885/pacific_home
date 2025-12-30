@@ -2,5 +2,6 @@
     "name",
     "landArea",
     "price",
-    "resourceType"
+    "resourceType",
+    "areaName"
 ]

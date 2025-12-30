@@ -25220,6 +25220,11 @@ return [
         'fieldType' => 'bool',
         'default' => false
       ],
+      'cCode' => [
+        'type' => 'varchar',
+        'len' => 20,
+        'fieldType' => 'varchar'
+      ],
       'middleName' => [
         'type' => 'varchar',
         'len' => 100,
@@ -32278,6 +32283,273 @@ return [
       'order' => 'DESC'
     ]
   ],
+  'CCustomer' => [
+    'attributes' => [
+      'id' => [
+        'len' => 17,
+        'dbType' => 'string',
+        'type' => 'id'
+      ],
+      'name' => [
+        'type' => 'varchar',
+        'fieldType' => 'varchar',
+        'len' => 255
+      ],
+      'deleted' => [
+        'type' => 'bool',
+        'default' => false
+      ],
+      'description' => [
+        'type' => 'text',
+        'fieldType' => 'text'
+      ],
+      'createdAt' => [
+        'type' => 'datetime',
+        'notNull' => false,
+        'fieldType' => 'datetime'
+      ],
+      'modifiedAt' => [
+        'type' => 'datetime',
+        'notNull' => false,
+        'fieldType' => 'datetime'
+      ],
+      'code' => [
+        'type' => 'varchar',
+        'len' => 20,
+        'fieldType' => 'varchar'
+      ],
+      'phone' => [
+        'type' => 'varchar',
+        'len' => 50,
+        'fieldType' => 'varchar'
+      ],
+      'phone2' => [
+        'type' => 'varchar',
+        'len' => 50,
+        'fieldType' => 'varchar'
+      ],
+      'email' => [
+        'type' => 'varchar',
+        'len' => 200,
+        'fieldType' => 'varchar'
+      ],
+      'collectedDate' => [
+        'type' => 'datetime',
+        'notNull' => false,
+        'fieldType' => 'datetime'
+      ],
+      'streamUpdatedAt' => [
+        'type' => 'datetime',
+        'notNull' => false,
+        'fieldType' => 'datetime'
+      ],
+      'createdById' => [
+        'len' => 17,
+        'dbType' => 'string',
+        'type' => 'foreignId',
+        'index' => true,
+        'attributeRole' => 'id',
+        'fieldType' => 'link',
+        'notNull' => false
+      ],
+      'createdByName' => [
+        'type' => 'foreign',
+        'notStorable' => true,
+        'attributeRole' => 'name',
+        'fieldType' => 'link',
+        'relation' => 'createdBy',
+        'foreign' => 'name',
+        'foreignType' => 'varchar'
+      ],
+      'modifiedById' => [
+        'len' => 17,
+        'dbType' => 'string',
+        'type' => 'foreignId',
+        'index' => true,
+        'attributeRole' => 'id',
+        'fieldType' => 'link',
+        'notNull' => false
+      ],
+      'modifiedByName' => [
+        'type' => 'foreign',
+        'notStorable' => true,
+        'attributeRole' => 'name',
+        'fieldType' => 'link',
+        'relation' => 'modifiedBy',
+        'foreign' => 'name',
+        'foreignType' => 'varchar'
+      ],
+      'assignedUserId' => [
+        'len' => 17,
+        'dbType' => 'string',
+        'type' => 'foreignId',
+        'index' => true,
+        'attributeRole' => 'id',
+        'fieldType' => 'link',
+        'notNull' => false
+      ],
+      'assignedUserName' => [
+        'type' => 'foreign',
+        'notStorable' => true,
+        'attributeRole' => 'name',
+        'fieldType' => 'link',
+        'relation' => 'assignedUser',
+        'foreign' => 'name',
+        'foreignType' => 'varchar'
+      ],
+      'teamsIds' => [
+        'type' => 'jsonArray',
+        'notStorable' => true,
+        'isLinkMultipleIdList' => true,
+        'relation' => 'teams',
+        'isUnordered' => true,
+        'attributeRole' => 'idList',
+        'fieldType' => 'linkMultiple'
+      ],
+      'teamsNames' => [
+        'type' => 'jsonObject',
+        'notStorable' => true,
+        'isLinkMultipleNameMap' => true,
+        'attributeRole' => 'nameMap',
+        'fieldType' => 'linkMultiple'
+      ],
+      'isFollowed' => [
+        'type' => 'bool',
+        'notStorable' => true,
+        'notExportable' => true,
+        'default' => false
+      ],
+      'followersIds' => [
+        'type' => 'jsonArray',
+        'notStorable' => true,
+        'notExportable' => true
+      ],
+      'followersNames' => [
+        'type' => 'jsonObject',
+        'notStorable' => true,
+        'notExportable' => true
+      ]
+    ],
+    'relations' => [
+      'teams' => [
+        'type' => 'manyMany',
+        'entity' => 'Team',
+        'relationName' => 'entityTeam',
+        'midKeys' => [
+          0 => 'entityId',
+          1 => 'teamId'
+        ],
+        'conditions' => [
+          'entityType' => 'CCustomer'
+        ],
+        'additionalColumns' => [
+          'entityType' => [
+            'type' => 'varchar',
+            'len' => 100
+          ]
+        ],
+        'indexes' => [
+          'entityId' => [
+            'columns' => [
+              0 => 'entityId'
+            ],
+            'key' => 'IDX_ENTITY_ID'
+          ],
+          'teamId' => [
+            'columns' => [
+              0 => 'teamId'
+            ],
+            'key' => 'IDX_TEAM_ID'
+          ],
+          'entityId_teamId_entityType' => [
+            'type' => 'unique',
+            'columns' => [
+              0 => 'entityId',
+              1 => 'teamId',
+              2 => 'entityType'
+            ],
+            'key' => 'UNIQ_ENTITY_ID_TEAM_ID_ENTITY_TYPE'
+          ]
+        ]
+      ],
+      'assignedUser' => [
+        'type' => 'belongsTo',
+        'entity' => 'User',
+        'key' => 'assignedUserId',
+        'foreignKey' => 'id',
+        'foreign' => NULL
+      ],
+      'modifiedBy' => [
+        'type' => 'belongsTo',
+        'entity' => 'User',
+        'key' => 'modifiedById',
+        'foreignKey' => 'id',
+        'foreign' => NULL
+      ],
+      'createdBy' => [
+        'type' => 'belongsTo',
+        'entity' => 'User',
+        'key' => 'createdById',
+        'foreignKey' => 'id',
+        'foreign' => NULL
+      ]
+    ],
+    'indexes' => [
+      'name' => [
+        'columns' => [
+          0 => 'name',
+          1 => 'deleted'
+        ],
+        'key' => 'IDX_NAME'
+      ],
+      'assignedUser' => [
+        'columns' => [
+          0 => 'assignedUserId',
+          1 => 'deleted'
+        ],
+        'key' => 'IDX_ASSIGNED_USER'
+      ],
+      'createdAt' => [
+        'columns' => [
+          0 => 'createdAt'
+        ],
+        'key' => 'IDX_CREATED_AT'
+      ],
+      'createdAtId' => [
+        'unique' => true,
+        'columns' => [
+          0 => 'createdAt',
+          1 => 'id'
+        ],
+        'key' => 'UNIQ_CREATED_AT_ID'
+      ],
+      'createdById' => [
+        'type' => 'index',
+        'columns' => [
+          0 => 'createdById'
+        ],
+        'key' => 'IDX_CREATED_BY_ID'
+      ],
+      'modifiedById' => [
+        'type' => 'index',
+        'columns' => [
+          0 => 'modifiedById'
+        ],
+        'key' => 'IDX_MODIFIED_BY_ID'
+      ],
+      'assignedUserId' => [
+        'type' => 'index',
+        'columns' => [
+          0 => 'assignedUserId'
+        ],
+        'key' => 'IDX_ASSIGNED_USER_ID'
+      ]
+    ],
+    'collection' => [
+      'orderBy' => 'createdAt',
+      'order' => 'DESC'
+    ]
+  ],
   'CProduct' => [
     'attributes' => [
       'id' => [
@@ -32664,7 +32936,7 @@ return [
       ],
       'note' => [
         'type' => 'varchar',
-        'len' => 200,
+        'len' => 1000,
         'fieldType' => 'varchar'
       ],
       'providerCode' => [
@@ -32738,7 +33010,7 @@ return [
         'len' => 200,
         'fieldType' => 'varchar'
       ],
-      'refreshTime' => [
+      'refreshAt' => [
         'type' => 'datetime',
         'notNull' => false,
         'fieldType' => 'datetime'
@@ -32766,7 +33038,48 @@ return [
       ],
       'comments' => [
         'type' => 'varchar',
+        'len' => 1000,
+        'fieldType' => 'varchar'
+      ],
+      'assignedUserInfo' => [
+        'type' => 'varchar',
+        'notStorable' => true,
+        'fieldType' => 'varchar',
+        'len' => 255
+      ],
+      'code' => [
+        'type' => 'varchar',
+        'len' => 100,
+        'fieldType' => 'varchar'
+      ],
+      'assigneeName' => [
+        'type' => 'varchar',
+        'len' => 100,
+        'fieldType' => 'varchar'
+      ],
+      'assigneePhone' => [
+        'type' => 'varchar',
+        'len' => 50,
+        'fieldType' => 'varchar'
+      ],
+      'bankDepending' => [
+        'type' => 'varchar',
         'len' => 200,
+        'fieldType' => 'varchar'
+      ],
+      'legal' => [
+        'type' => 'varchar',
+        'len' => 100,
+        'fieldType' => 'varchar'
+      ],
+      'supportBorrow' => [
+        'type' => 'varchar',
+        'len' => 200,
+        'fieldType' => 'varchar'
+      ],
+      'priceType' => [
+        'type' => 'varchar',
+        'len' => 50,
         'fieldType' => 'varchar'
       ],
       'priceCurrency' => [
@@ -34158,6 +34471,11 @@ return [
         'type' => 'int',
         'fieldType' => 'int',
         'len' => 11
+      ],
+      'code' => [
+        'type' => 'varchar',
+        'len' => 20,
+        'fieldType' => 'varchar'
       ],
       'createdById' => [
         'len' => 17,

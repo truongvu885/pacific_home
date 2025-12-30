@@ -36,8 +36,17 @@
         "ptg": "Link hình ảnh",
         "providerLink": "URL nhà phân phối",
         "status": "Trạng thái",
-        "resourceType": "Nguồn",
-        "comments": "Đánh giá"
+        "resourceType": "Loại nguồn hàng",
+        "comments": "Đánh giá",
+        "code": "Mã căn",
+        "refreshAt": "Thời gian đồng bộ data",
+        "assigneeName": "Người phụ trách",
+        "assigneePhone": "Số điện thoại người phụ trách",
+        "bankDepending": "Ngân hàng đang vay",
+        "legal": "Tình trạng pháp lý",
+        "supportBorrow": "Hỗ trợ vay vốn",
+        "pricetype": "Thu về/Bao phí",
+        "priceType": "Thu về/Bao phí"
     },
     "links": [],
     "labels": {

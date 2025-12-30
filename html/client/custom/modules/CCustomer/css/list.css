@@ -1,0 +1,9 @@
+.list[data-scope="CCustomer"]>table td.cell[data-name=phone],
+.list[data-scope="CCustomer"]>table td.cell[data-name=phone2]{
+    cursor: pointer;
+}
+
+.list[data-scope="CCustomer"]>table td.cell[data-name=phone] span:hover,
+.list[data-scope="CCustomer"]>table td.cell[data-name=phone2] span:hover{
+    color: #7777e6;
+}

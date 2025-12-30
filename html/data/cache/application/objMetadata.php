@@ -1103,10 +1103,8 @@ return (object) [
         0 => 'client/custom/modules/CProduct/css/list.css',
         1 => 'client/custom/css/login.css',
         2 => 'client/custom/modules/CSpecification/css/list.css',
-        3 => 'client/custom/modules/CCallioHistory/css/list.css'
-      ],
-      'viewSetups' => (object) [
-        'views/login' => 'custom:views/login'
+        3 => 'client/custom/modules/CCallioHistory/css/list.css',
+        4 => 'client/custom/modules/CCustomer/css/list.css'
       ]
     ],
     'clientIcons' => (object) [
@@ -8768,9 +8766,6 @@ return (object) [
       'iconClass' => 'fas fa-tasks',
       'kanbanViewMode' => true
     ],
-    'App' => (object) [
-      'loginView' => 'custom:views/login'
-    ],
     'CCallioHistory' => (object) [
       'controller' => 'controllers/record',
       'boolFilterList' => [
@@ -8795,6 +8790,20 @@ return (object) [
       ],
       'kanbanViewMode' => false,
       'color' => NULL
+    ],
+    'CCustomer' => (object) [
+      'controller' => 'controllers/record',
+      'boolFilterList' => [
+        0 => 'onlyMy'
+      ],
+      'iconClass' => 'fas fa-person',
+      'views' => (object) [
+        'list' => 'custom:views/CCustomer/list',
+        'detail' => 'custom:views/CCustomer/detail'
+      ],
+      'recordViews' => (object) [
+        'list' => 'custom:views/CCustomer/record/list'
+      ]
     ],
     'CProduct' => (object) [
       'controller' => 'controllers/record',
@@ -23363,6 +23372,12 @@ return (object) [
           'layoutAvailabilityList' => [],
           'directAccessDisabled' => true
         ],
+        'cCode' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 20,
+          'options' => [],
+          'isCustom' => true
+        ],
         'middleName' => (object) [
           'type' => 'varchar',
           'maxLength' => 100,
@@ -25923,6 +25938,132 @@ return (object) [
       ],
       'optimisticConcurrencyControl' => false
     ],
+    'CCustomer' => (object) [
+      'fields' => (object) [
+        'name' => (object) [
+          'type' => 'varchar',
+          'required' => true,
+          'pattern' => '$noBadCharacters'
+        ],
+        'description' => (object) [
+          'type' => 'text'
+        ],
+        'createdAt' => (object) [
+          'type' => 'datetime',
+          'readOnly' => true
+        ],
+        'modifiedAt' => (object) [
+          'type' => 'datetime',
+          'readOnly' => true
+        ],
+        'createdBy' => (object) [
+          'type' => 'link',
+          'readOnly' => true,
+          'view' => 'views/fields/user'
+        ],
+        'modifiedBy' => (object) [
+          'type' => 'link',
+          'readOnly' => true,
+          'view' => 'views/fields/user'
+        ],
+        'assignedUser' => (object) [
+          'type' => 'link',
+          'required' => false,
+          'view' => 'views/fields/assigned-user'
+        ],
+        'teams' => (object) [
+          'type' => 'linkMultiple',
+          'view' => 'views/fields/teams'
+        ],
+        'code' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 20,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'phone' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'phone2' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'email' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 200,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'collectedDate' => (object) [
+          'notNull' => false,
+          'type' => 'datetime',
+          'minuteStep' => 30,
+          'isCustom' => true
+        ],
+        'streamUpdatedAt' => (object) [
+          'type' => 'datetime',
+          'readOnly' => true,
+          'customizationReadOnlyDisabled' => true
+        ]
+      ],
+      'links' => (object) [
+        'createdBy' => (object) [
+          'type' => 'belongsTo',
+          'entity' => 'User'
+        ],
+        'modifiedBy' => (object) [
+          'type' => 'belongsTo',
+          'entity' => 'User'
+        ],
+        'assignedUser' => (object) [
+          'type' => 'belongsTo',
+          'entity' => 'User'
+        ],
+        'teams' => (object) [
+          'type' => 'hasMany',
+          'entity' => 'Team',
+          'relationName' => 'entityTeam',
+          'layoutRelationshipsDisabled' => true
+        ]
+      ],
+      'collection' => (object) [
+        'orderBy' => 'createdAt',
+        'order' => 'desc',
+        'sortBy' => 'createdAt',
+        'asc' => false
+      ],
+      'indexes' => (object) [
+        'name' => (object) [
+          'columns' => [
+            0 => 'name',
+            1 => 'deleted'
+          ]
+        ],
+        'assignedUser' => (object) [
+          'columns' => [
+            0 => 'assignedUserId',
+            1 => 'deleted'
+          ]
+        ],
+        'createdAt' => (object) [
+          'columns' => [
+            0 => 'createdAt'
+          ]
+        ],
+        'createdAtId' => (object) [
+          'unique' => true,
+          'columns' => [
+            0 => 'createdAt',
+            1 => 'id'
+          ]
+        ]
+      ]
+    ],
     'CProduct' => (object) [
       'fields' => (object) [
         'name' => (object) [
@@ -25930,7 +26071,8 @@ return (object) [
           'required' => true,
           'pattern' => '$noBadCharacters',
           'options' => [],
-          'maxLength' => 50
+          'maxLength' => 50,
+          'readOnlyAfterCreate' => true
         ],
         'description' => (object) [
           'type' => 'text'
@@ -26079,7 +26221,7 @@ return (object) [
         ],
         'note' => (object) [
           'type' => 'varchar',
-          'maxLength' => 200,
+          'maxLength' => 1000,
           'options' => [],
           'isCustom' => true
         ],
@@ -26115,7 +26257,7 @@ return (object) [
           'options' => [],
           'isCustom' => true
         ],
-        'refreshTime' => (object) [
+        'refreshAt' => (object) [
           'notNull' => false,
           'type' => 'datetime',
           'minuteStep' => 30,
@@ -26138,7 +26280,7 @@ return (object) [
             2 => ''
           ],
           'style' => (object) [
-            'Còn hàng' => NULL,
+            'Còn hàng' => 'success',
             'Đã bán' => 'danger',
             '' => NULL
           ],
@@ -26154,7 +26296,59 @@ return (object) [
         ],
         'comments' => (object) [
           'type' => 'varchar',
+          'maxLength' => 1000,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'assignedUserInfo' => (object) [
+          'type' => 'varchar',
+          'notStorable' => true,
+          'readOnly' => true,
+          'view' => 'custom:views/CProduct/fields/assigned-user-info',
+          'layoutDetailDisabled' => false,
+          'layoutListDisabled' => true,
+          'isCustom' => true
+        ],
+        'code' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 100,
+          'options' => [],
+          'isCustom' => true,
+          'readOnlyAfterCreate' => true
+        ],
+        'assigneeName' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 100,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'assigneePhone' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 50,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'bankDepending' => (object) [
+          'type' => 'varchar',
           'maxLength' => 200,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'legal' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 100,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'supportBorrow' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 200,
+          'options' => [],
+          'isCustom' => true
+        ],
+        'priceType' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 50,
           'options' => [],
           'isCustom' => true
         ],
@@ -26508,6 +26702,12 @@ return (object) [
         'streetEven' => (object) [
           'type' => 'int',
           'max' => 1,
+          'isCustom' => true
+        ],
+        'code' => (object) [
+          'type' => 'varchar',
+          'maxLength' => 20,
+          'options' => [],
           'isCustom' => true
         ]
       ],
@@ -31953,6 +32153,29 @@ return (object) [
       'afterLinkHookClassNameList' => [],
       'afterUnlinkHookClassNameList' => []
     ],
+    'CCustomer' => (object) [
+      'duplicateWhereBuilderClassName' => 'Espo\\Classes\\DuplicateWhereBuilders\\General',
+      'readLoaderClassNameList' => [],
+      'listLoaderClassNameList' => [],
+      'saverClassNameList' => [],
+      'selectApplierClassNameList' => [],
+      'createInputFilterClassNameList' => [],
+      'updateInputFilterClassNameList' => [],
+      'outputFilterClassNameList' => [],
+      'beforeReadHookClassNameList' => [],
+      'earlyBeforeCreateHookClassNameList' => [],
+      'beforeCreateHookClassNameList' => [],
+      'earlyBeforeUpdateHookClassNameList' => [],
+      'beforeUpdateHookClassNameList' => [],
+      'beforeDeleteHookClassNameList' => [],
+      'afterCreateHookClassNameList' => [],
+      'afterUpdateHookClassNameList' => [],
+      'afterDeleteHookClassNameList' => [],
+      'beforeLinkHookClassNameList' => [],
+      'beforeUnlinkHookClassNameList' => [],
+      'afterLinkHookClassNameList' => [],
+      'afterUnlinkHookClassNameList' => []
+    ],
     'CProduct' => (object) [
       'duplicateWhereBuilderClassName' => 'Espo\\Classes\\DuplicateWhereBuilders\\General',
       'updateDuplicateCheck' => false,
@@ -32960,6 +33183,29 @@ return (object) [
       'duplicateCheckFieldList' => [],
       'collaborators' => false,
       'assignedUsers' => false
+    ],
+    'CCustomer' => (object) [
+      'entity' => true,
+      'layouts' => true,
+      'tab' => true,
+      'acl' => true,
+      'aclPortal' => true,
+      'aclPortalLevelList' => [
+        0 => 'all',
+        1 => 'account',
+        2 => 'contact',
+        3 => 'own',
+        4 => 'no'
+      ],
+      'customizable' => true,
+      'importable' => true,
+      'notifications' => true,
+      'stream' => true,
+      'disabled' => false,
+      'type' => 'Base',
+      'module' => 'Custom',
+      'object' => true,
+      'isCustom' => true
     ],
     'CProduct' => (object) [
       'entity' => true,

@@ -5,7 +5,7 @@
     "fields": {
         "name": "Mã căn",
         "status": "Trạng thái",
-        "resourceType": "Nguồn",
+        "resourceType": "Loại nguồn hàng",
         "comments": "Đánh giá",
         "areaName": "Phân khu",
         "houseType": "Loại hình",
@@ -27,7 +27,16 @@
         "providerName": "Tên nhà phân phối",
         "providerLink": "URL nhà phân phối",
         "refreshTime": "Thời gian đồng bộ data",
-        "phoneNumber": "Số điện thoại"
+        "phoneNumber": "Số điện thoại",
+        "code": "Mã căn",
+        "refreshAt": "Thời gian đồng bộ data",
+        "assigneeName": "Người phụ trách",
+        "assigneePhone": "Số điện thoại người phụ trách",
+        "bankDepending": "Ngân hàng đang vay",
+        "legal": "Tình trạng pháp lý",
+        "supportBorrow": "Hỗ trợ vay vốn",
+        "pricetype": "Thu về/Bao phí",
+        "priceType": "Thu về/Bao phí"
     },
     "options": {
         "status": {

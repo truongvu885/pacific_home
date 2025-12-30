@@ -23,6 +23,7 @@
         "houseTemplate": "Mẫu căn",
         "usableArea": "Diện tích thông thủy",
         "fullArea": "Diện tích tim tường",
-        "streetEven": "Chẵn lẻ"
+        "streetEven": "Chẵn lẻ",
+        "code": "Code"
     }
 }

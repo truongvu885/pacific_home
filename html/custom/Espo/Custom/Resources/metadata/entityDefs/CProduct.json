@@ -5,7 +5,8 @@
             "required": true,
             "pattern": "$noBadCharacters",
             "options": [],
-            "maxLength": 50
+            "maxLength": 50,
+            "readOnlyAfterCreate": true
         },
         "description": {
             "type": "text"
@@ -154,7 +155,7 @@
         },
         "note": {
             "type": "varchar",
-            "maxLength": 200,
+            "maxLength": 1000,
             "options": [],
             "isCustom": true
         },
@@ -190,7 +191,7 @@
             "options": [],
             "isCustom": true
         },
-        "refreshTime": {
+        "refreshAt": {
             "notNull": false,
             "type": "datetime",
             "minuteStep": 30,
@@ -213,7 +214,7 @@
                 ""
             ],
             "style": {
-                "Còn hàng": null,
+                "Còn hàng": "success",
                 "Đã bán": "danger",
                 "": null
             },
@@ -229,7 +230,59 @@
         },
         "comments": {
             "type": "varchar",
+            "maxLength": 1000,
+            "options": [],
+            "isCustom": true
+        },
+        "assignedUserInfo": {
+            "type": "varchar",
+            "notStorable": true,
+            "readOnly": true,
+            "view": "custom:views/CProduct/fields/assigned-user-info",
+            "layoutDetailDisabled": false,
+            "layoutListDisabled": true,
+            "isCustom": true
+        },
+        "code": {
+            "type": "varchar",
+            "maxLength": 100,
+            "options": [],
+            "isCustom": true,
+            "readOnlyAfterCreate": true
+        },
+        "assigneeName": {
+            "type": "varchar",
+            "maxLength": 100,
+            "options": [],
+            "isCustom": true
+        },
+        "assigneePhone": {
+            "type": "varchar",
+            "maxLength": 50,
+            "options": [],
+            "isCustom": true
+        },
+        "bankDepending": {
+            "type": "varchar",
             "maxLength": 200,
+            "options": [],
+            "isCustom": true
+        },
+        "legal": {
+            "type": "varchar",
+            "maxLength": 100,
+            "options": [],
+            "isCustom": true
+        },
+        "supportBorrow": {
+            "type": "varchar",
+            "maxLength": 200,
+            "options": [],
+            "isCustom": true
+        },
+        "priceType": {
+            "type": "varchar",
+            "maxLength": 50,
             "options": [],
             "isCustom": true
         }

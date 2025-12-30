@@ -7,8 +7,79 @@ define("custom:views/CProduct/list", [
 
     setup: function () {
       Dep.prototype.setup.call(this);
+      
+      // Thêm custom button cho admin
+      this.addAdminSourceButton();
+      
       // Load Callio Widget nếu user có role Telesale
       this.wait(this.initCallioWidget());
+      
+      // Listen to search view reset event
+      this.setupSearchResetListener();
+    },
+
+    /**
+     * Thêm button "Đăng ký admin nguồn CĐT" cho admin users
+     */
+    addAdminSourceButton: function () {
+      // Check if user is admin
+
+      if (this.getUser().isAdmin()) {
+        this.menu = this.menu || {};
+        this.menu.buttons = this.menu.buttons || [];
+        
+        // Add button at the beginning (bên trái nút Create)
+        this.menu.buttons.unshift({
+          label: 'Đăng ký admin nguồn hàng',
+          action: 'registerAdminSource',
+          style: 'default',
+          acl: 'create'
+        });
+      }
+    },
+
+    /**
+     * Action handler cho button "Đăng ký admin nguồn hàng"
+     */
+    actionRegisterAdminSource: function () {
+      this.createView('selectAdminModal', 'custom:views/CProduct/modals/select-admin', {
+        collection: this.collection
+      }, (view) => {
+        view.render();
+        
+        this.listenToOnce(view, 'success', (data) => {
+          console.log('Mass update success:', data);
+          // Refresh list để hiển thị thay đổi
+          this.collection.fetch();
+        });
+      });
+    },
+    /**
+     * Setup listener for search reset event
+     */
+    setupSearchResetListener: function () {
+      // Wait for search view to be created
+      this.once('after:render', () => {
+        const searchView = this.getSearchView();
+        if (searchView) {
+          // Listen to reset event from search view
+          this.listenTo(searchView, 'reset', () => {
+            // Đợi một chút để search reset xong
+            setTimeout(() => {
+              this.resetColumnSelection();
+            }, 300);
+          });
+        } else {
+          console.warn('Search view not found');
+        }
+      });
+    },
+
+    /**
+     * Get search view
+     */
+    getSearchView: function () {
+      return this.getView('search');
     },
 
     afterRender: function () {
@@ -29,6 +100,73 @@ define("custom:views/CProduct/list", [
           this.buildColumnsDropdown();
         }
       );
+
+      // Setup DOM event listeners cho column selection
+      this.setupShowMoreListener();
+      this.setupSortListener();
+    },
+
+    /**
+     * Reset column selection về trạng thái ban đầu (all columns selected)
+     */
+    resetColumnSelection: function () {
+      try {
+        // Xóa stored selection trong localStorage
+        const key = `cproduct.columns.visible`;
+        window.localStorage.removeItem(key);
+        
+        // Lấy tất cả các columns từ table header
+        const allColumns = [];
+        this.$el.find(".list table thead th").each(function (index) {
+          const name = $(this).data("name");
+          // Skip first column (row selection checkbox) và columns without data-name
+          if (index === 0 || !name) return;
+          allColumns.push(name);
+        });
+        
+        // Apply selection với tất cả columns
+        if (allColumns.length > 0) {
+          this.applyColumnSelection(allColumns);
+          this.storeSelection(allColumns);
+        }
+        
+        // Rebuild dropdown để reflect trạng thái mới
+        this.buildColumnsDropdown();
+      } catch (e) {
+        console.error('Error resetting column selection:', e);
+      }
+    },
+
+    /**
+     * Setup DOM event listener cho Show More button
+     */
+    setupShowMoreListener: function () {
+      const self = this;
+      // Sử dụng event delegation để bắt click vào button show more
+      this.$el.off('click.showMore', '[data-action="showMore"]');
+      this.$el.on('click.showMore', '[data-action="showMore"]', function(e) {
+        // Đợi một chút để DOM update xong sau khi load more
+        setTimeout(() => {
+          self.applyStoredColumnSelection();
+        }, 200);
+      });
+    },
+
+    /**
+     * Setup DOM event listener cho Sort (click vào thead)
+     */
+    setupSortListener: function () {
+      const self = this;
+      
+      // Bắt click vào thead th có thể sort (có data-name và không bị disable)
+      this.$el.off('click.sortColumn', '.list table thead th[data-name]');
+      this.$el.on('click.sortColumn', '.list table thead th[data-name]', function(e) {
+        const columnName = $(this).data('name');
+        // Đợi một chút để collection fetch xong và DOM update
+        setTimeout(() => {
+          self.applyStoredColumnSelection();
+        }, 300);
+      });
     },
 
     /**
@@ -256,7 +394,15 @@ define("custom:views/CProduct/list", [
     },
 
     afterRenderList: function () {
-      // apply persisted selection
+      // apply persisted selection sau mỗi lần render list
+      this.applyStoredColumnSelection();
+    },
+
+    /**
+     * Apply stored column selection from localStorage
+     * Được gọi sau mỗi lần render list (including load more, sort, filter, etc.)
+     */
+    applyStoredColumnSelection: function () {
       try {
         const key = `cproduct.columns.visible`;
         const stored = window.localStorage.getItem(key);
@@ -264,7 +410,9 @@ define("custom:views/CProduct/list", [
           const selected = JSON.parse(stored);
           this.applyColumnSelection(selected);
         }
-      } catch (e) {}
+      } catch (e) {
+        console.error("Error applying stored column selection:", e);
+      }
     },
   });
 });
