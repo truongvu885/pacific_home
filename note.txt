@@ -5,6 +5,7 @@ mkdir ./html/client
 docker cp pacific-home:/var/www/html/client/custom ./html/client
 docker cp pacific-home:/var/www/html/custom ./html/
 docker cp pacific-home:/var/www/html/data ./html/
+docker cp pacific-home:/var/www/html/public/index.php ./html/
 
 
 docker cp ./html/client/custom pacific-home:/var/www/html/client/
@@ -12,6 +13,8 @@ docker cp ./html/custom pacific-home:/var/www/html/
 docker cp ./html/data/upload pacific-home:/var/www/html/data
 docker cp ./html/data/config-internal.php pacific-home:/var/www/html/data/config-internal.php
 docker cp ./html/data/config.php pacific-home:/var/www/html/data/config.php
+docker cp ./html/data/config.php pacific-home:/var/www/html/data/config.php
+
 
 docker exec -i pacific-home php command.php rebuild
 docker exec -i pacific-home php command.php clear-cache
@@ -54,3 +57,10 @@ COLLATE utf8mb4_0900_ai_ci;
 
 docker exec -i pacific-home-db mysql -uroot -p12345678 --default-character-set=utf8mb4 espocrm < ./init_cproduct.sql
 docker exec -i pacific-home-db mysql -uroot -p12345678 --default-character-set=utf8mb4 espocrm < ./init_cspecification.sql
+
+
+
+custom/Espo/Custom/Resources/metadata/clientDefs/App.json
+{
+    "loginView" : "custom:views/login"
+}
